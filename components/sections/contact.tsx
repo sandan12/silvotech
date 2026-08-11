@@ -2,10 +2,12 @@ import { Building2, Mail, MapPin, Phone } from 'lucide-react'
 
 import { SectionHeading } from '@/components/section-heading'
 import { RfqForm } from '@/components/sections/rfq-form'
-import { company } from '@/lib/i18n/config'
+import { company, companyAddress, type Locale } from '@/lib/i18n/config'
 import type { Dictionary } from '@/lib/i18n/get-dictionary'
 
-export function Contact({ dict }: { dict: Dictionary }) {
+export function Contact({ locale, dict }: { locale: Locale; dict: Dictionary }) {
+  const address = companyAddress[locale]
+
   return (
     <section id="contact" className="scroll-mt-28 border-t border-border bg-background section-device">
       <div className="container-page">
@@ -49,11 +51,11 @@ export function Contact({ dict }: { dict: Dictionary }) {
                     {dict.rfq.asideAddress}
                   </span>
                   <span className="text-foreground/85">
-                    {company.street}
+                    {address.street}
                     <br />
-                    {company.postalCode} {company.city}
+                    {address.postalCode} {address.city}
                     <br />
-                    {company.country}
+                    {address.country}
                   </span>
                 </span>
               </p>

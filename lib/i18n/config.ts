@@ -5,3 +5,8 @@ export const localeNames: Record<Locale, { label: string; native: string; htmlLa
 export function isLocale(value: string): value is Locale { return (locales as readonly string[]).includes(value) }
 export const siteUrl = 'https://www.silvotech.eu'
 export const company = { name: 'SilvoTech', legalName: 'SilvoTech', street: 'ul. Nastrojowa 25', postalCode: '02-441', city: 'Warszawa', countryCode: 'PL', country: 'Polska', nip: '5214027648', email: 'sales@silvotech.eu', phone: '+48 573 569 216', phoneHref: '+48573569216' } as const
+export const companyAddress: Record<Locale, { street: string; postalCode: string; city: string; country: string; countryCode: string }> = {
+  pl: { street: 'ul. Nastrojowa 25', postalCode: '02-441', city: 'Warszawa', country: 'Polska', countryCode: 'PL' },
+  en: { street: '25 Nastrojowa Street', postalCode: '02-441', city: 'Warsaw', country: 'Poland', countryCode: 'PL' },
+  de: { street: 'Nastrojowa-Strasse 25', postalCode: '02-441', city: 'Warschau', country: 'Polen', countryCode: 'PL' },
+} as const

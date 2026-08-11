@@ -6,11 +6,12 @@ import Link from 'next/link'
 import { Mail, Menu, MapPin, Phone, X } from 'lucide-react'
 
 import { LanguageSwitcher } from '@/components/language-switcher'
-import { company, type Locale } from '@/lib/i18n/config'
+import { company, companyAddress, type Locale } from '@/lib/i18n/config'
 import type { Dictionary } from '@/lib/i18n/get-dictionary'
 
 export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const [open, setOpen] = useState(false)
+  const address = companyAddress[locale]
 
   const links = [
     { href: '#products', label: dict.nav.products },
@@ -28,7 +29,7 @@ export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary 
           <p className="flex items-center gap-2">
             <MapPin className="size-3.5 shrink-0 text-accent" aria-hidden="true" />
             <span>
-              {company.street}, {company.postalCode} {company.city}, {company.country}
+              {address.street}, {address.postalCode} {address.city}, {address.country}
             </span>
           </p>
           <div className="flex items-center gap-4">

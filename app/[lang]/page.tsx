@@ -7,14 +7,15 @@ import { Manufacturing } from '@/components/sections/manufacturing'
 import { ProductGrid } from '@/components/sections/product-grid'
 import { Quality } from '@/components/sections/quality'
 import { SpecTable } from '@/components/sections/spec-table'
-import { company, isLocale, siteUrl, type Locale } from '@/lib/i18n/config'
+import { company, companyAddress, isLocale, siteUrl, type Locale } from '@/lib/i18n/config'
 import { getDictionary } from '@/lib/i18n/get-dictionary'
 import { products } from '@/lib/products'
 
 function StructuredData({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale)
+  const address = companyAddress[locale]
   const graph = { '@context': 'https://schema.org', '@graph': [
-    { '@type': 'Organization', '@id': `${siteUrl}/#organization`, name: company.name, legalName: company.legalName, url: siteUrl, logo: `${siteUrl}/silvotech-logo-user.png`, image: `${siteUrl}/production-line-new.png`, email: company.email, telephone: company.phone, vatID: `PL${company.nip}`, taxID: company.nip, description: dict.meta.description, address: { '@type': 'PostalAddress', streetAddress: company.street, postalCode: company.postalCode, addressLocality: company.city, addressCountry: company.countryCode }, contactPoint: [{ '@type': 'ContactPoint', contactType: 'sales', email: company.email, telephone: company.phone, availableLanguage: ['pl','en','de'], areaServed: 'EU' }] },
+    { '@type': 'Organization', '@id': `${siteUrl}/#organization`, name: company.name, legalName: company.legalName, url: siteUrl, logo: `${siteUrl}/silvotech-logo-user.png`, image: `${siteUrl}/production-line-new.png`, email: company.email, telephone: company.phone, vatID: `PL${company.nip}`, taxID: company.nip, description: dict.meta.description, address: { '@type': 'PostalAddress', streetAddress: address.street, postalCode: address.postalCode, addressLocality: address.city, addressCountry: address.countryCode }, contactPoint: [{ '@type': 'ContactPoint', contactType: 'sales', email: company.email, telephone: company.phone, availableLanguage: ['pl','en','de'], areaServed: 'EU' }] },
     { '@type': 'WebSite', '@id': `${siteUrl}/#website`, url: siteUrl, name: company.name, inLanguage: locale, publisher: { '@id': `${siteUrl}/#organization` } },
     ...products.map((product) => ({ '@type': 'Product', name: dict.products.items[product.id].name, sku: product.code, description: dict.products.items[product.id].description, image: `${siteUrl}${product.image}`, brand: { '@type': 'Brand', name: company.name }, manufacturer: { '@id': `${siteUrl}/#organization` }, additionalProperty: [{ '@type': 'PropertyValue', name: dict.specs.columns.temperature, value: product.temperature }, { '@type': 'PropertyValue', name: dict.specs.columns.packaging, value: product.packaging }] }))
   ]}
@@ -26,5 +27,5 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
   if (!isLocale(lang)) notFound()
   const locale = lang as Locale
   const dict = getDictionary(locale)
-  return <><StructuredData locale={locale} /><Hero dict={dict} /><ProductGrid dict={dict} /><SpecTable dict={dict} /><Manufacturing dict={dict} /><Quality dict={dict} /><Industries dict={dict} /><Contact dict={dict} /></>
+  return <><StructuredData locale={locale} /><Hero dict={dict} /><ProductGrid dict={dict} /><SpecTable dict={dict} /><Manufacturing dict={dict} /><Quality dict={dict} /><Industries dict={dict} /><Contact locale={locale} dict={dict} /></>
 }

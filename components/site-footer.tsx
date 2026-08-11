@@ -1,11 +1,12 @@
 import Image from 'next/image'
 
-import { company, type Locale } from '@/lib/i18n/config'
+import { company, companyAddress, type Locale } from '@/lib/i18n/config'
 import { products } from '@/lib/products'
 import type { Dictionary } from '@/lib/i18n/get-dictionary'
 
 export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const year = new Date().getFullYear()
+  const address = companyAddress[locale]
 
   return (
     <footer className="bg-primary text-primary-foreground">
@@ -42,9 +43,9 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
           <address className="flex flex-col gap-2 text-sm leading-relaxed not-italic text-primary-foreground/70">
             <span className="text-xs text-primary-foreground/45">{dict.footer.addressLabel}</span>
             <span>
-              {company.street}
+              {address.street}
               <br />
-              {company.postalCode} {company.city}, {company.country}
+              {address.postalCode} {address.city}, {address.country}
             </span>
             <a href={`tel:${company.phoneHref}`} className="transition-colors hover:text-primary-foreground">
               {company.phone}
