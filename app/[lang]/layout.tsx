@@ -10,11 +10,11 @@ import { getDictionary } from '@/lib/i18n/get-dictionary'
 
 import '../globals.css'
 
-const sora = Sora({ subsets: ['latin', 'latin-ext'], variable: '--font-sora', weight: ['200','300','400','600'], display: 'swap' })
-const jetbrains = JetBrains_Mono({ subsets: ['latin', 'latin-ext'], variable: '--font-jetbrains', weight: ['300','400','500'], display: 'swap' })
+const sora = Sora({ subsets: ['latin', 'latin-ext'], variable: '--font-sora', weight: ['300', '400', '600'], display: 'swap' })
+const jetbrains = JetBrains_Mono({ subsets: ['latin', 'latin-ext'], variable: '--font-jetbrains', weight: ['300', '400', '500'], display: 'swap' })
 
 export function generateStaticParams() { return locales.map((lang) => ({ lang })) }
-export const viewport: Viewport = { themeColor: '#000000', width: 'device-width', initialScale: 1 }
+export const viewport: Viewport = { themeColor: '#070b0d', width: 'device-width', initialScale: 1 }
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params
@@ -28,10 +28,14 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     keywords: dict.meta.keywords,
     applicationName: company.name,
     authors: [{ name: company.name, url: siteUrl }],
+    creator: company.name,
+    publisher: company.name,
+    category: 'industrial silicone hoses',
+    other: { 'geo.region': 'PL-MZ', 'geo.placename': 'Warszawa', ICBM: '52.2297,21.0122' },
     alternates: { canonical: `/${lang}`, languages: { ...languages, 'x-default': '/pl' } },
     openGraph: { type: 'website', siteName: company.name, title: dict.meta.title, description: dict.meta.description, url: `${siteUrl}/${lang}`, locale: localeNames[lang].htmlLang.replace('-', '_'), images: [{ url: '/production-line-new.png', width: 1024, height: 390, alt: dict.meta.ogAlt }] },
     twitter: { card: 'summary_large_image', title: dict.meta.title, description: dict.meta.description, images: ['/production-line-new.png'] },
-    robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large' } },
+    robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 } },
   }
 }
 

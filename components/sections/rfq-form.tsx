@@ -10,7 +10,7 @@ import type { Dictionary } from '@/lib/i18n/get-dictionary'
 const initialState: RfqState = { status: 'idle' }
 
 const inputClass =
-  'w-full border border-input bg-card px-3.5 py-2.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-accent focus:ring-2 focus:ring-accent/25'
+  'w-full border border-white/25 bg-white/5 px-3.5 py-2.5 text-sm text-white outline-none transition-colors placeholder:text-white/50 focus:border-accent focus:ring-2 focus:ring-accent/25'
 
 const labelClass = 'font-mono text-[0.7rem] tracking-[0.12em] uppercase text-muted-foreground'
 
@@ -134,7 +134,7 @@ export function RfqForm({ dict }: { dict: Dictionary }) {
         <button
           type="submit"
           disabled={pending}
-          className="inline-flex items-center gap-2 bg-accent px-6 py-3.5 text-sm font-semibold text-accent-foreground transition-colors hover:bg-primary disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex items-center gap-2 bg-accent px-6 py-3.5 text-sm font-semibold text-accent-foreground transition-colors hover:bg-[#f08a44] disabled:cursor-not-allowed disabled:opacity-60"
         >
           <Send className="size-4" aria-hidden="true" />
           {pending ? dict.rfq.submitting : dict.rfq.submit}
