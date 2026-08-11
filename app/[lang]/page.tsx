@@ -13,7 +13,6 @@ import { products } from '@/lib/products'
 
 function StructuredData({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale)
-
   const graph = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -30,13 +29,7 @@ function StructuredData({ locale }: { locale: Locale }) {
         vatID: `PL${company.nip}`,
         taxID: company.nip,
         description: dict.meta.description,
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: company.street,
-          postalCode: company.postalCode,
-          addressLocality: company.city,
-          addressCountry: company.countryCode,
-        },
+        address: { '@type': 'PostalAddress', streetAddress: company.street, postalCode: company.postalCode, addressLocality: company.city, addressCountry: company.countryCode },
         contactPoint: [{ '@type': 'ContactPoint', contactType: 'sales', email: company.email, availableLanguage: ['pl', 'en', 'de'], areaServed: 'EU' }],
       },
       { '@type': 'WebSite', '@id': `${siteUrl}/#website`, url: siteUrl, name: company.name, inLanguage: locale, publisher: { '@id': `${siteUrl}/#organization` } },
@@ -56,27 +49,13 @@ function StructuredData({ locale }: { locale: Locale }) {
       })),
     ],
   }
-
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }} />
 }
 
 export default async function HomePage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params
   if (!isLocale(lang)) notFound()
-
   const locale = lang as Locale
   const dict = getDictionary(locale)
-
-  return (
-    <>
-      <StructuredData locale={locale} />
-      <Hero dict={dict} />
-      <ProductGrid dict={dict} />
-      <SpecTable dict={dict} />
-      <Manufacturing dict={dict} />
-      <Quality dict={dict} />
-      <Industries dict={dict} />
-      <Contact dict={dict} />
-    </>
-  )
+  return <><StructuredData locale={locale} /><Hero dict={dict} /><ProductGrid dict={dict} /><SpecTable dict={dict} /><Manufacturing dict={dict} /><Quality dict={dict} /><Industries dict={dict} /><Contact dict={dict} /></>
 }
