@@ -18,7 +18,7 @@ export function Manufacturing({ dict }: { dict: Dictionary }) {
           <div className="flex flex-col gap-4">
             <div className="relative aspect-[16/10] overflow-hidden">
               <Image
-                src="/silicone-coil.png"
+                src="/clear-hose-coil-new.png"
                 alt={dict.production.warehouseImageAlt}
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
@@ -27,7 +27,7 @@ export function Manufacturing({ dict }: { dict: Dictionary }) {
             </div>
             <div className="relative hidden aspect-[16/7] overflow-hidden lg:block">
               <Image
-                src="/silicone-detail.png"
+                src="/production-line-new.png"
                 alt={dict.production.lineImageAlt}
                 fill
                 sizes="50vw"

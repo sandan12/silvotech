@@ -31,7 +31,7 @@ export function Quality({ dict }: { dict: Dictionary }) {
           <div className="flex flex-col gap-6">
             <div className="relative aspect-[4/3] overflow-hidden">
               <Image
-                src="/silicone-detail.png"
+                src="/clear-hose-detail-new.png"
                 alt={dict.quality.imageAlt}
                 fill
                 sizes="(min-width: 1024px) 45vw, 100vw"

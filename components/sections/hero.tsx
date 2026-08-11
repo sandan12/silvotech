@@ -7,12 +7,12 @@ export function Hero({ dict }: { dict: Dictionary }) {
   return (
     <section className="relative isolate overflow-hidden bg-primary">
       <Image
-        src="/production-line-user.png"
+        src="/production-line-new.png"
         alt={dict.hero.imageAlt}
         fill
         priority
         sizes="100vw"
-        className="absolute inset-0 -z-20 object-cover opacity-45"
+        className="absolute inset-0 -z-20 object-cover opacity-55"
       />
       <div
         aria-hidden="true"

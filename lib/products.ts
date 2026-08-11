@@ -21,7 +21,7 @@ export const products: Product[] = [
   {
     id: 'clear',
     code: 'SVT-SIL-CL',
-    image: '/silicone-coil.png',
+    image: '/clear-hose-coil-new.png',
     sizes: standardSizes,
     temperature: '-50 °C … +230 °C',
     pressure: 'Dobór indywidualny',
