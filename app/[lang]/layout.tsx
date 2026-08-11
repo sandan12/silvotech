@@ -31,6 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     creator: company.name,
     publisher: company.name,
     category: 'industrial silicone hoses',
+    icons: { icon: '/icon.svg', apple: '/apple-icon.png' },
     other: { 'geo.region': 'PL-MZ', 'geo.placename': 'Warszawa', ICBM: '52.2297,21.0122' },
     alternates: { canonical: `/${lang}`, languages: { ...languages, 'x-default': '/pl' } },
     openGraph: { type: 'website', siteName: company.name, title: dict.meta.title, description: dict.meta.description, url: `${siteUrl}/${lang}`, locale: localeNames[lang].htmlLang.replace('-', '_'), images: [{ url: '/production-line-new.png', width: 1024, height: 390, alt: dict.meta.ogAlt }] },

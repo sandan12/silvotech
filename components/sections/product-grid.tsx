@@ -8,7 +8,7 @@ import type { Dictionary } from '@/lib/i18n/get-dictionary'
 export function ProductGrid({ dict }: { dict: Dictionary }) {
   const labels = dict.products.labels
   return (
-    <section id="products" className="scroll-mt-28 border-t border-border bg-background py-16 md:py-24">
+    <section id="products" className="scroll-mt-28 border-t border-border bg-background section-device">
       <div className="container-page">
         <SectionHeading eyebrow={dict.products.eyebrow} title={dict.products.title} lead={dict.products.lead} />
         <ul className="mt-10 grid gap-6 lg:grid-cols-2">

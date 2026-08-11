@@ -5,7 +5,7 @@ import type { Dictionary } from '@/lib/i18n/get-dictionary'
 
 export function Manufacturing({ dict }: { dict: Dictionary }) {
   return (
-    <section id="production" className="scroll-mt-28 bg-primary py-20 md:py-28">
+    <section id="production" className="scroll-mt-28 bg-primary section-device">
       <div className="container-page">
         <SectionHeading
           eyebrow={dict.production.eyebrow}

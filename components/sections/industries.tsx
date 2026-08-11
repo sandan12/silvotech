@@ -7,7 +7,7 @@ const icons = [Factory, Truck, FlaskConical]
 
 export function Industries({ dict }: { dict: Dictionary }) {
   return (
-    <section id="industries" className="scroll-mt-28 border-t border-border bg-secondary py-20 md:py-28">
+    <section id="industries" className="scroll-mt-28 border-t border-border bg-secondary section-device">
       <div className="container-page">
         <SectionHeading eyebrow={dict.industries.eyebrow} title={dict.industries.title} />
 

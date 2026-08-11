@@ -10,7 +10,7 @@ export function SpecTable({ dict }: { dict: Dictionary }) {
   return (
     <section
       id="specification"
-      className="scroll-mt-28 border-t border-border bg-secondary py-20 md:py-28"
+      className="scroll-mt-28 border-t border-border bg-secondary section-device"
     >
       <div className="container-page">
         <SectionHeading eyebrow={dict.specs.eyebrow} title={dict.specs.title} lead={dict.specs.lead} />

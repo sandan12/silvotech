@@ -7,7 +7,7 @@ import type { Dictionary } from '@/lib/i18n/get-dictionary'
 
 export function Contact({ dict }: { dict: Dictionary }) {
   return (
-    <section id="contact" className="scroll-mt-28 border-t border-border bg-background py-20 md:py-28">
+    <section id="contact" className="scroll-mt-28 border-t border-border bg-background section-device">
       <div className="container-page">
         <div className="grid gap-12 lg:grid-cols-[1fr_20rem] lg:gap-14">
           <div className="flex flex-col gap-8">
