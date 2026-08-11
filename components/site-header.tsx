@@ -24,14 +24,14 @@ export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary 
   return (
     <header className="sticky top-0 z-50">
       <div className="hidden bg-primary text-primary-foreground/80 md:block">
-        <div className="container-page flex h-9 items-center justify-between text-xs">
+        <div className="container-page flex h-6 items-center justify-between text-[10px]">
           <p className="flex items-center gap-2">
             <MapPin className="size-3.5 shrink-0 text-accent" aria-hidden="true" />
             <span>
               {company.street}, {company.postalCode} {company.city}, {company.country}
             </span>
           </p>
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-4">
             <a href={`tel:${company.phoneHref}`} className="flex items-center gap-2 transition-colors hover:text-primary-foreground">
               <Phone className="size-3.5 shrink-0 text-accent" aria-hidden="true" />
               {company.phone}
@@ -46,7 +46,7 @@ export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary 
       </div>
 
       <div className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/85">
-        <div className="container-page flex h-16 items-center justify-between gap-6 lg:h-20">
+        <div className="container-page flex h-13 items-center justify-between gap-4 lg:h-14">
           <Link href={`/${locale}`} className="flex shrink-0 items-center" aria-label={company.name}>
             <Image
               src="/silvotech-logo-user.png"
@@ -54,17 +54,17 @@ export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary 
               width={1360}
               height={456}
               priority
-              className="h-9 w-auto max-w-44 object-contain lg:h-10 lg:max-w-48"
+              className="h-7 w-auto max-w-36 object-contain lg:h-8 lg:max-w-40"
             />
           </Link>
 
           <nav aria-label={dict.nav.menu} className="hidden lg:block">
-            <ul className="flex items-center gap-7">
+            <ul className="flex items-center gap-4">
               {links.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-sm font-medium text-foreground/75 transition-colors hover:text-accent"
+                    className="text-xs font-medium text-foreground/75 transition-colors hover:text-accent"
                   >
                     {link.label}
                   </a>
@@ -81,7 +81,7 @@ export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary 
             />
             <a
               href="#contact"
-              className="hidden bg-accent px-4 py-2.5 text-sm font-semibold text-accent-foreground transition-colors hover:bg-primary sm:inline-flex"
+              className="hidden bg-accent px-3.5 py-2 text-sm font-semibold text-accent-foreground transition-colors hover:bg-primary sm:inline-flex"
             >
               {dict.nav.cta}
             </a>
