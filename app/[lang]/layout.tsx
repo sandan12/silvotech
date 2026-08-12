@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Sora, JetBrains_Mono } from 'next/font/google'
+import { Manrope, IBM_Plex_Mono } from 'next/font/google'
 import { notFound } from 'next/navigation'
 import { Analytics } from '@vercel/analytics/next'
 
@@ -10,8 +10,8 @@ import { getDictionary } from '@/lib/i18n/get-dictionary'
 
 import '../globals.css'
 
-const sora = Sora({ subsets: ['latin', 'latin-ext'], variable: '--font-sora', weight: ['300', '400', '600'], display: 'swap' })
-const jetbrains = JetBrains_Mono({ subsets: ['latin', 'latin-ext'], variable: '--font-jetbrains', weight: ['300', '400', '500'], display: 'swap' })
+const manrope = Manrope({ subsets: ['latin', 'latin-ext'], variable: '--font-manrope', weight: ['400', '500', '600', '700'], display: 'swap' })
+const plexMono = IBM_Plex_Mono({ subsets: ['latin', 'latin-ext'], variable: '--font-plex-mono', weight: ['400', '500'], display: 'swap' })
 
 export function generateStaticParams() { return locales.map((lang) => ({ lang })) }
 export const viewport: Viewport = { themeColor: '#070b0d', width: 'device-width', initialScale: 1 }
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     creator: company.name,
     publisher: company.name,
     category: 'industrial silicone hoses',
-    icons: { icon: '/icon.svg', apple: '/apple-icon.png' },
+    icons: { icon: '/silvotech-mark.png', apple: '/apple-icon.png' },
     other: { 'geo.region': 'PL-MZ', 'geo.placename': 'Warszawa', ICBM: '52.2297,21.0122' },
     alternates: { canonical: `/${lang}`, languages: { ...languages, 'x-default': '/pl' } },
     openGraph: { type: 'website', siteName: company.name, title: dict.meta.title, description: dict.meta.description, url: `${siteUrl}/${lang}`, locale: localeNames[lang].htmlLang.replace('-', '_'), images: [{ url: '/production-line-new.png', width: 1024, height: 390, alt: dict.meta.ogAlt }] },
@@ -46,7 +46,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   const locale = lang as Locale
   const dict = getDictionary(locale)
   return (
-    <html lang={localeNames[locale].htmlLang} className={`${sora.variable} ${jetbrains.variable} bg-background`}>
+    <html lang={localeNames[locale].htmlLang} className={`${manrope.variable} ${plexMono.variable} bg-background`}>
       <body className="font-sans antialiased">
         <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-100 focus:bg-accent focus:px-4 focus:py-2 focus:text-accent-foreground">{dict.nav.menu}</a>
         <SiteHeader locale={locale} dict={dict} />
