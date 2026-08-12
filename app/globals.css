@@ -212,9 +212,8 @@ body {
 .hero-soft {
   min-height: clamp(700px, calc(100svh - 5.5rem), 900px) !important;
   background:
-    radial-gradient(60% 55% at 26% 30%, rgba(255, 255, 255, .95), transparent 70%),
-    radial-gradient(60% 70% at 84% 8%, rgba(160, 167, 174, .16), transparent 68%),
-    linear-gradient(158deg, #f8f9fa 0%, #ffffff 38%, #f4f5f6 70%, #ebedee 100%) !important;
+    radial-gradient(65% 60% at 30% 32%, rgba(255, 255, 255, .95), transparent 72%),
+    linear-gradient(158deg, #fbfbfc 0%, #ffffff 40%, #ffffff 68%, #f5f6f7 100%) !important;
 }
 
 .hero-soft__glow {
@@ -241,15 +240,15 @@ body {
 
 .hero-soft__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(420px, 1fr);
+  grid-template-columns: minmax(0, .8fr) minmax(520px, 1.4fr);
   align-items: center;
-  gap: clamp(2.5rem, 6vw, 5rem);
+  gap: clamp(2rem, 4vw, 4rem);
 }
 
 .hero-soft__copy {
   position: relative;
   z-index: 2;
-  max-width: 560px;
+  max-width: 480px;
 }
 
 .hero-soft__button {
@@ -305,13 +304,11 @@ body {
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  filter: brightness(1.08) contrast(.92) saturate(.9);
-  /* Fade the video's own edges to transparent well before the edge of its box
-     so the studio-white footage dissolves into the matching page background
-     instead of reading as a rectangle — the wordmark appears to form on the
-     page itself, not inside a video frame. */
-  mask-image: radial-gradient(ellipse 62% 62% at 50% 42%, #000 0%, rgba(0,0,0,.85) 30%, rgba(0,0,0,.35) 55%, transparent 82%);
-  -webkit-mask-image: radial-gradient(ellipse 62% 62% at 50% 42%, #000 0%, rgba(0,0,0,.85) 30%, rgba(0,0,0,.35) 55%, transparent 82%);
+  /* The footage is already near-white, so only a gentle vignette at the very
+     edges is needed to hide the rectangle — most of the frame, including the
+     full wordmark, stays untouched. */
+  mask-image: radial-gradient(ellipse 78% 76% at 50% 44%, #000 62%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 78% 76% at 50% 44%, #000 62%, transparent 100%);
 }
 
 .hero-soft__facts {

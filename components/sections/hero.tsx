@@ -11,7 +11,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
       <div className="container-page relative z-10 flex min-h-[calc(100svh-5.5rem)] flex-col justify-center py-10 md:py-14 lg:min-h-[calc(100svh-6rem)]">
         <div className="hero-soft__grid">
           <div className="hero-soft__copy">
-            <h1 className="font-display text-[2.75rem] leading-[1.08] font-semibold tracking-[-0.03em] text-balance text-primary sm:text-[3.25rem] lg:text-[3.6rem]">
+            <h1 className="font-display text-[2.5rem] leading-[1.1] font-semibold tracking-[-0.03em] text-balance text-primary sm:text-[2.85rem] lg:text-[3.15rem]">
               {dict.hero.title}
             </h1>
             <p className="mt-6 max-w-lg text-base leading-relaxed text-pretty text-muted-foreground md:text-lg">
