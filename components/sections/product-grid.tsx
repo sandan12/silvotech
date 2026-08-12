@@ -16,8 +16,8 @@ export function ProductGrid({ dict }: { dict: Dictionary }) {
             const copy = dict.products.items[product.id]
             return (
               <li key={product.id} className="group overflow-hidden rounded-lg border border-border bg-card transition duration-300 hover:-translate-y-1 hover:shadow-lg">
-                <div className="relative aspect-[16/9] overflow-hidden bg-secondary">
-                  <Image src={product.image} alt={`${copy.name} — ${copy.tagline}`} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover transition duration-500 group-hover:scale-[1.02]" />
+                <div className="relative aspect-[4/3] overflow-hidden bg-secondary">
+                  <Image src={product.image} alt={`${copy.name} — ${copy.tagline}`} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-contain p-6 transition duration-500 group-hover:scale-[1.02]" />
                 </div>
                 <div className="flex flex-col gap-5 p-6 md:p-8">
                   <div className="flex flex-col gap-2">

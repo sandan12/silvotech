@@ -210,7 +210,6 @@ body {
 }
 
 .hero-soft {
-  min-height: clamp(700px, calc(100svh - 5.5rem), 900px) !important;
   background:
     radial-gradient(65% 60% at 30% 32%, rgba(255, 255, 255, .95), transparent 72%),
     linear-gradient(158deg, #fbfbfc 0%, #ffffff 40%, #ffffff 68%, #f5f6f7 100%) !important;
@@ -294,13 +293,26 @@ body {
 .hero-soft__video {
   display: block;
   width: 100%;
-  aspect-ratio: 21 / 9;
-  object-fit: cover;
-  /* Fade well before the true edge of the frame on every side, so no
-     rectangle is ever visible — only the wordmark itself reads, appearing to
-     float directly on the page background rather than inside a video box. */
-  mask-image: radial-gradient(ellipse farthest-corner at 50% 48%, #000 80%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse farthest-corner at 50% 48%, #000 80%, transparent 100%);
+  /* Matches the source file's real 1280x720 (16:9) frame exactly, so nothing
+     gets zoomed in or sliced off at the sides. */
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+}
+
+/* Paints the video's outer edges over in the same tone as the page
+   background, so the rectangle disappears and the wordmark reads as if it's
+   forming directly on the page rather than sitting inside a video box. */
+.hero-soft__banner-fade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 62% 60% at 50% 50%,
+    transparent 0%,
+    transparent 34%,
+    rgba(251, 251, 252, .55) 58%,
+    #fbfbfc 86%
+  );
 }
 
 .hero-soft__facts {
@@ -351,11 +363,9 @@ button, a, input, textarea, select {
 }
 
 @media (max-width: 960px) {
-  .hero-soft { min-height: auto !important; }
-  .hero-soft .container-page { min-height: auto !important; padding-top: 4rem !important; padding-bottom: 2.75rem !important; }
+  .hero-soft .container-page { padding-top: 4rem !important; padding-bottom: 2.75rem !important; }
   .hero-soft__intro { max-width: 560px; }
   .hero-soft__banner { width: 100%; }
-  .hero-soft__video { aspect-ratio: 16 / 9; }
 }
 
 @media (max-width: 640px) {

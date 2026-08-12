@@ -4,11 +4,11 @@ import type { Dictionary } from '@/lib/i18n/get-dictionary'
 
 export function Hero({ dict }: { dict: Dictionary }) {
   return (
-    <section className="hero-device hero-soft relative isolate overflow-hidden bg-background">
+    <section className="hero-soft relative isolate overflow-hidden bg-background">
       <div aria-hidden="true" className="hero-soft__glow" />
       <div aria-hidden="true" className="hero-soft__grain" />
 
-      <div className="container-page relative z-10 flex min-h-[calc(100svh-5.5rem)] flex-col justify-center py-10 md:py-14 lg:min-h-[calc(100svh-6rem)]">
+      <div className="container-page relative z-10 flex flex-col justify-center py-14 md:py-16 lg:py-20">
         <div className="hero-soft__intro">
           <h1 className="font-display text-[2.5rem] leading-[1.1] font-semibold tracking-[-0.03em] text-balance text-primary sm:text-[3.1rem] lg:text-[3.6rem]">
             {dict.hero.title}
@@ -38,6 +38,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
           >
             <source src="/silvotech-transform.mp4" type="video/mp4" />
           </video>
+          <div className="hero-soft__banner-fade" aria-hidden="true" />
         </div>
 
         <dl className="hero-soft__facts">
