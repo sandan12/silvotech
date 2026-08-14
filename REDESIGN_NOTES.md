@@ -1,21 +1,22 @@
-# SilvoTech redesign — B2B refinement
+# SilvoTech redesign — single-line hose animation
 
-## Updated visual system
+## Latest hero update
 
-- Restored the original SilvoTech palette: navy `#17365d`, orange `#e2762e`, cool off-white `#f8fafb`, and steel-grey support colours.
-- Replaced the editorial serif with the rounder, lighter Manrope hierarchy used across headings and body copy.
-- Removed decorative lines before section labels and the dot before the hero label.
-- Removed the product card from the hero so the liquid silicone motion graphic has a cleaner B2B presentation.
-- Refined the local WebGL animation into a thinner, finite, translucent silicone tube with restrained flow highlights and pointer parallax.
-- Added subtle scroll-reveal transitions, staggered card entrances, and restrained hover movement.
-- Added reduced-motion handling and a non-WebGL fallback.
+- The hero now uses one continuous SVG path shaped as the word `SilvoTech`.
+- A translucent silicone hose is progressively drawn from left to right along that path.
+- An orange guide point follows the active end of the hose while the word is forming.
+- After completion, a restrained highlight travels through the hose and the word has a very subtle breathing motion.
+- Pointer movement adds limited parallax on desktop without making the B2B presentation playful or distracting.
+- Mobile order was adjusted so the complete `SilvoTech` word appears between the introduction and the calls to action.
+- `prefers-reduced-motion` displays the completed word immediately and disables all continuous movement.
 
-## Product presentation
+## Visual system retained
 
-- Removed visible `SVT-SIL-CL` / `SVT-SIL-BK` labels from product cards, specifications, production cards, and the RFQ selector.
-- Kept internal SKU values only where needed for structured data and form processing.
-- Matched image surfaces to the white source-image backgrounds so the hoses blend into their cards.
-- Continued to use `object-fit: contain`, so supplied product photos are not cropped.
+- Original SilvoTech navy `#17365d`, orange `#e2762e`, off-white and steel-grey palette.
+- Rounded Manrope typography.
+- No decorative lines or dots before section labels.
+- Supplied product imagery remains uncropped with `object-fit: contain`.
+- Visible product SKU labels remain removed.
 
 ## Run locally
 
