@@ -747,3 +747,206 @@ footer {
     transition: none;
   }
 }
+
+
+/* ---------------------------------------------------------------------- */
+/* Hero motion: one continuous silicone hose writes the SilvoTech name   */
+/* ---------------------------------------------------------------------- */
+.hero-cinematic {
+  background:
+    radial-gradient(circle at 78% 42%, rgb(90 137 180 / 0.28), transparent 31rem),
+    linear-gradient(145deg, #102e50 0%, var(--primary) 56%, #112f50 100%);
+}
+.hero-cinematic__veil {
+  z-index: 0;
+  background:
+    linear-gradient(90deg, rgb(11 35 63 / 0.93) 0%, rgb(17 47 80 / 0.76) 40%, rgb(23 54 93 / 0.08) 68%, rgb(13 41 72 / 0.18) 100%),
+    linear-gradient(180deg, rgb(12 36 64 / 0.30), transparent 32%, transparent 73%, rgb(12 36 64 / 0.77));
+}
+.hero-cinematic__grain { z-index: 1; }
+.hero-cinematic__layout {
+  position: relative;
+  z-index: 2;
+  grid-template-columns: minmax(0, 0.88fr) minmax(28rem, 1.12fr);
+  column-gap: clamp(1.75rem, 3.8vw, 4.75rem);
+}
+
+.silicone-word-scene {
+  --silicone-x: 0px;
+  --silicone-y: 0px;
+  position: relative;
+  z-index: 3;
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  justify-self: center;
+  width: min(58vw, 51rem);
+  height: clamp(18rem, 31vw, 27rem);
+  pointer-events: none;
+  transform: translate3d(var(--silicone-x), var(--silicone-y), 0) rotate(-1.2deg);
+  transition: transform 120ms linear;
+  animation: silicone-scene-enter 950ms 180ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform;
+}
+.silicone-word-scene::before {
+  content: '';
+  position: absolute;
+  inset: 13% 5% 7%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgb(149 188 216 / 0.16), transparent 67%);
+  filter: blur(18px);
+}
+.silicone-word-scene__svg {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.silicone-word-scene__word {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: silicone-word-breathe 7s 5.45s ease-in-out infinite alternate;
+}
+.silicone-word-path,
+.silicone-word-flow {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.silicone-word-path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: silicone-word-write 4.85s 320ms linear forwards;
+}
+.silicone-word-path--shadow {
+  stroke: rgb(3 21 40 / 0.48);
+  stroke-width: 31px;
+}
+.silicone-word-path--body {
+  stroke: url(#silicone-body);
+  stroke-width: 22px;
+  opacity: 0.96;
+}
+.silicone-word-path--core {
+  stroke: url(#silicone-core);
+  stroke-width: 13px;
+}
+.silicone-word-path--highlight {
+  stroke: rgb(255 255 255 / 0.78);
+  stroke-width: 3px;
+  opacity: 0.78;
+  transform: translateY(-2.5px);
+}
+.silicone-word-flow {
+  stroke: rgb(255 255 255 / 0.92);
+  stroke-width: 2.4px;
+  stroke-dasharray: 0.022 0.055;
+  stroke-dashoffset: 0.18;
+  opacity: 0;
+  animation:
+    silicone-word-flow 2.65s 5.15s linear infinite,
+    silicone-word-flow-show 420ms 5.15s ease forwards;
+}
+.silicone-word-tip {
+  fill: var(--accent);
+  stroke: #ffe4d3;
+  stroke-width: 4px;
+  vector-effect: non-scaling-stroke;
+  opacity: 0;
+}
+
+@keyframes silicone-scene-enter {
+  from { opacity: 0; transform: translate3d(calc(var(--silicone-x) + 1.5rem), calc(var(--silicone-y) + 0.8rem), 0) rotate(-2deg) scale(0.97); }
+  to { opacity: 1; transform: translate3d(var(--silicone-x), var(--silicone-y), 0) rotate(-1.2deg) scale(1); }
+}
+@keyframes silicone-word-write { to { stroke-dashoffset: 0; } }
+@keyframes silicone-word-flow {
+  from { stroke-dashoffset: 0.18; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes silicone-word-flow-show { to { opacity: 0.74; } }
+@keyframes silicone-word-breathe {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(0, -3px, 0) scale(1.006); }
+}
+
+@media (max-width: 1120px) {
+  .hero-cinematic__layout { grid-template-columns: minmax(0, 0.95fr) minmax(24rem, 1.05fr); }
+  .silicone-word-scene { width: min(58vw, 46rem); }
+}
+
+@media (max-width: 980px) {
+  .hero-cinematic__layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 1.65rem;
+  }
+  .hero-cinematic__copy { grid-column: 1; grid-row: 1; }
+  .silicone-word-scene {
+    grid-column: 1;
+    grid-row: 2;
+    width: min(100%, 46rem);
+    height: clamp(10.5rem, 28vw, 15rem);
+    margin-top: -0.75rem;
+  }
+  .hero-cinematic__facts { grid-row: 3; }
+}
+
+@media (max-width: 700px) {
+  .hero-cinematic__layout { gap: 1.15rem; }
+  .silicone-word-scene {
+    width: calc(100% + 0.6rem);
+    height: 9.75rem;
+    margin: -0.35rem -0.3rem -0.25rem;
+  }
+  .silicone-word-path--shadow { stroke-width: 22px; }
+  .silicone-word-path--body { stroke-width: 15px; }
+  .silicone-word-path--core { stroke-width: 9px; }
+  .silicone-word-path--highlight { stroke-width: 2px; transform: translateY(-1.5px); }
+  .silicone-word-flow { stroke-width: 1.6px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .silicone-word-scene,
+  .silicone-word-scene__word { animation: none !important; transform: none !important; }
+  .silicone-word-path { animation: none !important; stroke-dashoffset: 0; }
+  .silicone-word-flow,
+  .silicone-word-tip { display: none; }
+}
+
+
+/* Keep the silicone word prominent on mobile by placing it before CTAs. */
+.hero-cinematic__left {
+  position: relative;
+  z-index: 4;
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
+}
+.hero-cinematic__conversion { position: relative; z-index: 4; }
+
+@media (max-width: 980px) {
+  .hero-cinematic__layout { grid-template-rows: auto auto auto auto; }
+  .hero-cinematic__left { display: contents; }
+  .hero-cinematic__copy { grid-column: 1; grid-row: 1; }
+  .silicone-word-scene { grid-column: 1; grid-row: 2; }
+  .hero-cinematic__conversion { grid-column: 1; grid-row: 3; }
+  .hero-cinematic__facts { grid-column: 1; grid-row: 4; }
+}
+
+
+/* Use the measured SVG length so the hose genuinely draws from one end. */
+.silicone-word-path {
+  stroke-dasharray: 4461;
+  stroke-dashoffset: 4461;
+}
+.silicone-word-flow {
+  stroke-dasharray: 58 132;
+  stroke-dashoffset: 380;
+}
+@keyframes silicone-word-write { to { stroke-dashoffset: 0; } }
+@keyframes silicone-word-flow {
+  from { stroke-dashoffset: 380; }
+  to { stroke-dashoffset: 0; }
+}
