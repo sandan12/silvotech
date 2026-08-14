@@ -47,9 +47,6 @@ export function SpecTable({ dict }: { dict: Dictionary }) {
                   <tr key={product.id} className="border-t border-border align-top">
                     <th scope="row" className="px-4 py-4 font-semibold text-primary">
                       {copy.name}
-                      <span className="mt-1 block font-mono text-[0.7rem] font-normal tracking-wide text-muted-foreground">
-                        {product.code}
-                      </span>
                     </th>
                     <td className="px-4 py-4 text-foreground/80">{product.sizes.length ? product.sizes.join(' · ') : dict.products.items.technical.features[0]}</td>
                     <td className="px-4 py-4 whitespace-nowrap text-foreground/80">{product.temperature}</td>

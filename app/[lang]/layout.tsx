@@ -3,6 +3,7 @@ import { Manrope, IBM_Plex_Mono } from 'next/font/google'
 import { notFound } from 'next/navigation'
 import { Analytics } from '@vercel/analytics/next'
 
+import { MotionOrchestrator } from '@/components/motion-orchestrator'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { company, isLocale, locales, localeNames, siteUrl, type Locale } from '@/lib/i18n/config'
@@ -48,6 +49,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   return (
     <html lang={localeNames[locale].htmlLang} className={`${manrope.variable} ${plexMono.variable} bg-background`}>
       <body className="font-sans antialiased">
+        <MotionOrchestrator />
         <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-100 focus:bg-accent focus:px-4 focus:py-2 focus:text-accent-foreground">{dict.nav.menu}</a>
         <SiteHeader locale={locale} dict={dict} />
         <main id="main">{children}</main>
