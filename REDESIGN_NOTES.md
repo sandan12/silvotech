@@ -1,15 +1,21 @@
-# SilvoTech redesign
+# SilvoTech redesign — B2B refinement
 
-## What changed
+## Updated visual system
 
-- Rebuilt the homepage hero as a full-screen dark industrial composition.
-- Replaced the former flat animation with a local WebGL liquid-silicone scene; no external Mux/HLS footage is used.
-- Added a glass navigation system and responsive mobile menu.
-- Integrated the supplied transparent and black silicone-hose photos without cropping (`object-fit: contain`).
-- Redesigned product, production, quality, specification, contact, and footer styling as one visual system.
-- Added the supplied Polish positioning statement and faithful English/German translations.
-- Kept the existing product facts, dimensions, contact details, compliance information, and RFQ flow.
-- Added reduced-motion handling and a non-WebGL visual fallback.
+- Restored the original SilvoTech palette: navy `#17365d`, orange `#e2762e`, cool off-white `#f8fafb`, and steel-grey support colours.
+- Replaced the editorial serif with the rounder, lighter Manrope hierarchy used across headings and body copy.
+- Removed decorative lines before section labels and the dot before the hero label.
+- Removed the product card from the hero so the liquid silicone motion graphic has a cleaner B2B presentation.
+- Refined the local WebGL animation into a thinner, finite, translucent silicone tube with restrained flow highlights and pointer parallax.
+- Added subtle scroll-reveal transitions, staggered card entrances, and restrained hover movement.
+- Added reduced-motion handling and a non-WebGL fallback.
+
+## Product presentation
+
+- Removed visible `SVT-SIL-CL` / `SVT-SIL-BK` labels from product cards, specifications, production cards, and the RFQ selector.
+- Kept internal SKU values only where needed for structured data and form processing.
+- Matched image surfaces to the white source-image backgrounds so the hoses blend into their cards.
+- Continued to use `object-fit: contain`, so supplied product photos are not cropped.
 
 ## Run locally
 
