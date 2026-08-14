@@ -1,133 +1,17 @@
 'use client'
-
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import type { CSSProperties } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Mail, Menu, MapPin, Phone, X } from 'lucide-react'
-
+import { Mail, Menu, Phone, X } from 'lucide-react'
 import { LanguageSwitcher } from '@/components/language-switcher'
-import { company, companyAddress, type Locale } from '@/lib/i18n/config'
+import { company, type Locale } from '@/lib/i18n/config'
 import type { Dictionary } from '@/lib/i18n/get-dictionary'
 
-export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary }) {
-  const [open, setOpen] = useState(false)
-  const address = companyAddress[locale]
-
-  const links = [
-    { href: '#products', label: dict.nav.products },
-    { href: '#specification', label: dict.nav.specification },
-    { href: '#production', label: dict.nav.production },
-    { href: '#quality', label: dict.nav.quality },
-    { href: '#industries', label: dict.nav.industries },
-    { href: '#contact', label: dict.nav.contact },
-  ]
-
-  return (
-    <header className="sticky top-0 z-50">
-      <div className="hidden bg-primary text-primary-foreground/80 md:block">
-        <div className="container-page flex h-6 items-center justify-between text-[10px]">
-          <p className="flex items-center gap-2">
-            <MapPin className="size-3.5 shrink-0 text-accent" aria-hidden="true" />
-            <span>
-              {address.street}, {address.postalCode} {address.city}, {address.country}
-            </span>
-          </p>
-          <div className="flex items-center gap-4">
-            <a href={`tel:${company.phoneHref}`} className="flex items-center gap-2 transition-colors hover:text-primary-foreground">
-              <Phone className="size-3.5 shrink-0 text-accent" aria-hidden="true" />
-              {company.phone}
-            </a>
-            <a href={`mailto:${company.email}`} className="flex items-center gap-2 transition-colors hover:text-primary-foreground">
-              <Mail className="size-3.5 shrink-0 text-accent" aria-hidden="true" />
-              {company.email}
-            </a>
-            <span className="font-mono tracking-wider">NIP {company.nip}</span>
-          </div>
-        </div>
-      </div>
-
-      <div className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/85">
-        <div className="container-page flex h-13 items-center justify-between gap-4 lg:h-14">
-          <Link href={`/${locale}`} className="flex shrink-0 items-center" aria-label={company.name}>
-            <Image
-              src="/silvotech-logo-user.png"
-              alt={`${company.name} — logo`}
-              width={1360}
-              height={456}
-              priority
-              className="h-7 w-auto max-w-36 object-contain lg:h-8 lg:max-w-40"
-            />
-          </Link>
-
-          <nav aria-label={dict.nav.menu} className="hidden lg:block">
-            <ul className="flex items-center gap-4">
-              {links.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="text-xs font-medium text-foreground/75 transition-colors hover:text-accent"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <div className="flex items-center gap-3">
-            <LanguageSwitcher
-              current={locale}
-              label={dict.nav.language}
-              className="border-l border-border pl-3"
-            />
-            <a
-              href="#contact"
-              className="hidden bg-accent px-3.5 py-2 text-sm font-semibold text-accent-foreground transition-colors hover:bg-primary sm:inline-flex"
-            >
-              {dict.nav.cta}
-            </a>
-            <button
-              type="button"
-              onClick={() => setOpen((value) => !value)}
-              aria-expanded={open}
-              aria-controls="mobile-nav"
-              className="inline-flex size-10 items-center justify-center border border-border text-foreground lg:hidden"
-            >
-              {open ? <X className="size-5" aria-hidden="true" /> : <Menu className="size-5" aria-hidden="true" />}
-              <span className="sr-only">{open ? dict.nav.close : dict.nav.menu}</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div
-        id="mobile-nav"
-        hidden={!open}
-        className="border-b border-border bg-background lg:hidden"
-      >
-        <nav aria-label={dict.nav.menu} className="container-page py-4">
-          <ul className="flex flex-col">
-            {links.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="block border-b border-border py-3 text-base font-medium text-foreground"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <a
-            href="#contact"
-            onClick={() => setOpen(false)}
-            className="mt-4 flex items-center justify-center bg-accent px-4 py-3 text-sm font-semibold text-accent-foreground"
-          >
-            {dict.nav.cta}
-          </a>
-        </nav>
-      </div>
-    </header>
-  )
+export function SiteHeader({locale,dict}:{locale:Locale;dict:Dictionary}){
+ const [open,setOpen]=useState(false)
+ const links=[{href:'#products',label:dict.nav.products},{href:'#specification',label:dict.nav.specification},{href:'#production',label:dict.nav.production},{href:'#quality',label:dict.nav.quality},{href:'#industries',label:dict.nav.industries},{href:'#contact',label:dict.nav.contact}]
+ useEffect(()=>{document.body.classList.toggle('navigation-open',open);return()=>document.body.classList.remove('navigation-open')},[open])
+ useEffect(()=>{const close=(e:KeyboardEvent)=>{if(e.key==='Escape')setOpen(false)};addEventListener('keydown',close);return()=>removeEventListener('keydown',close)},[])
+ return <header className="site-header"><div className="container-page"><div className="site-header__glass"><Link href={`/${locale}`} className="site-header__brand" aria-label={company.name}><Image src="/silvotech-logo-user.png" alt={`${company.name} — logo`} width={1360} height={456} priority className="site-header__logo" /></Link><nav aria-label={dict.nav.menu} className="site-header__nav"><ul>{links.slice(0,5).map(link=><li key={link.href}><a href={link.href}>{link.label}</a></li>)}</ul></nav><div className="site-header__actions"><a className="site-header__phone" href={`tel:${company.phoneHref}`}><Phone className="size-4" />{company.phone}</a><LanguageSwitcher current={locale} label={dict.nav.language} tone="dark"/><a href="#contact" className="site-header__cta">{dict.nav.cta}</a><button type="button" onClick={()=>setOpen(v=>!v)} aria-expanded={open} aria-controls="mobile-nav" className="site-header__toggle">{open?<X className="size-5"/>:<Menu className="size-5"/>}<span className="sr-only">{open?dict.nav.close:dict.nav.menu}</span></button></div></div></div><div id="mobile-nav" className={`site-mobile-nav ${open?'is-open':''}`} aria-hidden={!open}><nav aria-label={dict.nav.menu}><ul>{links.map((link,index)=><li key={link.href} style={{'--nav-index':index} as CSSProperties}><a href={link.href} onClick={()=>setOpen(false)}><span>0{index+1}</span>{link.label}</a></li>)}</ul><div className="site-mobile-nav__contact"><a href={`mailto:${company.email}`}><Mail className="size-4"/>{company.email}</a><a href={`tel:${company.phoneHref}`}><Phone className="size-4"/>{company.phone}</a></div></nav></div></header>
 }

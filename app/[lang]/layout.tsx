@@ -34,8 +34,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     icons: { icon: '/silvotech-mark.png', apple: '/apple-icon.png' },
     other: { 'geo.region': 'PL-MZ', 'geo.placename': 'Warszawa', ICBM: '52.2297,21.0122' },
     alternates: { canonical: `/${lang}`, languages: { ...languages, 'x-default': '/pl' } },
-    openGraph: { type: 'website', siteName: company.name, title: dict.meta.title, description: dict.meta.description, url: `${siteUrl}/${lang}`, locale: localeNames[lang].htmlLang.replace('-', '_'), images: [{ url: '/production-line-new.png', width: 1024, height: 390, alt: dict.meta.ogAlt }] },
-    twitter: { card: 'summary_large_image', title: dict.meta.title, description: dict.meta.description, images: ['/production-line-new.png'] },
+    openGraph: { type: 'website', siteName: company.name, title: dict.meta.title, description: dict.meta.description, url: `${siteUrl}/${lang}`, locale: localeNames[lang].htmlLang.replace('-', '_'), images: [{ url: '/silicone-hose-clear-loop.jpg', width: 2048, height: 2048, alt: dict.meta.ogAlt }] },
+    twitter: { card: 'summary_large_image', title: dict.meta.title, description: dict.meta.description, images: ['/silicone-hose-clear-loop.jpg'] },
     robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 } },
   }
 }

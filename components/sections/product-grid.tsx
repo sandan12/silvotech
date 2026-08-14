@@ -1,45 +1,6 @@
 import Image from 'next/image'
-import { ArrowUpRight, Check } from 'lucide-react'
-
+import { ArrowUpRight,Check } from 'lucide-react'
 import { SectionHeading } from '@/components/section-heading'
 import { products } from '@/lib/products'
 import type { Dictionary } from '@/lib/i18n/get-dictionary'
-
-export function ProductGrid({ dict }: { dict: Dictionary }) {
-  const labels = dict.products.labels
-  return (
-    <section id="products" className="scroll-mt-28 border-t border-border bg-background section-device">
-      <div className="container-page">
-        <SectionHeading eyebrow={dict.products.eyebrow} title={dict.products.title} lead={dict.products.lead} />
-        <ul className="mt-10 grid gap-6 lg:grid-cols-2">
-          {products.map((product) => {
-            const copy = dict.products.items[product.id]
-            return (
-              <li key={product.id} className="group overflow-hidden rounded-lg border border-border bg-card transition duration-300 hover:-translate-y-1 hover:shadow-lg">
-                <div className="relative aspect-[4/3] overflow-hidden bg-secondary">
-                  <Image src={product.image} alt={`${copy.name} — ${copy.tagline}`} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-contain p-6 transition duration-500 group-hover:scale-[1.02]" />
-                </div>
-                <div className="flex flex-col gap-5 p-6 md:p-8">
-                  <div className="flex flex-col gap-2">
-                    <p className="font-mono text-xs tracking-wider text-muted-foreground">{product.code}</p>
-                    <h3 className="font-display text-2xl font-bold tracking-tight text-primary">{copy.name}</h3>
-                    <p className="font-semibold text-accent">{copy.tagline}</p>
-                    <p className="text-sm leading-relaxed text-muted-foreground">{copy.description}</p>
-                  </div>
-                  <ul className="flex flex-col gap-2">
-                    {copy.features.map((feature) => <li key={feature} className="flex gap-2.5 text-sm text-foreground/80"><Check className="mt-0.5 size-4 shrink-0 text-accent" aria-hidden="true" />{feature}</li>)}
-                  </ul>
-                  <dl className="grid grid-cols-2 gap-4 border-t border-border pt-5 text-sm">
-                    <div><dt className="text-xs text-muted-foreground">{labels.temperature}</dt><dd className="font-semibold text-primary">{product.temperature}</dd></div>
-                    <div><dt className="text-xs text-muted-foreground">{labels.packaging}</dt><dd className="font-semibold text-primary">{product.packaging}</dd></div>
-                  </dl>
-                  <a href="#contact" className="inline-flex items-center gap-2 font-semibold text-primary transition-colors hover:text-accent">{labels.cta}<ArrowUpRight className="size-4" aria-hidden="true" /></a>
-                </div>
-              </li>
-            )
-          })}
-        </ul>
-      </div>
-    </section>
-  )
-}
+export function ProductGrid({dict}:{dict:Dictionary}){const labels=dict.products.labels;return <section id="products" className="product-section scroll-mt-28 section-device"><div className="container-page"><SectionHeading eyebrow={dict.products.eyebrow} title={dict.products.title} lead={dict.products.lead}/><ul className="product-grid">{products.map((product,index)=>{const copy=dict.products.items[product.id];return <li key={product.id} className="product-card"><div className="product-card__media"><span className="product-card__index">0{index+1}</span><Image src={product.image} alt={`${copy.name} — ${copy.tagline}`} fill sizes="(min-width:1024px) 50vw,100vw" className="object-contain"/><span className="product-card__code">{product.code}</span></div><div className="product-card__body"><div><p className="product-card__tagline">{copy.tagline}</p><h3>{copy.name}</h3><p className="product-card__description">{copy.description}</p></div><ul className="product-card__features">{copy.features.map(feature=><li key={feature}><Check className="size-4"/>{feature}</li>)}</ul><div className="product-card__footer"><dl><div><dt>{labels.temperature}</dt><dd>{product.temperature}</dd></div><div><dt>{labels.packaging}</dt><dd>{product.packaging}</dd></div></dl><a href="#contact">{labels.cta}<ArrowUpRight className="size-4"/></a></div></div></li>})}</ul></div></section>}
