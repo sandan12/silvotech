@@ -50,39 +50,43 @@
 }
 
 /*
-  SilvoTech palette — 5 colours total:
+  SilvoTech palette — single source of truth. 5 colours total:
   1. Navy (brand / primary)        2. Orange (accent, from the logo)
   3. Cool off-white (background)   4. Steel grey (muted / borders)
   5. Ink (foreground text)
+
+  The interface echoes silicone through pill geometry, translucent
+  "liquid glass" surfaces and generous spacing, while retaining an
+  industrial B2B tone.
 */
 :root {
   color-scheme: light;
-  --radius: 0.25rem;
+  --radius: 1.25rem;
 
-  --background: oklch(0.985 0.003 250);
-  --foreground: oklch(0.22 0.028 254);
+  --background: #f8fafb;
+  --foreground: #15273a;
 
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.22 0.028 254);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.22 0.028 254);
+  --card: #ffffff;
+  --card-foreground: #15273a;
+  --popover: #ffffff;
+  --popover-foreground: #15273a;
 
-  --primary: oklch(0.33 0.085 254);
-  --primary-foreground: oklch(0.99 0.003 250);
+  --primary: #17365d;
+  --primary-foreground: #ffffff;
 
-  --secondary: oklch(0.955 0.008 250);
-  --secondary-foreground: oklch(0.33 0.085 254);
+  --secondary: #eef3f6;
+  --secondary-foreground: #17365d;
 
-  --muted: oklch(0.955 0.008 250);
-  --muted-foreground: oklch(0.5 0.02 254);
+  --muted: #edf2f5;
+  --muted-foreground: #526579;
 
-  --accent: oklch(0.66 0.19 44);
-  --accent-foreground: oklch(0.99 0.01 60);
+  --accent: #e2762e;
+  --accent-foreground: #ffffff;
 
   --destructive: oklch(0.55 0.2 27);
-  --border: oklch(0.9 0.01 250);
-  --input: oklch(0.9 0.01 250);
-  --ring: oklch(0.33 0.085 254);
+  --border: #d9e2e8;
+  --input: #cbd8e1;
+  --ring: #17365d;
 
   --chart-1: oklch(0.33 0.085 254);
   --chart-2: oklch(0.66 0.19 44);
@@ -106,13 +110,16 @@
   }
   html {
     scroll-behavior: smooth;
+    background: var(--background);
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.01em;
     font-feature-settings: 'cv11', 'ss01';
   }
   main > section {
-    animation: section-in 700ms ease-out both;
+    animation: section-in 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
   }
   ::selection {
     background: var(--accent);
@@ -132,7 +139,29 @@
 }
 
 @utility container-page {
-  @apply mx-auto w-full max-w-[1180px] px-5 md:px-8;
+  @apply mx-auto w-full max-w-[1160px] px-5 md:px-8;
+}
+
+/* Shared vertical rhythm for every content section below the hero. */
+.section-device {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+@media (min-width: 768px) {
+  .section-device {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+@media (min-width: 1181px) {
+  .section-device {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.scroll-mt-28 {
+  scroll-margin-top: 5.25rem;
 }
 
 /* Fine technical grid used behind dark sections — a signature, not decoration filler */
@@ -146,68 +175,47 @@
   background-size: 64px 64px;
 }
 
+/* ---------------------------------------------------------------------- */
+/* Rounded, translucent "liquid glass" surfaces shared by cards and forms  */
+/* ---------------------------------------------------------------------- */
 
-/* Readability and industrial palette refinements */
-:root{--background:#070b0d;--foreground:#f7fbff;--card:rgba(255,255,255,.075);--secondary:#0d1418;--muted:#111a1f;--muted-foreground:rgba(247,251,255,.76);--border:rgba(255,255,255,.22);--line:rgba(255,255,255,.20);--line-strong:rgba(255,255,255,.34);--accent:#d96f2b;--accent-foreground:#110804}
-.text-primary{color:#f7fbff!important}.text-muted-foreground{color:rgba(247,251,255,.76)!important}.text-foreground\/80{color:rgba(247,251,255,.86)!important}.text-foreground\/85{color:rgba(247,251,255,.9)!important}.text-primary-foreground\/65{color:rgba(247,251,255,.76)!important}.text-primary-foreground\/70{color:rgba(247,251,255,.8)!important}.bg-card{background:rgba(255,255,255,.075)!important}.bg-secondary{background:#0d1418!important}.border-border{border-color:rgba(255,255,255,.22)!important}
-@keyframes hero-drift{from{transform:scale(1)}to{transform:scale(1.025) translate3d(-.4%,.2%,0)}}
-
-/* Final light SilvoTech palette + responsive heights */
-:root{
-  color-scheme: light;
-  --background:#f8fafb;
-  --foreground:#15273a;
-  --card:#ffffff;
-  --card-foreground:#15273a;
-  --popover:#ffffff;
-  --popover-foreground:#15273a;
-  --primary:#17365d;
-  --primary-foreground:#ffffff;
-  --secondary:#eef3f6;
-  --secondary-foreground:#17365d;
-  --muted:#edf2f5;
-  --muted-foreground:#526579;
-  --accent:#e2762e;
-  --accent-foreground:#ffffff;
-  --border:#d9e2e8;
-  --input:#cbd8e1;
-  --ring:#17365d;
+.liquid-card {
+  background: rgba(255, 255, 255, 0.86) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-2xl);
 }
-html{background:#f8fafb}.text-muted-foreground{color:#526579!important}.bg-background{background:#f8fafb!important}.bg-secondary{background:#eef3f6!important}.bg-card{background:#fff!important}.border-border{border-color:#d9e2e8!important}.text-primary{color:#17365d!important}.text-foreground\/80{color:rgba(21,39,58,.82)!important}.text-foreground\/85{color:rgba(21,39,58,.88)!important}
-.hero-device{min-height:calc(100svh - 0px)}
-@media (max-width: 768px){.hero-device{min-height:auto}.section-device{padding-top:4rem!important;padding-bottom:4rem!important}}
-@media (min-width: 769px) and (max-width: 1180px){.section-device{padding-top:5rem!important;padding-bottom:5rem!important}}
-@media (min-width: 1181px){.section-device{padding-top:6.5rem!important;padding-bottom:6.5rem!important}}
-.silicone-flow{position:absolute;right:clamp(-90px,2vw,40px);top:52%;z-index:-5;width:min(58vw,760px);transform:translateY(-50%);opacity:.72;pointer-events:none}.silicone-flow__svg{width:100%;height:auto;overflow:visible}.silicone-flow__shadow{fill:none;stroke:rgba(23,54,93,.10);stroke-width:58;stroke-linecap:round;filter:blur(18px)}.silicone-flow__tube{fill:none;stroke:url(#tubeStroke);stroke-width:46;stroke-linecap:round;filter:url(#softGlass)}.silicone-flow__core{fill:none;stroke:url(#tubeCore);stroke-width:25;stroke-linecap:round;opacity:.72}.silicone-flow__highlight{fill:none;stroke:#fff;stroke-width:6;stroke-linecap:round;stroke-dasharray:90 620;animation:flow-glint 4.8s cubic-bezier(.16,1,.3,1) infinite}.silicone-flow__highlight--two{stroke-width:3;opacity:.68;animation-delay:1.4s}.silicone-flow__end{fill:rgba(232,242,248,.85);stroke:rgba(23,54,93,.20);stroke-width:2}.silicone-flow__hole{fill:rgba(23,54,93,.18);stroke:rgba(255,255,255,.75);stroke-width:2}@keyframes flow-glint{0%{stroke-dashoffset:720;opacity:0}18%{opacity:.9}72%{opacity:.65}100%{stroke-dashoffset:0;opacity:0}}@media(max-width:900px){.silicone-flow{right:-38%;top:44%;width:115vw;opacity:.36}}@media(prefers-reduced-motion:reduce){.silicone-flow__highlight{animation:none}}
-
-
-/* Liquid silicone glass surfaces */
-.liquid-card,.liquid-glass-strong{background:rgba(255,255,255,.58)!important;background-blend-mode:luminosity;backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);box-shadow:0 1px 2px rgba(23,54,93,.05),inset 0 1px 1px rgba(255,255,255,.65);position:relative;overflow:hidden}.liquid-card::before,.liquid-glass-strong::before{content:"";position:absolute;inset:0;padding:1px;background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,.2) 36%,rgba(23,54,93,.08) 62%,rgba(255,255,255,.8));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}.hero-device .container-page{min-height:calc(100svh - 7rem)!important}.section-device{padding-top:4.5rem!important;padding-bottom:4.5rem!important}@media(max-width:768px){.hero-device .container-page{min-height:auto!important;padding-top:5rem!important;padding-bottom:2.25rem!important}.section-device{padding-top:3.25rem!important;padding-bottom:3.25rem!important}.silicone-flow{top:46%;}}
-
-
-/* Final compact layout + readable RFQ + liquid silicone hero */
-header .container-page{max-width:1160px}.container-page{max-width:1160px}.hero-device{min-height:clamp(560px,calc(100svh - 0px),760px)!important}.hero-device .container-page{min-height:clamp(500px,calc(100svh - 7rem),680px)!important}.section-device{padding-top:3.75rem!important;padding-bottom:3.75rem!important}.scroll-mt-28{scroll-margin-top:5.25rem}.hero-device img{display:none!important}.silicone-flow{right:clamp(-160px,-6vw,-40px)!important;top:49%!important;width:min(72vw,920px)!important;opacity:.92!important}.silicone-flow__shadow{stroke:rgba(23,54,93,.12)!important;stroke-width:76!important;filter:blur(22px)!important}.silicone-flow__tube{stroke-width:58!important}.silicone-flow__core{stroke-width:34!important;opacity:.76!important}.silicone-flow__highlight{stroke-width:8!important;stroke-dasharray:120 760!important}.liquid-card{background:rgba(255,255,255,.86)!important;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}.liquid-card input,.liquid-card textarea,.liquid-card select{background:#fff!important;color:#17365d!important;border-color:#b9c9d4!important}.liquid-card input::placeholder,.liquid-card textarea::placeholder{color:#718395!important}.liquid-card label{color:#526579!important}.liquid-card option{color:#17365d;background:#fff}.bg-primary{background:#17365d!important}.text-primary-foreground\/80{color:rgba(255,255,255,.86)!important}@media(max-width:900px){.silicone-flow{right:-56%!important;top:45%!important;width:150vw!important;opacity:.42!important}.hero-device{min-height:auto!important}.hero-device .container-page{min-height:auto!important;padding-top:5.25rem!important;padding-bottom:2rem!important}.section-device{padding-top:3rem!important;padding-bottom:3rem!important}}
-
-/* Improved liquid-glass silicone hero: closer to reference, but brand-safe */
-.hero-device{background:#f8fafb!important;min-height:clamp(540px,100svh,720px)!important}.hero-device .container-page{min-height:clamp(480px,calc(100svh - 7rem),640px)!important}.hero-device img{display:none!important}.silicone-flow{position:absolute;inset:auto -10vw auto auto;top:49%;z-index:-5;width:min(82vw,1080px);transform:translateY(-50%);opacity:.98;pointer-events:none}.silicone-flow__svg{width:100%;height:auto;overflow:visible}.silicone-flow__ambient{fill:none;stroke:rgba(226,118,46,.08);stroke-width:150;stroke-linecap:round;filter:url(#softShadow)}.silicone-flow__shadow{fill:none;stroke:rgba(23,54,93,.16);stroke-width:118;stroke-linecap:round;filter:url(#softShadow)}.silicone-flow__tube{fill:none;stroke:url(#siliconeBody);stroke-width:82;stroke-linecap:round;filter:url(#liquidBlur)}.silicone-flow__inner{fill:none;stroke:url(#siliconeInner);stroke-width:48;stroke-linecap:round;opacity:.68}.silicone-flow__warm{fill:none;stroke:url(#warmRefraction);stroke-width:22;stroke-linecap:round;stroke-dasharray:240 780;animation:liquid-warm 7.2s cubic-bezier(.16,1,.3,1) infinite;mix-blend-mode:multiply}.silicone-flow__glint{fill:none;stroke:rgba(255,255,255,.92);stroke-width:10;stroke-linecap:round;stroke-dasharray:130 920;filter:drop-shadow(0 0 10px rgba(255,255,255,.55));animation:liquid-glint 5.6s cubic-bezier(.16,1,.3,1) infinite}.silicone-flow__glint--b{stroke-width:5;stroke:rgba(255,255,255,.62);stroke-dasharray:70 760;animation-delay:1.6s}@keyframes liquid-glint{0%{stroke-dashoffset:1050;opacity:0}12%{opacity:.95}58%{opacity:.7}100%{stroke-dashoffset:-120;opacity:0}}@keyframes liquid-warm{0%{stroke-dashoffset:980;opacity:.05}22%{opacity:.42}70%{opacity:.24}100%{stroke-dashoffset:-240;opacity:0}}@media(max-width:900px){.silicone-flow{right:-70vw;top:45%;width:185vw;opacity:.42}.hero-device{min-height:auto!important}.hero-device .container-page{min-height:auto!important;padding-top:5rem!important;padding-bottom:2rem!important}}@media(prefers-reduced-motion:reduce){.silicone-flow__glint,.silicone-flow__warm{animation:none!important}}
-
-/* 1:1 liquid-glass treatment adapted into a transparent silicone hose */
-.liquid-glass-strong{background:rgba(255,255,255,.01);background-blend-mode:luminosity;backdrop-filter:blur(50px);-webkit-backdrop-filter:blur(50px);border:none;box-shadow:4px 4px 4px rgba(0,0,0,.05),inset 0 1px 1px rgba(255,255,255,.15);position:relative;overflow:hidden}.liquid-glass-strong::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.4px;background:linear-gradient(180deg,rgba(255,255,255,.5) 0%,rgba(255,255,255,.2) 20%,rgba(255,255,255,0) 40%,rgba(255,255,255,0) 60%,rgba(255,255,255,.2) 80%,rgba(255,255,255,.5) 100%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}.hero-device{background:#f8fafb!important;min-height:clamp(540px,100svh,720px)!important}.hero-device .container-page{min-height:clamp(480px,calc(100svh - 7rem),640px)!important}.hero-device img{display:none!important}.silicone-flow{position:absolute;right:-18vw;top:48%;z-index:-5;width:min(92vw,1220px);height:auto;transform:translateY(-50%);opacity:.98;pointer-events:none;border-radius:999px}.silicone-flow::before{opacity:.55}.silicone-flow__svg{display:block;width:100%;height:auto;overflow:visible}.hose-aurora{fill:none;stroke-linecap:round;filter:url(#glassShadow);opacity:.58;mix-blend-mode:multiply}.hose-aurora--a{stroke:rgba(130,178,205,.20);stroke-width:160}.hose-aurora--b{stroke:rgba(226,118,46,.10);stroke-width:118}.hose-shadow{fill:none;stroke:rgba(23,54,93,.13);stroke-width:118;stroke-linecap:round;filter:url(#glassShadow)}.hose-body{fill:none;stroke:url(#hoseGlass);stroke-width:86;stroke-linecap:round;filter:url(#glassSoft)}.hose-inner{fill:none;stroke:rgba(255,255,255,.22);stroke-width:48;stroke-linecap:round}.hose-edge{fill:none;stroke:url(#hoseEdge);stroke-linecap:round;opacity:.72;filter:drop-shadow(0 0 10px rgba(255,255,255,.42))}.hose-edge--top{stroke-width:8;stroke-dasharray:260 980;animation:hose-edge-flow 8s cubic-bezier(.16,1,.3,1) infinite}.hose-edge--bottom{stroke-width:5;stroke-dasharray:180 880;animation:hose-edge-flow 9.4s cubic-bezier(.16,1,.3,1) infinite reverse}.hose-warm{fill:none;stroke:url(#hoseWarm);stroke-width:30;stroke-linecap:round;stroke-dasharray:280 820;opacity:.55;animation:hose-warm-flow 7.5s cubic-bezier(.16,1,.3,1) infinite;mix-blend-mode:multiply}.hose-glint{fill:none;stroke:rgba(255,255,255,.96);stroke-linecap:round;filter:drop-shadow(0 0 14px rgba(255,255,255,.62));opacity:0}.hose-glint--one{stroke-width:12;stroke-dasharray:120 1040;animation:hose-glint 5.4s cubic-bezier(.16,1,.3,1) infinite}.hose-glint--two{stroke-width:7;stroke-dasharray:72 920;animation:hose-glint 6.2s cubic-bezier(.16,1,.3,1) 1.5s infinite}@keyframes hose-glint{0%{stroke-dashoffset:1120;opacity:0}14%{opacity:.95}54%{opacity:.82}100%{stroke-dashoffset:-180;opacity:0}}@keyframes hose-edge-flow{0%{stroke-dashoffset:1100;opacity:.28}45%{opacity:.9}100%{stroke-dashoffset:-220;opacity:.28}}@keyframes hose-warm-flow{0%{stroke-dashoffset:920;opacity:.08}28%{opacity:.52}76%{opacity:.28}100%{stroke-dashoffset:-260;opacity:0}}@media(max-width:900px){.silicone-flow{right:-86vw;top:44%;width:210vw;opacity:.42}.hero-device{min-height:auto!important}.hero-device .container-page{min-height:auto!important;padding-top:5rem!important;padding-bottom:2rem!important}}@media(prefers-reduced-motion:reduce){.hose-edge--top,.hose-edge--bottom,.hose-warm,.hose-glint{animation:none!important}}
-
-/* Final transparent flowing hose hero */
-.hero-device{background:#f8fafb!important;min-height:clamp(540px,100svh,720px)!important}.hero-device .container-page{min-height:clamp(480px,calc(100svh - 7rem),640px)!important}.hero-device img{display:none!important}.silicone-flow{position:absolute;right:-20vw;top:48%;z-index:-5;width:min(96vw,1260px);height:auto;transform:translateY(-50%);opacity:.98;pointer-events:none;border-radius:999px;background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:none!important}.silicone-flow::before{display:none}.silicone-flow__svg{display:block;width:100%;height:auto;overflow:visible}.hose-aurora{fill:none;stroke-linecap:round;filter:url(#glassShadow);opacity:.58;mix-blend-mode:multiply}.hose-aurora--a{stroke:rgba(130,178,205,.2);stroke-width:172}.hose-aurora--b{stroke:rgba(226,118,46,.1);stroke-width:124}.hose-shadow{fill:none;stroke:rgba(23,54,93,.13);stroke-width:124;stroke-linecap:round;filter:url(#glassShadow)}.hose-body{fill:none;stroke:url(#hoseGlass);stroke-width:88;stroke-linecap:round;filter:url(#glassSoft)}.hose-inner{fill:none;stroke:rgba(255,255,255,.24);stroke-width:48;stroke-linecap:round}.hose-liquid-band{fill:none;stroke-linecap:round;filter:url(#liquidSpecular);opacity:.44}.hose-liquid-band--one{stroke:rgba(255,255,255,.56);stroke-width:16;stroke-dasharray:170 680;animation:hose-liquid-flow 7.8s cubic-bezier(.16,1,.3,1) infinite}.hose-liquid-band--two{stroke:rgba(133,184,212,.28);stroke-width:24;stroke-dasharray:230 760;animation:hose-liquid-flow 9.8s cubic-bezier(.16,1,.3,1) .9s infinite reverse}.hose-bubble{fill:rgba(255,255,255,.36);stroke:rgba(255,255,255,.7);stroke-width:1.2;filter:drop-shadow(0 0 8px rgba(255,255,255,.45));opacity:0;animation:hose-bubble-drift 8.5s ease-in-out infinite}.hose-bubble--two{animation-delay:1.6s}.hose-bubble--three{animation-delay:3.1s}.hose-bubble--four{animation-delay:4.4s}.hose-edge{fill:none;stroke:url(#hoseEdge);stroke-linecap:round;opacity:.74;filter:drop-shadow(0 0 10px rgba(255,255,255,.42))}.hose-edge--top{stroke-width:8;stroke-dasharray:260 980;animation:hose-edge-flow 8s cubic-bezier(.16,1,.3,1) infinite}.hose-edge--bottom{stroke-width:5;stroke-dasharray:180 880;animation:hose-edge-flow 9.4s cubic-bezier(.16,1,.3,1) infinite reverse}.hose-warm{fill:none;stroke:url(#hoseWarm);stroke-width:30;stroke-linecap:round;stroke-dasharray:280 820;opacity:.55;animation:hose-warm-flow 7.5s cubic-bezier(.16,1,.3,1) infinite;mix-blend-mode:multiply}.hose-glint{fill:none;stroke:rgba(255,255,255,.96);stroke-linecap:round;filter:drop-shadow(0 0 14px rgba(255,255,255,.62));opacity:0}.hose-glint--one{stroke-width:12;stroke-dasharray:120 1040;animation:hose-glint 5.4s cubic-bezier(.16,1,.3,1) infinite}.hose-glint--two{stroke-width:7;stroke-dasharray:72 920;animation:hose-glint 6.2s cubic-bezier(.16,1,.3,1) 1.5s infinite}@keyframes hose-liquid-flow{0%{stroke-dashoffset:920;opacity:.08}22%{opacity:.5}70%{opacity:.36}100%{stroke-dashoffset:-300;opacity:.08}}@keyframes hose-bubble-drift{0%{opacity:0;transform:translate(-24px,10px) scale(.78)}22%{opacity:.58}68%{opacity:.42}100%{opacity:0;transform:translate(78px,-18px) scale(1.12)}}@keyframes hose-glint{0%{stroke-dashoffset:1120;opacity:0}14%{opacity:.95}54%{opacity:.82}100%{stroke-dashoffset:-180;opacity:0}}@keyframes hose-edge-flow{0%{stroke-dashoffset:1100;opacity:.28}45%{opacity:.9}100%{stroke-dashoffset:-220;opacity:.28}}@keyframes hose-warm-flow{0%{stroke-dashoffset:920;opacity:.08}28%{opacity:.52}76%{opacity:.28}100%{stroke-dashoffset:-260;opacity:0}}@media(max-width:900px){.silicone-flow{right:-90vw;top:43%;width:220vw;opacity:.46}.hero-device{min-height:auto!important}.hero-device .container-page{min-height:auto!important;padding-top:5rem!important;padding-bottom:2rem!important}}@media(prefers-reduced-motion:reduce){.hose-edge--top,.hose-edge--bottom,.hose-warm,.hose-glint,.hose-liquid-band,.hose-bubble{animation:none!important;opacity:.36}}
-
-
-/* SilvoTech soft-material redesign: the interface echoes silicone through pill geometry,
-   translucent surfaces and generous spacing while retaining an industrial B2B tone. */
-:root {
-  --radius: 1.25rem;
+.liquid-card input,
+.liquid-card textarea,
+.liquid-card select {
+  background: #fff !important;
+  color: #17365d !important;
+  border-color: #b9c9d4 !important;
+}
+.liquid-card input::placeholder,
+.liquid-card textarea::placeholder {
+  color: #718395 !important;
+}
+.liquid-card label {
+  color: #526579 !important;
+}
+.liquid-card option {
+  color: #17365d;
+  background: #fff;
 }
 
-body {
-  font-family: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
-  letter-spacing: -0.01em;
+main > section:not(.hero-soft) > .container-page > div,
+main > section article {
+  border-radius: var(--radius-2xl);
 }
+
+button, a, input, textarea, select {
+  border-radius: var(--radius-md);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Hero                                                                    */
+/* ---------------------------------------------------------------------- */
 
 .hero-soft {
   background:
@@ -262,7 +270,7 @@ body {
 
 .hero-soft__button--primary {
   color: white;
-  background: #e2762e;
+  background: var(--accent);
   box-shadow: 0 12px 28px rgba(226,118,46,.2);
 }
 
@@ -272,7 +280,7 @@ body {
 }
 
 .hero-soft__button--secondary {
-  color: #17365d;
+  color: var(--primary);
   border: 1px solid rgba(23,54,93,.16);
   background: rgba(255,255,255,.72);
   box-shadow: 0 8px 24px rgba(23,54,93,.05);
@@ -285,6 +293,7 @@ body {
 
 .hero-soft__banner {
   position: relative;
+  z-index: 2;
   margin-top: clamp(1rem, 3vw, 1.5rem);
   width: min(100%, 1180px);
   margin-inline: auto;
@@ -318,8 +327,10 @@ body {
 .hero-soft__facts {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin-top: clamp(2.5rem, 5vw, 4.5rem);
+  margin-top: clamp(2.5rem, 5vw, 4rem);
   border-top: 1px solid rgba(23,54,93,.12);
+  position: relative;
+  z-index: 2;
 }
 
 .hero-soft__fact {
@@ -341,30 +352,15 @@ body {
 
 .hero-soft__fact dd {
   margin: 0 0 .2rem;
-  color: #17365d;
+  color: var(--primary);
   font-size: clamp(1.2rem, 1.8vw, 1.6rem);
   font-weight: 700;
   letter-spacing: -.03em;
 }
 
-/* Soft material language across the rest of the site. */
-main > section {
-  animation: section-in 600ms cubic-bezier(.16,1,.3,1) both;
-}
-
-main > section:not(.hero-soft) > .container-page > div,
-main > section .liquid-card,
-main > section article {
-  border-radius: 1.25rem;
-}
-
-button, a, input, textarea, select {
-  border-radius: .8rem;
-}
-
 @media (max-width: 960px) {
   .hero-soft .container-page { padding-top: 4rem !important; padding-bottom: 2.75rem !important; }
-  .hero-soft__intro { max-width: 560px; }
+  .hero-soft__intro { max-width: 100%; }
   .hero-soft__banner { width: 100%; }
 }
 
@@ -377,4 +373,133 @@ button, a, input, textarea, select {
 @media (prefers-reduced-motion: reduce) {
   .hero-soft__button { transition: none; }
   .hero-soft__button:hover { transform: none; }
+}
+
+/* ---------------------------------------------------------------------- */
+/* Silicone flow — the signature liquid-glass "pouring hose" animation.   */
+/* Decorative accent that sits behind the hero copy. One definition only. */
+/* ---------------------------------------------------------------------- */
+
+.liquid-glass-strong {
+  background: rgba(255, 255, 255, 0.01);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: none;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, .05), inset 0 1px 1px rgba(255, 255, 255, .15);
+  position: relative;
+  overflow: hidden;
+}
+.liquid-glass-strong::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, .5) 0%,
+    rgba(255, 255, 255, .2) 20%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(255, 255, 255, .2) 80%,
+    rgba(255, 255, 255, .5) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.silicone-flow {
+  position: absolute;
+  right: clamp(-160px, -6vw, -40px);
+  top: 22%;
+  z-index: -1;
+  width: min(72vw, 920px);
+  height: auto;
+  transform: translateY(-50%);
+  opacity: .5;
+  pointer-events: none;
+  border-radius: 999px;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+.silicone-flow::before { display: none; }
+.silicone-flow__svg { display: block; width: 100%; height: auto; overflow: visible; }
+
+.hose-aurora { fill: none; stroke-linecap: round; filter: url(#glassShadow); opacity: .58; mix-blend-mode: multiply; }
+.hose-aurora--a { stroke: rgba(130,178,205,.20); stroke-width: 130; }
+.hose-aurora--b { stroke: rgba(226,118,46,.10); stroke-width: 96; }
+.hose-shadow { fill: none; stroke: rgba(23,54,93,.13); stroke-width: 96; stroke-linecap: round; filter: url(#glassShadow); }
+.hose-body { fill: none; stroke: url(#hoseGlass); stroke-width: 70; stroke-linecap: round; filter: url(#glassSoft); }
+.hose-inner { fill: none; stroke: rgba(255,255,255,.22); stroke-width: 40; stroke-linecap: round; }
+
+.hose-liquid-band { fill: none; stroke-linecap: round; filter: url(#liquidSpecular); opacity: .44; }
+.hose-liquid-band--one { stroke: rgba(255,255,255,.56); stroke-width: 13; stroke-dasharray: 150 620; animation: hose-liquid-flow 7.8s cubic-bezier(.16,1,.3,1) infinite; }
+.hose-liquid-band--two { stroke: rgba(133,184,212,.28); stroke-width: 20; stroke-dasharray: 200 700; animation: hose-liquid-flow 9.8s cubic-bezier(.16,1,.3,1) .9s infinite reverse; }
+
+.hose-bubble { fill: rgba(255,255,255,.36); stroke: rgba(255,255,255,.7); stroke-width: 1.2; filter: drop-shadow(0 0 8px rgba(255,255,255,.45)); opacity: 0; animation: hose-bubble-drift 8.5s ease-in-out infinite; }
+.hose-bubble--two { animation-delay: 1.6s; }
+.hose-bubble--three { animation-delay: 3.1s; }
+.hose-bubble--four { animation-delay: 4.4s; }
+
+.hose-edge { fill: none; stroke: url(#hoseEdge); stroke-linecap: round; opacity: .74; filter: drop-shadow(0 0 10px rgba(255,255,255,.42)); }
+.hose-edge--top { stroke-width: 7; stroke-dasharray: 220 840; animation: hose-edge-flow 8s cubic-bezier(.16,1,.3,1) infinite; }
+.hose-edge--bottom { stroke-width: 4; stroke-dasharray: 150 760; animation: hose-edge-flow 9.4s cubic-bezier(.16,1,.3,1) infinite reverse; }
+
+.hose-warm { fill: none; stroke: url(#hoseWarm); stroke-width: 26; stroke-linecap: round; stroke-dasharray: 240 700; opacity: .55; animation: hose-warm-flow 7.5s cubic-bezier(.16,1,.3,1) infinite; mix-blend-mode: multiply; }
+
+.hose-glint { fill: none; stroke: rgba(255,255,255,.96); stroke-linecap: round; filter: drop-shadow(0 0 14px rgba(255,255,255,.62)); opacity: 0; }
+.hose-glint--one { stroke-width: 10; stroke-dasharray: 100 890; animation: hose-glint 5.4s cubic-bezier(.16,1,.3,1) infinite; }
+.hose-glint--two { stroke-width: 6; stroke-dasharray: 60 790; animation: hose-glint 6.2s cubic-bezier(.16,1,.3,1) 1.5s infinite; }
+
+@keyframes hose-liquid-flow {
+  0% { stroke-dashoffset: 820; opacity: .08; }
+  22% { opacity: .5; }
+  70% { opacity: .36; }
+  100% { stroke-dashoffset: -260; opacity: .08; }
+}
+@keyframes hose-bubble-drift {
+  0% { opacity: 0; transform: translate(-22px, 9px) scale(.78); }
+  22% { opacity: .58; }
+  68% { opacity: .42; }
+  100% { opacity: 0; transform: translate(70px, -16px) scale(1.12); }
+}
+@keyframes hose-glint {
+  0% { stroke-dashoffset: 990; opacity: 0; }
+  14% { opacity: .95; }
+  54% { opacity: .82; }
+  100% { stroke-dashoffset: -160; opacity: 0; }
+}
+@keyframes hose-edge-flow {
+  0% { stroke-dashoffset: 960; opacity: .28; }
+  45% { opacity: .9; }
+  100% { stroke-dashoffset: -190; opacity: .28; }
+}
+@keyframes hose-warm-flow {
+  0% { stroke-dashoffset: 800; opacity: .08; }
+  28% { opacity: .52; }
+  76% { opacity: .28; }
+  100% { stroke-dashoffset: -230; opacity: 0; }
+}
+
+@media (max-width: 900px) {
+  .silicone-flow {
+    right: -12vw;
+    top: 58%;
+    width: 92vw;
+    opacity: .5;
+    z-index: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hose-edge--top, .hose-edge--bottom, .hose-warm, .hose-glint,
+  .hose-liquid-band, .hose-bubble {
+    animation: none !important;
+    opacity: .36;
+  }
 }

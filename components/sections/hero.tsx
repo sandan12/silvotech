@@ -1,5 +1,7 @@
 import { ArrowRight } from 'lucide-react'
 
+import { HeroVideo } from '@/components/sections/hero-video'
+import { SiliconeFlow } from '@/components/sections/silicone-flow'
 import type { Dictionary } from '@/lib/i18n/get-dictionary'
 
 export function Hero({ dict }: { dict: Dictionary }) {
@@ -7,6 +9,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
     <section className="hero-soft relative isolate overflow-hidden bg-background">
       <div aria-hidden="true" className="hero-soft__glow" />
       <div aria-hidden="true" className="hero-soft__grain" />
+      <SiliconeFlow />
 
       <div className="container-page relative z-10 flex flex-col justify-center py-14 md:py-16 lg:py-20">
         <div className="hero-soft__intro">
@@ -27,17 +30,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
         </div>
 
         <div className="hero-soft__banner" aria-label="Silicone hose transformation animation">
-          <video
-            className="hero-soft__video"
-            autoPlay
-            muted
-            playsInline
-            preload="auto"
-            poster="/silvotech-transform-poster.jpg"
-            aria-label="A soft silicone tube transforms into the SilvoTech wordmark"
-          >
-            <source src="/silvotech-transform.mp4" type="video/mp4" />
-          </video>
+          <HeroVideo />
           <div className="hero-soft__banner-fade" aria-hidden="true" />
         </div>
 

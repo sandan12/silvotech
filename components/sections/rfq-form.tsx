@@ -14,7 +14,7 @@ const labelClass = 'font-mono text-[0.7rem] tracking-[0.12em] uppercase text-mut
 export function RfqForm({ dict }: { dict: Dictionary }) {
   const [state, formAction, pending] = useActionState(submitRfq, initialState)
   const f = dict.rfq.fields
-  if (state.status === 'success') return <div className="flex flex-col items-start gap-3 border border-accent/40 bg-card p-7"><CheckCircle2 className="size-7 text-accent" aria-hidden="true" /><h3 className="font-display text-xl font-bold tracking-tight text-primary">{dict.rfq.successTitle}</h3><p className="text-sm leading-relaxed text-muted-foreground">{dict.rfq.successText}</p></div>
+  if (state.status === 'success') return <div role="status" className="flex flex-col items-start gap-3 border border-accent/40 bg-card p-7"><CheckCircle2 className="size-7 text-accent" aria-hidden="true" /><h3 className="font-display text-xl font-bold tracking-tight text-primary">{dict.rfq.successTitle}</h3><p className="text-sm leading-relaxed text-muted-foreground">{dict.rfq.successText}</p></div>
   return (
     <form action={formAction} className="liquid-card flex flex-col gap-5 border border-border bg-card p-5 md:p-7">
       <div className="grid gap-4 sm:grid-cols-2">

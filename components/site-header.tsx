@@ -100,32 +100,34 @@ export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary 
         </div>
       </div>
 
-      {open && (
-        <div id="mobile-nav" className="border-b border-border bg-background lg:hidden">
-          <nav aria-label={dict.nav.menu} className="container-page py-4">
-            <ul className="flex flex-col">
-              {links.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    className="block border-b border-border py-3 text-base font-medium text-foreground"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <a
-              href="#contact"
-              onClick={() => setOpen(false)}
-              className="mt-4 flex items-center justify-center bg-accent px-4 py-3 text-sm font-semibold text-accent-foreground"
-            >
-              {dict.nav.cta}
-            </a>
-          </nav>
-        </div>
-      )}
+      <div
+        id="mobile-nav"
+        hidden={!open}
+        className="border-b border-border bg-background lg:hidden"
+      >
+        <nav aria-label={dict.nav.menu} className="container-page py-4">
+          <ul className="flex flex-col">
+            {links.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="block border-b border-border py-3 text-base font-medium text-foreground"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <a
+            href="#contact"
+            onClick={() => setOpen(false)}
+            className="mt-4 flex items-center justify-center bg-accent px-4 py-3 text-sm font-semibold text-accent-foreground"
+          >
+            {dict.nav.cta}
+          </a>
+        </nav>
+      </div>
     </header>
   )
 }
