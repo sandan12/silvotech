@@ -3,47 +3,63 @@ import Image from 'next/image'
 /**
  * Hero visual for SilvoTech.
  *
- * The previous version drew the word "SilvoTech" as an animated SVG stroke.
- * A stroke has no cross-section and no refraction, so translucent silicone can
- * never read correctly that way: it always ends up looking like neon or like an
- * outlined font. This version uses the real factory photograph that already
- * ships in /public, with a small product detail inset.
+ * Adapted from the reference dark-glassmorphism hero, inverted to a light
+ * industrial palette and rebuilt around the company's own photographs.
+ * No background video, no HLS stream and no extra dependencies: the moving
+ * backdrop is replaced by the real extrusion-line photograph, which is both
+ * lighter to load and actually shows the factory.
  *
- * The file name and the exported name are unchanged on purpose, so
+ * The file name and the exported name are unchanged so that
  * components/sections/hero.tsx does not need to be edited.
  */
 export function SiliconeScene() {
   return (
-    <figure className="hero-visual" aria-hidden="true">
-      <div className="hero-visual__frame">
+    <div className="hero-stage" aria-hidden="true">
+      <figure className="hero-stage__main liquid-glass-light">
         <Image
-          src="/production-line-user.png"
+          src="/silvotech-hose-clear-coil.jpg"
           alt=""
-          width={1600}
+          width={1200}
           height={1200}
           priority
-          sizes="(max-width: 899px) 92vw, 46vw"
-          className="hero-visual__image"
+          sizes="(max-width: 899px) 88vw, 40vw"
+          className="hero-stage__image"
         />
-        <span className="hero-visual__sheen" />
+        <figcaption className="hero-stage__badge glass-pill-light">
+          <span className="hero-stage__dot" />
+          Food grade silicone
+        </figcaption>
+      </figure>
+
+      <div className="hero-stage__thumbs">
+        <figure className="hero-stage__thumb liquid-glass-light">
+          <Image
+            src="/silvotech-hose-clear-roll.jpg"
+            alt=""
+            width={600}
+            height={600}
+            sizes="180px"
+            className="hero-stage__image"
+          />
+        </figure>
+        <figure className="hero-stage__thumb liquid-glass-light">
+          <Image
+            src="/silvotech-hose-black.jpg"
+            alt=""
+            width={600}
+            height={600}
+            sizes="180px"
+            className="hero-stage__image"
+          />
+        </figure>
       </div>
 
-      <div className="hero-visual__inset">
-        <Image
-          src="/clear-hose-detail-new.png"
-          alt=""
-          width={640}
-          height={640}
-          sizes="200px"
-          className="hero-visual__inset-image"
-        />
-      </div>
-
-      <figcaption className="hero-visual__caption">
-        <span className="hero-visual__dot" />
-        Warszawa, PL
-      </figcaption>
-    </figure>
+      <p className="hero-stage__spec glass-pill-light">
+        <span>2/4 &ndash; 20/24 mm</span>
+        <span className="hero-stage__sep" />
+        <span>&minus;50 &hellip; +230 &deg;C</span>
+      </p>
+    </div>
   )
 }
 
