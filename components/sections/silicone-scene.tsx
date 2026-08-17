@@ -64,30 +64,23 @@ export function SiliconeScene() {
 
   useEffect(() => {
     const element = ref.current
-    if (!element) return
-
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
-    if (reducedMotion.matches) return
+    if (!element || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     const pointer = { x: 0, y: 0, targetX: 0, targetY: 0 }
     let frame = 0
-
     const move = (event: PointerEvent) => {
-      pointer.targetX = (event.clientX / window.innerWidth - 0.5) * 16
-      pointer.targetY = (event.clientY / window.innerHeight - 0.5) * 10
+      pointer.targetX = (event.clientX / window.innerWidth - 0.5) * 10
+      pointer.targetY = (event.clientY / window.innerHeight - 0.5) * 6
     }
-
     const animate = () => {
-      pointer.x += (pointer.targetX - pointer.x) * 0.055
-      pointer.y += (pointer.targetY - pointer.y) * 0.055
+      pointer.x += (pointer.targetX - pointer.x) * 0.045
+      pointer.y += (pointer.targetY - pointer.y) * 0.045
       element.style.setProperty('--silicone-x', `${pointer.x.toFixed(2)}px`)
       element.style.setProperty('--silicone-y', `${pointer.y.toFixed(2)}px`)
       frame = requestAnimationFrame(animate)
     }
-
     window.addEventListener('pointermove', move, { passive: true })
     frame = requestAnimationFrame(animate)
-
     return () => {
       cancelAnimationFrame(frame)
       window.removeEventListener('pointermove', move)
@@ -96,64 +89,47 @@ export function SiliconeScene() {
 
   return (
     <div ref={ref} className="silicone-word-scene" aria-hidden="true">
-      <svg
-        className="silicone-word-scene__svg"
-        viewBox="0 0 1240 420"
-        preserveAspectRatio="xMidYMid meet"
-        role="presentation"
-      >
+      <svg className="silicone-word-scene__svg" viewBox="0 0 1240 420" preserveAspectRatio="xMidYMid meet" role="presentation">
         <defs>
-          <linearGradient id="silicone-body" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stopColor="#17365d" />
-            <stop offset="0.18" stopColor="#f7d0b1" />
-            <stop offset="0.48" stopColor="#e2762e" />
-            <stop offset="0.72" stopColor="#fff1e5" />
-            <stop offset="1" stopColor="#b64f1f" />
+          <linearGradient id="hose-body" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stopColor="#9dbdce" stopOpacity="0.72" />
+            <stop offset="0.2" stopColor="#f8fdff" stopOpacity="0.92" />
+            <stop offset="0.48" stopColor="#b7d2df" stopOpacity="0.62" />
+            <stop offset="0.72" stopColor="#ffffff" stopOpacity="0.9" />
+            <stop offset="1" stopColor="#82a8bc" stopOpacity="0.7" />
           </linearGradient>
-          <linearGradient id="silicone-core" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#fffaf5" stopOpacity="0.96" />
-            <stop offset="0.42" stopColor="#f2b17e" stopOpacity="0.88" />
-            <stop offset="1" stopColor="#17365d" stopOpacity="0.9" />
+          <linearGradient id="hose-core" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#ffffff" stopOpacity="0.84" />
+            <stop offset="0.48" stopColor="#dcecf3" stopOpacity="0.58" />
+            <stop offset="1" stopColor="#7fa7bb" stopOpacity="0.66" />
           </linearGradient>
-          <filter id="silicone-depth" x="-25%" y="-35%" width="150%" height="170%">
-            <feGaussianBlur in="SourceAlpha" stdDeviation="7" result="blur" />
-            <feOffset in="blur" dx="0" dy="9" result="offset" />
-            <feColorMatrix
-              in="offset"
-              type="matrix"
-              values="0 0 0 0 0.015 0 0 0 0 0.065 0 0 0 0 0.12 0 0 0 .52 0"
-              result="shadow"
-            />
-            <feMerge>
-              <feMergeNode in="shadow" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
+          <filter id="hose-shadow" x="-20%" y="-40%" width="140%" height="190%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="9" result="blur" />
+            <feOffset in="blur" dx="0" dy="11" result="offset" />
+            <feColorMatrix in="offset" type="matrix" values="0 0 0 0 0.01 0 0 0 0 0.08 0 0 0 0 0.14 0 0 0 .5 0" result="shadow" />
+            <feMerge><feMergeNode in="shadow" /><feMergeNode in="SourceGraphic" /></feMerge>
           </filter>
-          <filter id="silicone-tip-glow" x="-180%" y="-180%" width="460%" height="460%">
-            <feGaussianBlur stdDeviation="7" result="blur" />
+          <filter id="hose-glow" x="-120%" y="-120%" width="340%" height="340%">
+            <feGaussianBlur stdDeviation="5" result="blur" />
             <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
           </filter>
         </defs>
 
-        <g className="silicone-word-scene__word" filter="url(#silicone-depth)">
-          <path className="silicone-word-path silicone-word-path--shadow" d={SILVOTECH_PATH} />
-          <path className="silicone-word-path silicone-word-path--body" d={SILVOTECH_PATH} />
-          <path className="silicone-word-path silicone-word-path--core" d={SILVOTECH_PATH} />
-          <path className="silicone-word-path silicone-word-path--highlight" d={SILVOTECH_PATH} />
-          <path className="silicone-word-flow" d={SILVOTECH_PATH} />
+        <g className="silicone-word-scene__word" filter="url(#hose-shadow)" pathLength="1">
+          <path className="silicone-word-path silicone-word-path--shadow" d={SILVOTECH_PATH} pathLength="1" />
+          <path className="silicone-word-path silicone-word-path--body" d={SILVOTECH_PATH} pathLength="1" />
+          <path className="silicone-word-path silicone-word-path--core" d={SILVOTECH_PATH} pathLength="1" />
+          <path className="silicone-word-path silicone-word-path--highlight" d={SILVOTECH_PATH} pathLength="1" />
+          <path className="silicone-word-flow" d={SILVOTECH_PATH} pathLength="1" />
         </g>
 
-        <circle className="silicone-word-tip" r="11" filter="url(#silicone-tip-glow)">
-          <animateMotion path={SILVOTECH_PATH} dur="2.2s" begin="0.15s" fill="freeze" />
-          <animate
-            attributeName="opacity"
-            values="0;1;1;0"
-            keyTimes="0;0.07;0.88;1"
-            dur="2.2s"
-            begin="0.15s"
-            fill="freeze"
-          />
-        </circle>
+        <g className="silicone-hose-tip" filter="url(#hose-glow)">
+          <circle className="silicone-hose-tip__shadow" r="18" />
+          <circle className="silicone-hose-tip__rim" r="13" />
+          <circle className="silicone-hose-tip__opening" r="7" />
+          <animateMotion path={SILVOTECH_PATH} dur="2.8s" begin="0.1s" fill="freeze" />
+          <animate attributeName="opacity" values="0;1;1;0.35" keyTimes="0;0.05;0.78;1" dur="2.8s" begin="0.1s" fill="freeze" />
+        </g>
       </svg>
     </div>
   )

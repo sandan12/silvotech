@@ -189,3 +189,47 @@ body { background: var(--brand-paper); }
   .motion-ready .motion-reveal { opacity: 1; transform: none; transition: none; }
   .site-header__cta, .hero-action, .product-card, .production-steps li, #industries .container-page > ul > li { transition: none; }
 }
+
+/* Visual correction 02 — based on the supplied screenshots. */
+.site-header {
+  background: #ffffff;
+  border-bottom-color: rgba(23, 54, 93, 0.12);
+}
+.site-header:hover,
+.site-header:focus-within { background: #ffffff; }
+.site-header__logo { filter: brightness(0) saturate(100%) invert(23%) sepia(26%) saturate(1200%) hue-rotate(172deg) brightness(88%) contrast(92%); }
+.site-header__glass { background: #ffffff; }
+
+/* Do not let a translucent sticky bar make headings look duplicated underneath it. */
+section[id] { scroll-margin-top: 7.25rem; }
+.hero-cinematic h1 { max-width: 10ch; font-size: clamp(2.55rem, 4.8vw, 5.4rem); line-height: 0.98; }
+
+/* The steps in the production section were too light on the white background. */
+.production-steps li { color: var(--brand-navy) !important; }
+.production-steps li > span { color: var(--brand-orange) !important; }
+.production-steps li h3 { color: var(--brand-navy) !important; }
+.production-steps li p { color: #526579 !important; }
+
+/* Transparent hose, not an orange neon contour. */
+.silicone-word-path,
+.silicone-word-flow { stroke-dasharray: 1; stroke-dashoffset: 1; stroke-linecap: round; stroke-linejoin: round; }
+.silicone-word-path--shadow { stroke: rgba(20, 49, 70, 0.42); stroke-width: 58px; opacity: 0.35; }
+.silicone-word-path--body { stroke: url(#hose-body); stroke-width: 46px; opacity: 0.92; }
+.silicone-word-path--core { stroke: url(#hose-core); stroke-width: 30px; opacity: 0.72; }
+.silicone-word-path--highlight { stroke: rgba(255, 255, 255, 0.8); stroke-width: 8px; opacity: 0.72; }
+.silicone-word-flow { stroke: rgba(255, 255, 255, 0.9); stroke-width: 3px; opacity: 0.76; animation: silicone-draw-tube 2.8s var(--brand-ease) 0.1s forwards, silicone-tube-shimmer 4.5s ease-in-out 2.9s infinite; }
+.silicone-word-path--shadow,
+.silicone-word-path--body,
+.silicone-word-path--core,
+.silicone-word-path--highlight { animation: silicone-draw-tube 2.8s var(--brand-ease) 0.1s forwards; }
+.silicone-hose-tip__shadow { fill: rgba(15, 39, 58, 0.28); }
+.silicone-hose-tip__rim { fill: rgba(244, 252, 255, 0.9); stroke: rgba(111, 153, 175, 0.85); stroke-width: 3px; }
+.silicone-hose-tip__opening { fill: rgba(84, 123, 143, 0.7); stroke: rgba(255, 255, 255, 0.8); stroke-width: 2px; }
+
+@keyframes silicone-draw-tube { to { stroke-dashoffset: 0; } }
+@keyframes silicone-tube-shimmer { 0%, 100% { opacity: 0.38; } 50% { opacity: 0.9; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .silicone-word-path,
+  .silicone-word-flow { stroke-dashoffset: 0; animation: none !important; }
+}
