@@ -2,16 +2,24 @@ import { Info } from 'lucide-react'
 
 import { SectionHeading } from '@/components/section-heading'
 import { products } from '@/lib/products'
+import type { Locale } from '@/lib/i18n/config'
+import {
+  formatPackaging,
+  formatPressure,
+  formatSizes,
+  formatStandards,
+  formatTemperature,
+} from '@/lib/i18n/units'
 import type { Dictionary } from '@/lib/i18n/get-dictionary'
 
-export function SpecTable({ dict }: { dict: Dictionary }) {
+const headerCellClass = 'px-4 py-3.5 font-mono text-[0.7rem] tracking-wider uppercase'
+const bodyCellClass = 'px-4 py-4 text-foreground/80'
+
+export function SpecTable({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const columns = dict.specs.columns
 
   return (
-    <section
-      id="specification"
-      className="scroll-mt-28 border-t border-border bg-secondary section-device"
-    >
+    <section id="specification" className="scroll-mt-28 border-t border-border bg-secondary section-device">
       <div className="container-page">
         <SectionHeading eyebrow={dict.specs.eyebrow} title={dict.specs.title} lead={dict.specs.lead} />
 
@@ -20,22 +28,22 @@ export function SpecTable({ dict }: { dict: Dictionary }) {
             <caption className="sr-only">{dict.specs.title}</caption>
             <thead>
               <tr className="bg-primary text-primary-foreground">
-                <th scope="col" className="px-4 py-3.5 font-mono text-[0.7rem] tracking-wider uppercase">
+                <th scope="col" className={headerCellClass}>
                   {columns.product}
                 </th>
-                <th scope="col" className="px-4 py-3.5 font-mono text-[0.7rem] tracking-wider uppercase">
+                <th scope="col" className={headerCellClass}>
                   {columns.sizes}
                 </th>
-                <th scope="col" className="px-4 py-3.5 font-mono text-[0.7rem] tracking-wider uppercase">
+                <th scope="col" className={headerCellClass}>
                   {columns.temperature}
                 </th>
-                <th scope="col" className="px-4 py-3.5 font-mono text-[0.7rem] tracking-wider uppercase">
+                <th scope="col" className={headerCellClass}>
                   {columns.pressure}
                 </th>
-                <th scope="col" className="px-4 py-3.5 font-mono text-[0.7rem] tracking-wider uppercase">
+                <th scope="col" className={headerCellClass}>
                   {columns.packaging}
                 </th>
-                <th scope="col" className="px-4 py-3.5 font-mono text-[0.7rem] tracking-wider uppercase">
+                <th scope="col" className={headerCellClass}>
                   {columns.standards}
                 </th>
               </tr>
@@ -48,11 +56,13 @@ export function SpecTable({ dict }: { dict: Dictionary }) {
                     <th scope="row" className="px-4 py-4 font-semibold text-primary">
                       {copy.name}
                     </th>
-                    <td className="px-4 py-4 text-foreground/80">{product.sizes.length ? product.sizes.join(' · ') : dict.products.items.technical.features[0]}</td>
-                    <td className="px-4 py-4 whitespace-nowrap text-foreground/80">{product.temperature}</td>
-                    <td className="px-4 py-4 text-foreground/80">{product.pressure}</td>
-                    <td className="px-4 py-4 whitespace-nowrap text-foreground/80">{product.packaging}</td>
-                    <td className="px-4 py-4 text-foreground/80">{product.standards.join(', ')}</td>
+                    <td className={bodyCellClass}>{formatSizes(locale, product.sizes)}</td>
+                    <td className={`${bodyCellClass} whitespace-nowrap`}>{formatTemperature(product)}</td>
+                    <td className={bodyCellClass}>{formatPressure(locale, product.pressureKey)}</td>
+                    <td className={`${bodyCellClass} whitespace-nowrap`}>
+                      {formatPackaging(locale, product.packagingMeters)}
+                    </td>
+                    <td className={bodyCellClass}>{formatStandards(locale, product.standardKeys)}</td>
                   </tr>
                 )
               })}

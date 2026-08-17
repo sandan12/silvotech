@@ -19,7 +19,7 @@ export function Contact({ locale, dict }: { locale: Locale; dict: Dictionary }) 
               lead={dict.rfq.lead}
               className="max-w-none"
             />
-            <RfqForm dict={dict} />
+            <RfqForm locale={locale} dict={dict} />
           </div>
 
           <aside className="flex flex-col gap-6 lg:pt-4">

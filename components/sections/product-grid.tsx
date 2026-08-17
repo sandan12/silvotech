@@ -3,9 +3,11 @@ import { ArrowUpRight, Check } from 'lucide-react'
 
 import { SectionHeading } from '@/components/section-heading'
 import { products } from '@/lib/products'
+import type { Locale } from '@/lib/i18n/config'
+import { formatPackaging, formatTemperature } from '@/lib/i18n/units'
 import type { Dictionary } from '@/lib/i18n/get-dictionary'
 
-export function ProductGrid({ dict }: { dict: Dictionary }) {
+export function ProductGrid({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const labels = dict.products.labels
 
   return (
@@ -26,6 +28,7 @@ export function ProductGrid({ dict }: { dict: Dictionary }) {
                     fill
                     sizes="(min-width: 1024px) 50vw, 100vw"
                     className="object-contain"
+                    priority={index === 0}
                   />
                 </div>
 
@@ -47,8 +50,14 @@ export function ProductGrid({ dict }: { dict: Dictionary }) {
 
                   <div className="product-card__footer">
                     <dl>
-                      <div><dt>{labels.temperature}</dt><dd>{product.temperature}</dd></div>
-                      <div><dt>{labels.packaging}</dt><dd>{product.packaging}</dd></div>
+                      <div>
+                        <dt>{labels.temperature}</dt>
+                        <dd>{formatTemperature(product)}</dd>
+                      </div>
+                      <div>
+                        <dt>{labels.packaging}</dt>
+                        <dd>{formatPackaging(locale, product.packagingMeters)}</dd>
+                      </div>
                     </dl>
                     <a href="#contact">
                       {labels.cta}

@@ -1,8 +1,21 @@
 'use server'
 
-import { company } from '@/lib/i18n/config'
+import { headers } from 'next/headers'
+import { after } from 'next/server'
 
-export type RfqState = { status: 'idle' | 'success' | 'invalid' | 'error' }
+import { defaultLocale, isLocale, type Locale } from '@/lib/i18n/config'
+import { deliverLead, sendAutoReply, type Lead } from '@/lib/leads'
+import { checkRateLimit, clientIp } from '@/lib/rate-limit'
+
+export type RfqStatus = 'idle' | 'success' | 'invalid' | 'consent' | 'rate-limited' | 'error'
+
+export type RfqField = 'company' | 'name' | 'email'
+
+export type RfqState = {
+  status: RfqStatus
+  /** Поля, которые нужно подсветить в форме. */
+  fieldErrors?: RfqField[]
+}
 
 const MAX = {
   company: 160,
@@ -14,17 +27,41 @@ const MAX = {
   size: 40,
   quantity: 80,
   message: 4000,
-}
+} as const
 
-function field(data: FormData, key: keyof typeof MAX) {
+/** Минимальное время заполнения. Боты отправляют форму мгновенно. */
+const MIN_FILL_MS = 2500
+const MAX_FORM_AGE_MS = 12 * 60 * 60 * 1000
+
+const emailPattern = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i
+
+function field(data: FormData, key: keyof typeof MAX): string {
   const raw = data.get(key)
   if (typeof raw !== 'string') return ''
   return raw.trim().slice(0, MAX[key])
 }
 
-const emailPattern = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i
+function readLocale(data: FormData): Locale {
+  const raw = data.get('locale')
+  return typeof raw === 'string' && isLocale(raw) ? raw : defaultLocale
+}
+
+function looksAutomated(data: FormData): boolean {
+  // 1. Honeypot: скрытое поле, которое заполняют только боты.
+  const honeypot = data.get('website')
+  if (typeof honeypot === 'string' && honeypot.length > 0) return true
+
+  // 2. Время заполнения формы.
+  const renderedAt = Number(data.get('rendered_at'))
+  if (!Number.isFinite(renderedAt)) return false
+
+  const elapsed = Date.now() - renderedAt
+  return elapsed < MIN_FILL_MS || elapsed > MAX_FORM_AGE_MS
+}
 
 export async function submitRfq(_prev: RfqState, data: FormData): Promise<RfqState> {
+  const locale = readLocale(data)
+
   const payload = {
     company: field(data, 'company'),
     name: field(data, 'name'),
@@ -37,58 +74,49 @@ export async function submitRfq(_prev: RfqState, data: FormData): Promise<RfqSta
     message: field(data, 'message'),
   }
 
-  if (!payload.company || !payload.name || !emailPattern.test(payload.email)) {
-    return { status: 'invalid' }
+  const fieldErrors: RfqField[] = []
+  if (!payload.company) fieldErrors.push('company')
+  if (!payload.name) fieldErrors.push('name')
+  if (!emailPattern.test(payload.email)) fieldErrors.push('email')
+
+  if (fieldErrors.length > 0) {
+    return { status: 'invalid', fieldErrors }
   }
 
-  // Honeypot: real users never fill a hidden field.
-  if (typeof data.get('website') === 'string' && (data.get('website') as string).length > 0) {
+  if (data.get('consent') !== 'on') {
+    return { status: 'consent' }
+  }
+
+  // Ботам показываем успех, чтобы они не подбирали обход проверок.
+  if (looksAutomated(data)) {
     return { status: 'success' }
   }
 
-  const lines = [
-    `Company: ${payload.company}`,
-    `Contact: ${payload.name}`,
-    `E-mail: ${payload.email}`,
-    `Phone: ${payload.phone || '—'}`,
-    `Country: ${payload.country || '—'}`,
-    `Product category: ${payload.product || '—'}`,
-    `Size: ${payload.size || '—'}`,
-    `Quantity: ${payload.quantity || '—'}`,
-    '',
-    payload.message || '(no description provided)',
-  ].join('\n')
+  const requestHeaders = await headers()
+  const ip = clientIp(requestHeaders)
 
-  const apiKey = process.env.RESEND_API_KEY
+  if (!checkRateLimit(`rfq:${ip}`).allowed) {
+    return { status: 'rate-limited' }
+  }
 
-  if (!apiKey) {
+  const lead: Lead = {
+    ...payload,
+    locale,
+    receivedAt: new Date().toISOString(),
+    ip,
+    userAgent: requestHeaders.get('user-agent') ?? '',
+  }
+
+  const result = await deliverLead(lead)
+
+  if (!result.delivered) {
     return { status: 'error' }
   }
 
-  try {
-    const response = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        from: process.env.RFQ_FROM_EMAIL ?? 'onboarding@resend.dev',
-        to: [company.email],
-        reply_to: payload.email,
-        subject: `RFQ — ${payload.company}${payload.product ? ` — ${payload.product}` : ''}`,
-        text: lines,
-      }),
-    })
+  // Автоответ отправляем после ответа пользователю: он не должен замедлять форму.
+  after(async () => {
+    await sendAutoReply(lead)
+  })
 
-    if (!response.ok) {
-      console.log('[v0] Resend rejected the RFQ:', response.status, await response.text())
-      return { status: 'error' }
-    }
-
-    return { status: 'success' }
-  } catch (error) {
-    console.log('[v0] RFQ delivery failed:', error)
-    return { status: 'error' }
-  }
+  return { status: 'success' }
 }
