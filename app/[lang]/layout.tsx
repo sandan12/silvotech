@@ -10,6 +10,7 @@ import { company, isLocale, locales, localeNames, siteUrl, type Locale } from '@
 import { getDictionary } from '@/lib/i18n/get-dictionary'
 
 import '../globals.css'
+import '../visual-redesign.css'
 
 const manrope = Manrope({ subsets: ['latin', 'latin-ext'], variable: '--font-manrope', weight: ['400', '500', '600', '700'], display: 'swap' })
 const plexMono = IBM_Plex_Mono({ subsets: ['latin', 'latin-ext'], variable: '--font-plex-mono', weight: ['400', '500'], display: 'swap' })

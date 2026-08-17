@@ -104,16 +104,16 @@ export function SiliconeScene() {
       >
         <defs>
           <linearGradient id="silicone-body" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stopColor="#6f93b4" />
-            <stop offset="0.18" stopColor="#d8e8f1" />
-            <stop offset="0.48" stopColor="#91b3cf" />
-            <stop offset="0.72" stopColor="#eef7fb" />
-            <stop offset="1" stopColor="#7398b8" />
+            <stop offset="0" stopColor="#17365d" />
+            <stop offset="0.18" stopColor="#f7d0b1" />
+            <stop offset="0.48" stopColor="#e2762e" />
+            <stop offset="0.72" stopColor="#fff1e5" />
+            <stop offset="1" stopColor="#b64f1f" />
           </linearGradient>
           <linearGradient id="silicone-core" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#f8fdff" stopOpacity="0.96" />
-            <stop offset="0.42" stopColor="#bfd5e4" stopOpacity="0.88" />
-            <stop offset="1" stopColor="#557b9d" stopOpacity="0.9" />
+            <stop offset="0" stopColor="#fffaf5" stopOpacity="0.96" />
+            <stop offset="0.42" stopColor="#f2b17e" stopOpacity="0.88" />
+            <stop offset="1" stopColor="#17365d" stopOpacity="0.9" />
           </linearGradient>
           <filter id="silicone-depth" x="-25%" y="-35%" width="150%" height="170%">
             <feGaussianBlur in="SourceAlpha" stdDeviation="7" result="blur" />
@@ -144,13 +144,13 @@ export function SiliconeScene() {
         </g>
 
         <circle className="silicone-word-tip" r="11" filter="url(#silicone-tip-glow)">
-          <animateMotion path={SILVOTECH_PATH} dur="4.85s" begin="0.32s" fill="freeze" />
+          <animateMotion path={SILVOTECH_PATH} dur="2.2s" begin="0.15s" fill="freeze" />
           <animate
             attributeName="opacity"
             values="0;1;1;0"
             keyTimes="0;0.07;0.88;1"
-            dur="4.85s"
-            begin="0.32s"
+            dur="2.2s"
+            begin="0.15s"
             fill="freeze"
           />
         </circle>
