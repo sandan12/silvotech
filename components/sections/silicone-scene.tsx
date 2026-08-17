@@ -1,88 +1,50 @@
-'use client'
+import Image from 'next/image'
 
-import { useEffect, useRef } from 'react'
-
-const LEAD_PATH = `M 78 302
-C 42 244 70 154 148 151
-C 214 148 236 205 192 242
-C 154 274 116 260 118 304
-C 120 348 180 360 236 303`
-
+/**
+ * Hero visual for SilvoTech.
+ *
+ * The previous version drew the word "SilvoTech" as an animated SVG stroke.
+ * A stroke has no cross-section and no refraction, so translucent silicone can
+ * never read correctly that way: it always ends up looking like neon or like an
+ * outlined font. This version uses the real factory photograph that already
+ * ships in /public, with a small product detail inset.
+ *
+ * The file name and the exported name are unchanged on purpose, so
+ * components/sections/hero.tsx does not need to be edited.
+ */
 export function SiliconeScene() {
-  const ref = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const element = ref.current
-    if (!element || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-
-    const pointer = { x: 0, y: 0, targetX: 0, targetY: 0 }
-    let frame = 0
-    const move = (event: PointerEvent) => {
-      pointer.targetX = (event.clientX / window.innerWidth - 0.5) * 8
-      pointer.targetY = (event.clientY / window.innerHeight - 0.5) * 5
-    }
-    const animate = () => {
-      pointer.x += (pointer.targetX - pointer.x) * 0.045
-      pointer.y += (pointer.targetY - pointer.y) * 0.045
-      element.style.setProperty('--silicone-x', `${pointer.x.toFixed(2)}px`)
-      element.style.setProperty('--silicone-y', `${pointer.y.toFixed(2)}px`)
-      frame = requestAnimationFrame(animate)
-    }
-
-    window.addEventListener('pointermove', move, { passive: true })
-    frame = requestAnimationFrame(animate)
-    return () => {
-      cancelAnimationFrame(frame)
-      window.removeEventListener('pointermove', move)
-    }
-  }, [])
-
   return (
-    <div ref={ref} className="silicone-word-scene" aria-hidden="true">
-      <svg className="silicone-word-scene__svg" viewBox="0 0 1200 440" preserveAspectRatio="xMidYMid meet" role="presentation">
-        <defs>
-          <linearGradient id="hose-body" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stopColor="#8eafc0" stopOpacity="0.55" />
-            <stop offset="0.2" stopColor="#ffffff" stopOpacity="0.92" />
-            <stop offset="0.46" stopColor="#b9d4e0" stopOpacity="0.64" />
-            <stop offset="0.72" stopColor="#ffffff" stopOpacity="0.9" />
-            <stop offset="1" stopColor="#86aabd" stopOpacity="0.58" />
-          </linearGradient>
-          <linearGradient id="hose-core" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#ffffff" stopOpacity="0.8" />
-            <stop offset="0.5" stopColor="#d9ebf2" stopOpacity="0.56" />
-            <stop offset="1" stopColor="#79a0b5" stopOpacity="0.62" />
-          </linearGradient>
-          <filter id="hose-shadow" x="-20%" y="-40%" width="140%" height="190%">
-            <feGaussianBlur in="SourceAlpha" stdDeviation="8" result="blur" />
-            <feOffset in="blur" dx="0" dy="10" result="offset" />
-            <feColorMatrix in="offset" type="matrix" values="0 0 0 0 0.01 0 0 0 0 0.08 0 0 0 0 0.14 0 0 0 .42 0" result="shadow" />
-            <feMerge><feMergeNode in="shadow" /><feMergeNode in="SourceGraphic" /></feMerge>
-          </filter>
-          <filter id="hose-tip-glow" x="-140%" y="-140%" width="380%" height="380%">
-            <feGaussianBlur stdDeviation="4" result="blur" />
-            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-          </filter>
-        </defs>
+    <figure className="hero-visual" aria-hidden="true">
+      <div className="hero-visual__frame">
+        <Image
+          src="/production-line-user.png"
+          alt=""
+          width={1600}
+          height={1200}
+          priority
+          sizes="(max-width: 899px) 92vw, 46vw"
+          className="hero-visual__image"
+        />
+        <span className="hero-visual__sheen" />
+      </div>
 
-        <path className="silicone-hose-lead" d={LEAD_PATH} pathLength="1" />
+      <div className="hero-visual__inset">
+        <Image
+          src="/clear-hose-detail-new.png"
+          alt=""
+          width={640}
+          height={640}
+          sizes="200px"
+          className="hero-visual__inset-image"
+        />
+      </div>
 
-        <g className="silicone-word-scene__word" filter="url(#hose-shadow)">
-          <text x="600" y="275" textAnchor="middle" textLength="820" lengthAdjust="spacingAndGlyphs" className="silicone-word-path silicone-word-path--shadow">SilvoTech</text>
-          <text x="600" y="275" textAnchor="middle" textLength="820" lengthAdjust="spacingAndGlyphs" className="silicone-word-path silicone-word-path--body">SilvoTech</text>
-          <text x="600" y="275" textAnchor="middle" textLength="820" lengthAdjust="spacingAndGlyphs" className="silicone-word-path silicone-word-path--core">SilvoTech</text>
-          <text x="600" y="275" textAnchor="middle" textLength="820" lengthAdjust="spacingAndGlyphs" className="silicone-word-path silicone-word-path--highlight">SilvoTech</text>
-          <text x="600" y="275" textAnchor="middle" textLength="820" lengthAdjust="spacingAndGlyphs" className="silicone-word-flow">SilvoTech</text>
-        </g>
-
-        <g className="silicone-hose-tip" filter="url(#hose-tip-glow)">
-          <circle className="silicone-hose-tip__shadow" r="17" />
-          <circle className="silicone-hose-tip__rim" r="12" />
-          <circle className="silicone-hose-tip__opening" r="6" />
-          <animateMotion path={LEAD_PATH} dur="0.75s" begin="0s" fill="freeze" />
-          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.05;0.75;1" dur="1.15s" begin="0s" fill="freeze" />
-        </g>
-      </svg>
-    </div>
+      <figcaption className="hero-visual__caption">
+        <span className="hero-visual__dot" />
+        Warszawa, PL
+      </figcaption>
+    </figure>
   )
 }
+
+export default SiliconeScene
