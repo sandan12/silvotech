@@ -80,7 +80,7 @@ export function RfqForm({ locale, dict }: { locale: Locale; dict: Dictionary }) 
       key={formKey}
       action={formAction}
       noValidate
-      className="liquid-card flex flex-col gap-5 border border-border bg-card p-5 md:p-7"
+      className="flex flex-col gap-5 border border-border bg-card p-5 md:p-7"
     >
       <input type="hidden" name="locale" value={locale} />
       <input type="hidden" name="rendered_at" value={renderedAt.current} />

@@ -23,7 +23,7 @@ export function SpecTable({ locale, dict }: { locale: Locale; dict: Dictionary }
       <div className="container-page">
         <SectionHeading eyebrow={dict.specs.eyebrow} title={dict.specs.title} lead={dict.specs.lead} />
 
-        <div className="mt-12 overflow-x-auto border border-border bg-card">
+        <div className="spec-table-wrap mt-12 overflow-x-auto border border-border bg-card">
           <table className="w-full min-w-[52rem] border-collapse text-left text-sm">
             <caption className="sr-only">{dict.specs.title}</caption>
             <thead>

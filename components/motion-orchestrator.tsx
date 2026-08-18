@@ -4,17 +4,17 @@ import { useEffect } from 'react'
 
 const selectors = [
   '.section-heading',
+  '.offer-tile',
   '.product-card',
-  '#specification .overflow-x-auto',
+  '#specification .spec-table-wrap',
   '#specification .container-page > p',
   '.production-gallery figure',
   '.production-steps li',
   '.quality-grid li',
   '.quality-visual',
   '#industries .container-page > ul > li',
-  '#contact .liquid-card',
+  '#contact form',
   '#contact aside',
-  'footer .container-page > div',
 ].join(',')
 
 export function MotionOrchestrator() {

@@ -11,7 +11,6 @@ export function Manufacturing({ dict }: { dict: Dictionary }) {
           eyebrow={dict.production.eyebrow}
           title={dict.production.title}
           lead={dict.production.lead}
-          tone="dark"
         />
 
         <div className="production-studio__layout">

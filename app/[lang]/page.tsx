@@ -4,6 +4,7 @@ import { Contact } from '@/components/sections/contact'
 import { Hero } from '@/components/sections/hero'
 import { Industries } from '@/components/sections/industries'
 import { Manufacturing } from '@/components/sections/manufacturing'
+import { OfferGrid } from '@/components/sections/offer-grid'
 import { ProductGrid } from '@/components/sections/product-grid'
 import { Quality } from '@/components/sections/quality'
 import { SpecTable } from '@/components/sections/spec-table'
@@ -98,6 +99,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
     <>
       <StructuredData locale={locale} />
       <Hero dict={dict} />
+      <OfferGrid locale={locale} dict={dict} />
       <ProductGrid locale={locale} dict={dict} />
       <SpecTable locale={locale} dict={dict} />
       <Manufacturing dict={dict} />
