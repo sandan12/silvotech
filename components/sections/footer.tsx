@@ -23,7 +23,7 @@ export default function Footer({ dict, lang }: { dict: Dictionary; lang: Locale 
 
   return (
     <footer className="band-navy text-white">
-      <div className="container-page grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-4">
+      <div className="container-page grid gap-12 py-24 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <Image src="/silvotech-logo.png" alt="SilvoTech" width={170} height={56} className="h-9 w-auto brightness-0 invert" />
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/60">{dict.footerTagline}</p>
