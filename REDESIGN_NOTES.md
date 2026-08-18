@@ -1,22 +1,46 @@
-# SilvoTech redesign — single-line hose animation
+# SilvoTech redesign — flat B2B corporate layout
 
-## Latest hero update
+Rebuilt to match the reference sites the client picked (purityflow.pl,
+solmatic.pl): plain-spoken industrial B2B look, not an "AI generated" one.
 
-- The hero now uses one continuous SVG path shaped as the word `SilvoTech`.
-- A translucent silicone hose is progressively drawn from left to right along that path.
-- An orange guide point follows the active end of the hose while the word is forming.
-- After completion, a restrained highlight travels through the hose and the word has a very subtle breathing motion.
-- Pointer movement adds limited parallax on desktop without making the B2B presentation playful or distracting.
-- Mobile order was adjusted so the complete `SilvoTech` word appears between the introduction and the calls to action.
-- `prefers-reduced-motion` displays the completed word immediately and disables all continuous movement.
+## What changed
+
+- **Removed all glassmorphism / blur / glow.** No `backdrop-filter`, no
+  floating "liquid glass" cards or pill-shaped nav, no radial-gradient glow
+  decoration, no film grain textures.
+- **Removed the animated SVG hero** (the hose that "wrote" the word
+  SilvoTech) and the floating multi-photo hero composition. Replaced with a
+  single static full-bleed factory photo + dark scrim + plain text, the same
+  pattern both reference sites use for their hero.
+- **Header** is now a solid white bar with a thin bottom border instead of a
+  sticky glass pill.
+- **New "offer" tile grid** (`components/sections/offer-grid.tsx`) right
+  under the hero — four photo tiles linking to Products / Sizes / Quality,
+  the same pattern as Solmatic's "Nasza oferta" and Purity Flow's category
+  tiles.
+- **Production section** switched from an inverted dark panel back to the
+  same light background as the rest of the page, matching the consistently
+  light layout of both references.
+- **Motion** simplified to one restrained opacity/translateY fade on scroll
+  (no blur, no scale, no bounce).
+- Deleted dead/unused files left over from earlier iterations:
+  `silicone-scene.tsx`, `silicone-flow.tsx`, `hero-video.tsx`,
+  `materials-strip.tsx`, `app/[lang]/silvo-landing.tsx` and its private
+  stylesheet, plus a large block of duplicate/minified legacy CSS that had
+  accumulated in `globals.css` (including a reference to an unloaded
+  `--font-editorial` font).
+- `app/globals.css` now only holds design tokens + base reset.
+  `app/visual-redesign.css` is the single source of truth for every
+  component's look.
 
 ## Visual system retained
 
-- Original SilvoTech navy `#17365d`, orange `#e2762e`, off-white and steel-grey palette.
-- Rounded Manrope typography.
-- No decorative lines or dots before section labels.
-- Supplied product imagery remains uncropped with `object-fit: contain`.
-- Visible product SKU labels remain removed.
+- SilvoTech navy `#17365d`, orange `#e2762e`, off-white background, steel
+  grey — same 5-colour palette as before.
+- Manrope for text, IBM Plex Mono for small labels.
+- Product photography stays uncropped where it's shown as a detail shot
+  (`object-fit: contain`); new tile/hero imagery uses `cover` since it's
+  meant as a photographic backdrop, matching the reference sites.
 
 ## Run locally
 
