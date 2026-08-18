@@ -7,7 +7,6 @@ import { usePathname } from 'next/navigation';
 import { Mail, Phone, Menu, X, ChevronDown } from 'lucide-react';
 import { COMPANY } from '@/lib/company';
 import { locales, type Dictionary, type Locale } from '@/lib/i18n';
-import EUFlag from './eu-flag';
 import LangFlag from './lang-flag';
 
 export default function Header({ dict, lang }: { dict: Dictionary; lang: Locale }) {
@@ -32,14 +31,14 @@ export default function Header({ dict, lang }: { dict: Dictionary; lang: Locale 
   ];
 
   const switchTo = (l: Locale) => {
-    const path = pathname.replace(/^\/(pl|en|de|cs|sk)/, '');
+    const path = pathname.replace(/^\/(pl|en|de|cz|sk)/, '');
     return `/${l}${path || ''}`;
   };
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="bg-navy text-white">
-        <div className="container-page flex h-10 items-center justify-between gap-4">
+        <div className="container-page flex h-12 items-center justify-between gap-5">
           <div className="flex items-center gap-3">
             <p className="hidden text-xs text-white/70 md:block">{dict.topbarTagline}</p>
             <img
@@ -56,13 +55,6 @@ export default function Header({ dict, lang }: { dict: Dictionary; lang: Locale 
             <a href={`mailto:${COMPANY.email}`} className="hidden items-center gap-1.5 font-medium text-white/90 transition hover:text-white sm:flex">
               <Mail size={12} /> {COMPANY.email}
             </a>
-            <span
-              title={dict.euBadgeTitle}
-              className="hidden items-center gap-1.5 rounded border border-white/25 bg-white/10 px-2 py-1 font-semibold uppercase tracking-wide sm:flex"
-            >
-              <EUFlag className="h-3.5 w-auto rounded-[1px] shadow-sm" />
-              {dict.euBadge}
-            </span>
             <div className="relative">
               <button
                 onClick={() => setLangOpen((v) => !v)}

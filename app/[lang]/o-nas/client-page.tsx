@@ -12,7 +12,7 @@ export default function AboutPage({ dict, lang }: { dict: Dictionary; lang: Loca
     <>
       <Header dict={dict} lang={lang} />
       <main>
-        <PageHero eyebrow={dict.aboutEyebrow} title={dict.aboutTagline} lead={dict.aboutP1} />
+        <PageHero eyebrow={dict.aboutEyebrow} title={dict.aboutTagline} />
         <About dict={dict} lang={lang} />
         <CTABand dict={dict} lang={lang} />
       </main>

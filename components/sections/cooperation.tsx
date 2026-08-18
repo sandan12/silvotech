@@ -28,13 +28,7 @@ export default function Cooperation({ dict }: { dict: Dictionary }) {
   return (
     <section ref={ref} className="section-padding">
       <div className="container-page">
-        <div className="section-heading--center">
-          <span className="eyebrow">{dict.industriesEyebrow}</span>
-          <h2 className="section-title">{dict.industriesTitle}</h2>
-          <p className="section-lead mx-auto">{dict.productionLead}</p>
-        </div>
-
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-3">
           {industries.map((item, i) => {
             const Icon = industryIcons[i];
             return (

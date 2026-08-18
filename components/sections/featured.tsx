@@ -13,14 +13,14 @@ export default function Featured({ dict, lang }: { dict: Dictionary; lang: Local
 
   const cards = [
     {
-      image: '/silvotech-hose-clear-coil.jpg',
+      image: '/silvotech-product-1.webp',
       tag: dict.homeProd1Tag,
       title: dict.homeProd1Title,
       desc: dict.homeProd1Desc,
       specs: [dict.homeProd1Spec1, dict.homeProd1Spec2, dict.homeProd1Spec3],
     },
     {
-      image: '/silvotech-hose-black.jpg',
+      image: '/silvotech-product-2.jpg',
       tag: dict.homeProd2Tag,
       title: dict.homeProd2Title,
       desc: dict.homeProd2Desc,
@@ -46,15 +46,15 @@ export default function Featured({ dict, lang }: { dict: Dictionary; lang: Local
               transition={{ duration: 0.6, delay: 0.1 * i, ease: [0.4, 0, 0.2, 1] }}
               className="card card-shadow hover-lift flex flex-col overflow-hidden"
             >
-              <div className="relative h-60 overflow-hidden">
+              <div className="relative h-72 overflow-hidden bg-white p-6">
                 <Image
                   src={card.image}
                   alt={card.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-contain"
                 />
-                <span className="absolute left-5 top-5 rounded bg-white px-3 py-1 text-xs font-semibold uppercase tracking-wide text-navy shadow-sm">
+                <span className="absolute left-8 top-8 rounded bg-white px-3 py-1 text-xs font-semibold uppercase tracking-wide text-navy shadow-sm">
                   {card.tag}
                 </span>
               </div>

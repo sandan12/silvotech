@@ -13,7 +13,7 @@ export default function OfferPage({ dict, lang }: { dict: Dictionary; lang: Loca
     <>
       <Header dict={dict} lang={lang} />
       <main>
-        <PageHero eyebrow={dict.offerEyebrow} title={dict.offerTitle} lead={dict.offerLead} />
+        <PageHero eyebrow={dict.offerEyebrow} title={dict.offerTitle} />
         <Offer dict={dict} lang={lang} />
         <DocsBand dict={dict} />
         <CTABand dict={dict} lang={lang} />

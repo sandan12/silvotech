@@ -33,7 +33,6 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
           transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
           className="mx-auto max-w-3xl text-center"
         >
-          <h2 className="text-[clamp(1.7rem,3.2vw,2.6rem)] font-bold text-ink">{dict.aboutTagline}</h2>
           <div className="mt-7 space-y-5">
             <p className="leading-relaxed text-body">{dict.aboutP1}</p>
             <p className="leading-relaxed text-body">{dict.aboutP2}</p>

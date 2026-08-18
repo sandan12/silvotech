@@ -12,7 +12,7 @@ export default function CoopPage({ dict, lang }: { dict: Dictionary; lang: Local
     <>
       <Header dict={dict} lang={lang} />
       <main>
-        <PageHero eyebrow={dict.industriesEyebrow} title={dict.industriesTitle} lead={dict.productionLead} />
+        <PageHero eyebrow={dict.industriesEyebrow} title={dict.industriesTitle} />
         <Cooperation dict={dict} />
         <CTABand dict={dict} lang={lang} />
       </main>

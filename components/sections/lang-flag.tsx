@@ -1,5 +1,14 @@
 import type { Locale } from '@/lib/i18n';
 
+function Star({ x, y, r }: { x: number; y: number; r: number }) {
+  const points = Array.from({ length: 10 }, (_, i) => {
+    const rad = (Math.PI / 5) * i - Math.PI / 2;
+    const rr = i % 2 === 0 ? r : r * 0.382;
+    return `${(x + Math.cos(rad) * rr).toFixed(2)},${(y + Math.sin(rad) * rr).toFixed(2)}`;
+  }).join(' ');
+  return <polygon points={points} fill="#fff" />;
+}
+
 export default function LangFlag({ lang, className }: { lang: Locale; className?: string }) {
   const cls = `inline-block rounded-[2px] shadow-sm ${className ?? ''}`;
   switch (lang) {
@@ -7,17 +16,24 @@ export default function LangFlag({ lang, className }: { lang: Locale; className?
       return (
         <svg viewBox="0 0 640 480" aria-label="Polski" className={cls}>
           <rect width="640" height="480" fill="#fff" />
-          <rect width="640" height="240" fill="#dc143c" />
+          <rect y="240" width="640" height="240" fill="#dc143c" />
         </svg>
       );
     case 'en':
       return (
         <svg viewBox="0 0 640 480" aria-label="English" className={cls}>
-          <path fill="#012169" d="M0 0h640v480H0z" />
-          <path stroke="#fff" strokeWidth="60" d="m0 0 640 480M640 0 0 480" />
-          <path stroke="#C8102E" strokeWidth="40" d="m0 0 640 480M640 0 0 480" />
-          <path fill="#fff" d="M0 200h640v80H0zM280 0h80v480h-80z" />
-          <path fill="#C8102E" d="M0 240h640v40H0zM320 0h40v480h-40z" />
+          <rect width="640" height="480" fill="#fff" />
+          {[0, 1, 2, 3, 4, 5].map((i) => (
+            <rect key={i} y={(480 / 13) * 2 * i} width="640" height={480 / 13} fill="#b22234" />
+          ))}
+          <rect width="256" height={(480 / 13) * 7} fill="#3c3b6e" />
+          {Array.from({ length: 9 }, (_, row) =>
+            Array.from({ length: row % 2 === 0 ? 6 : 5 }, (_, col) => {
+              const x = (256 / 12) * (row % 2 === 0 ? 1 + 2 * col : 2 + 2 * col);
+              const y = (((480 / 13) * 7) / 9) * (row + 0.5);
+              return <Star key={`${row}-${col}`} x={x} y={y} r={7.5} />;
+            })
+          )}
         </svg>
       );
     case 'de':
@@ -28,7 +44,7 @@ export default function LangFlag({ lang, className }: { lang: Locale; className?
           <rect y="320" width="640" height="160" fill="#ffce00" />
         </svg>
       );
-    case 'cs':
+    case 'cz':
       return (
         <svg viewBox="0 0 640 480" aria-label="Čeština" className={cls}>
           <path fill="#fff" d="M0 0h640v240H0z" />

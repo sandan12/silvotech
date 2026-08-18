@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const locales = ['pl', 'en', 'de', 'cs', 'sk'];
+const locales = ['pl', 'en', 'de', 'cz', 'sk'];
 const defaultLocale = 'pl';
 
 function getLocale(request: NextRequest): string {
@@ -18,6 +18,11 @@ function getLocale(request: NextRequest): string {
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  if (pathname === '/cs' || pathname.startsWith('/cs/')) {
+    request.nextUrl.pathname = `/cz${pathname.slice(3)}`;
+    return NextResponse.redirect(request.nextUrl, { status: 301 });
+  }
 
   // Check if the pathname already has a locale
   const pathnameHasLocale = locales.some(

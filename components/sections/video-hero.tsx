@@ -10,18 +10,25 @@ export default function VideoHero({ dict, lang }: { dict: Dictionary; lang: Loca
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section ref={ref} className="relative flex min-h-[84vh] items-center justify-center overflow-hidden bg-navy-deep">
-      <video autoPlay muted loop playsInline poster="/silvotech-transform-poster.jpg" className="absolute inset-0 h-full w-full object-cover">
-        <source src="/silvotech-transform.mp4" type="video/mp4" />
-      </video>
-      <div className="hero-overlay" />
+    <section ref={ref} className="overflow-hidden bg-white pt-[7.5rem]">
+      <div className="relative w-full bg-white">
+        <video
+          autoPlay
+          muted
+          playsInline
+          poster="/silvotech-transform-poster.jpg"
+          className="h-[36vh] w-full object-cover md:h-[54vh]"
+        >
+          <source src="/silvotech-transform.mp4" type="video/mp4" />
+        </video>
+      </div>
 
-      <div className="container-page relative z-10 py-32 text-center">
+      <div className="container-page pb-20 pt-14 text-center md:pt-20">
         <motion.span
           initial={{ opacity: 0, y: 18 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
-          className="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-white/70"
+          className="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-blue"
         >
           {dict.heroEyebrow}
         </motion.span>
@@ -30,7 +37,7 @@ export default function VideoHero({ dict, lang }: { dict: Dictionary; lang: Loca
           initial={{ opacity: 0, y: 22 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
-          className="mx-auto mt-6 max-w-[16ch] text-[clamp(2.1rem,5vw,3.6rem)] font-bold leading-[1.12] text-white"
+          className="mx-auto mt-5 max-w-[18ch] text-[clamp(2rem,4.8vw,3.4rem)] font-bold leading-[1.12] text-ink"
         >
           {dict.heroTitle}
         </motion.h1>
@@ -39,7 +46,7 @@ export default function VideoHero({ dict, lang }: { dict: Dictionary; lang: Loca
           initial={{ opacity: 0, y: 22 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
-          className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/80 md:text-lg"
+          className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-body md:text-lg"
         >
           {dict.heroLead}
         </motion.p>
@@ -53,7 +60,7 @@ export default function VideoHero({ dict, lang }: { dict: Dictionary; lang: Loca
           <Link href={`/${lang}/kontakt`} className="btn btn-cta">
             {dict.heroPrimaryCta}
           </Link>
-          <Link href={`/${lang}/oferta`} className="btn btn-outline-light">
+          <Link href={`/${lang}/oferta`} className="btn btn-outline">
             {dict.heroSecondaryCta}
           </Link>
         </motion.div>

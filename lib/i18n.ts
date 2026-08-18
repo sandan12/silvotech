@@ -1,4 +1,4 @@
-export const locales = ['pl', 'en', 'de', 'cs', 'sk'] as const;
+export const locales = ['pl', 'en', 'de', 'cz', 'sk'] as const;
 export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = 'pl';
@@ -7,7 +7,7 @@ export const localeNames: Record<Locale, { label: string; htmlLang: string }> = 
   pl: { label: 'PL', htmlLang: 'pl-PL' },
   en: { label: 'EN', htmlLang: 'en' },
   de: { label: 'DE', htmlLang: 'de-DE' },
-  cs: { label: 'CS', htmlLang: 'cs' },
+  cz: { label: 'CZ', htmlLang: 'cs' },
   sk: { label: 'SK', htmlLang: 'sk' },
 };
 
@@ -701,7 +701,7 @@ const de: Dictionary = {
   footerAddressLabel: 'Sitz / Kundendienst-Adresse',
 };
 
-const cs: Dictionary = {
+const cz: Dictionary = {
   topbarTagline: 'Výrobce silikonových výrobků v Evropě',
   topbarLang: 'Jazyk',
   topbarExpert: 'Zeptejte se experta',
@@ -1143,7 +1143,7 @@ const sk: Dictionary = {
   footerAddressLabel: 'Adresa sídla / zákazníckeho servisu',
 };
 
-export const translations: Record<Locale, Dictionary> = { pl, en, de, cs, sk };
+export const translations: Record<Locale, Dictionary> = { pl, en, de, cz, sk };
 
 export function getDictionary(locale: Locale): Dictionary {
   return translations[locale] || translations.pl;

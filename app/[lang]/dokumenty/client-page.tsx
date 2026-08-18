@@ -13,7 +13,7 @@ export default function DocsPage({ dict, lang }: { dict: Dictionary; lang: Local
     <>
       <Header dict={dict} lang={lang} />
       <main>
-        <PageHero eyebrow={dict.qualityEyebrow} title={dict.qualityTitle} lead={dict.qualityLead} />
+        <PageHero eyebrow={dict.qualityEyebrow} title={dict.qualityTitle} />
         <Quality dict={dict} />
         <DocsBand dict={dict} />
         <CTABand dict={dict} lang={lang} />

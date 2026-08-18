@@ -82,9 +82,7 @@ export default function Offer({ dict, lang }: { dict: Dictionary; lang: Locale }
 
         <div className="mt-24">
           <div className="section-heading--center">
-            <span className="eyebrow">{dict.offerEyebrow}</span>
             <h2 className="section-title">{dict.offerCatsTitle}</h2>
-            <p className="section-lead mx-auto">{dict.offerLead}</p>
           </div>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

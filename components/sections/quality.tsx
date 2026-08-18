@@ -23,13 +23,7 @@ export default function Quality({ dict }: { dict: Dictionary }) {
   return (
     <section ref={ref} className="section-padding">
       <div className="container-page">
-        <div className="section-heading--center">
-          <span className="eyebrow">{dict.qualityEyebrow}</span>
-          <h2 className="section-title">{dict.qualityTitle}</h2>
-          <p className="section-lead mx-auto">{dict.qualityLead}</p>
-        </div>
-
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((item, i) => {
             const Icon = icons[i];
             return (
