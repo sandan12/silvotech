@@ -1,2 +1,0 @@
-import { cn } from '@/lib/utils'
-export function SectionHeading({eyebrow,title,lead,align='left',tone='light',className}:{eyebrow:string;title:string;lead?:string;align?:'left'|'center';tone?:'light'|'dark';className?:string}){return <div className={cn('section-heading',align==='center'&&'section-heading--center',tone==='dark'&&'section-heading--dark',className)}><p className="section-heading__eyebrow">{eyebrow}</p><h2>{title}</h2>{lead?<p className="section-heading__lead">{lead}</p>:null}</div>}
