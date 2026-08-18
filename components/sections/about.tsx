@@ -82,9 +82,9 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3, ease: [0.4, 0, 0.2, 1] }}
             >
-              <Link href={`/${lang}/kontakt`} className="group flex h-full flex-col justify-between rounded-lg bg-navy p-8 text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+              <Link href={`/${lang}/kontakt`} className="group flex h-full flex-col justify-between rounded-lg bg-orange p-8 text-white transition-all duration-300 hover:-translate-y-1 hover:bg-orange-dark hover:shadow-lg">
                 <div>
-                  <h3 className="text-lg font-semibold">{dict.aboutCtaQuote}</h3>
+                  <h3 className="text-lg font-semibold text-white">{dict.aboutCtaQuote}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-white/70">{dict.contactLead}</p>
                 </div>
                 <span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-white transition group-hover:gap-3">
