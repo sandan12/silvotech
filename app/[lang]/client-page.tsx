@@ -7,7 +7,6 @@ import Intro from '@/components/sections/intro';
 import OfferTiles from '@/components/sections/offer-tiles';
 import Featured from '@/components/sections/featured';
 import WhyUs from '@/components/sections/why-us';
-import DocsBand from '@/components/sections/docs-band';
 import CoopStrip from '@/components/sections/coop-strip';
 import CTABand from '@/components/sections/cta-band';
 import Footer from '@/components/sections/footer';
@@ -22,7 +21,6 @@ export default function ClientPage({ dict, lang }: { dict: Dictionary; lang: Loc
         <OfferTiles dict={dict} lang={lang} />
         <Featured dict={dict} lang={lang} />
         <WhyUs dict={dict} />
-        <DocsBand dict={dict} />
         <CoopStrip dict={dict} lang={lang} />
         <CTABand dict={dict} lang={lang} />
       </main>
