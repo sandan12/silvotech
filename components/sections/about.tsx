@@ -34,12 +34,12 @@ const pillarIcons = [ShieldCheck, Factory, Headphones];
 const appIcons = [Stethoscope, UtensilsCrossed, Cpu, Cog, Wind, Home];
 const docIcons = [FileCheck, FlaskConical, Ruler, PackageCheck];
 const appImages = [
-  '/hose-clear-coil-a.png',
-  '/hose-clear-coil-b.png',
-  '/hose-caliper.webp',
-  '/hose-black-industrial.png',
-  '/extrusion-head.webp',
-  '/winding-machine.webp',
+  '/apps/app-medical.jpg',
+  '/apps/app-food.jpg',
+  '/apps/app-hightech.jpg',
+  '/apps/app-transport.jpg',
+  '/apps/app-hvac.jpg',
+  '/apps/app-consumer.jpg',
 ];
 
 function Reveal({ children, className }: { children: React.ReactNode; className?: string }) {
