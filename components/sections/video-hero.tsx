@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion, useInView } from 'motion/react';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import type { Dictionary, Locale } from '@/lib/i18n';
 
 export default function VideoHero({
@@ -15,11 +15,19 @@ export default function VideoHero({
   videoSrc: { mp4: string; webm: string; poster: string };
 }) {
   const ref = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.playbackRate = 0.75;
+  }, []);
 
   return (
     <section ref={ref} className="relative flex min-h-[94vh] items-center overflow-hidden bg-navy pt-[7.5rem]">
       <video
+        ref={videoRef}
         autoPlay
         muted
         loop
