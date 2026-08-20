@@ -11,12 +11,20 @@ import CoopStrip from '@/components/sections/coop-strip';
 import CTABand from '@/components/sections/cta-band';
 import Footer from '@/components/sections/footer';
 
-export default function ClientPage({ dict, lang }: { dict: Dictionary; lang: Locale }) {
+export default function ClientPage({
+  dict,
+  lang,
+  heroVideoSrc,
+}: {
+  dict: Dictionary;
+  lang: Locale;
+  heroVideoSrc: { mp4: string; webm: string; poster: string };
+}) {
   return (
     <>
       <Header dict={dict} lang={lang} />
       <main>
-        <VideoHero dict={dict} lang={lang} />
+        <VideoHero dict={dict} lang={lang} videoSrc={heroVideoSrc} />
         <Intro dict={dict} lang={lang} />
         <OfferTiles dict={dict} lang={lang} />
         <Featured dict={dict} lang={lang} />

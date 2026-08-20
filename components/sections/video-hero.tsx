@@ -5,30 +5,44 @@ import { motion, useInView } from 'motion/react';
 import { useRef } from 'react';
 import type { Dictionary, Locale } from '@/lib/i18n';
 
-export default function VideoHero({ dict, lang }: { dict: Dictionary; lang: Locale }) {
-  const ref = useRef<HTMLDivElement>(null);
+export default function VideoHero({
+  dict,
+  lang,
+  videoSrc,
+}: {
+  dict: Dictionary;
+  lang: Locale;
+  videoSrc: { mp4: string; webm: string; poster: string };
+}) {
+  const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section ref={ref} className="overflow-hidden bg-white pt-[7.5rem]">
-      <div className="relative w-full bg-white">
-        <video
-          autoPlay
-          muted
-          playsInline
-          poster="/silvotech-transform-poster.jpg"
-          className="h-[36vh] w-full object-cover md:h-[54vh]"
-        >
-          <source src="/silvotech-transform.mp4" type="video/mp4" />
-        </video>
-      </div>
+    <section ref={ref} className="relative flex min-h-[94vh] items-center overflow-hidden bg-navy pt-[7.5rem]">
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        poster={videoSrc.poster}
+        disablePictureInPicture
+        controlsList="nodownload noremoteplayback noplaybackrate"
+        draggable={false}
+        onContextMenu={(e) => e.preventDefault()}
+        className="absolute inset-0 h-full w-full object-cover"
+      >
+        <source src={videoSrc.webm} type="video/webm" />
+        <source src={videoSrc.mp4} type="video/mp4" />
+      </video>
 
-      <div className="container-page pb-20 pt-14 text-center md:pt-20">
+      <div className="hero-overlay absolute inset-0" aria-hidden />
+
+      <div className="container-page relative z-10 py-24 text-center md:py-28">
         <motion.span
           initial={{ opacity: 0, y: 18 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
-          className="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-blue"
+          className="eyebrow eyebrow--light"
         >
           {dict.heroEyebrow}
         </motion.span>
@@ -37,7 +51,7 @@ export default function VideoHero({ dict, lang }: { dict: Dictionary; lang: Loca
           initial={{ opacity: 0, y: 22 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
-          className="mx-auto mt-5 max-w-[18ch] text-[clamp(2rem,4.8vw,3.4rem)] font-bold leading-[1.12] text-ink"
+          className="mx-auto mt-5 max-w-[20ch] text-[clamp(2rem,4.8vw,3.4rem)] font-bold leading-[1.12] text-white"
         >
           {dict.heroTitle}
         </motion.h1>
@@ -46,7 +60,7 @@ export default function VideoHero({ dict, lang }: { dict: Dictionary; lang: Loca
           initial={{ opacity: 0, y: 22 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
-          className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-body md:text-lg"
+          className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/80 md:text-lg"
         >
           {dict.heroLead}
         </motion.p>
@@ -60,7 +74,7 @@ export default function VideoHero({ dict, lang }: { dict: Dictionary; lang: Loca
           <Link href={`/${lang}/kontakt`} className="btn btn-cta">
             {dict.heroPrimaryCta}
           </Link>
-          <Link href={`/${lang}/oferta`} className="btn btn-outline">
+          <Link href={`/${lang}/oferta`} className="btn btn-outline-light">
             {dict.heroSecondaryCta}
           </Link>
         </motion.div>
