@@ -8,8 +8,8 @@ export const products = [
   {
     id: 'clear',
     code: 'SVT-SIL-CL',
-    image: '/silvotech-hose-clear-coil.jpg',
-    imageAlt: '/silvotech-hose-clear-roll.jpg',
+    image: '/hose-clear-coil-a.png',
+    imageAlt: '/hose-clear-coil-b.png',
     sizes: [...standardSizes],
     temperatureMin: -50,
     temperatureMax: 230,
@@ -18,7 +18,7 @@ export const products = [
   {
     id: 'technical',
     code: 'SVT-SIL-BK',
-    image: '/silvotech-hose-black.jpg',
+    image: '/hose-black-industrial.png',
     sizes: [],
     temperatureMin: -50,
     temperatureMax: 230,

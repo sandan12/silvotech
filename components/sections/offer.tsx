@@ -49,11 +49,11 @@ export default function Offer({ dict, lang }: { dict: Dictionary; lang: Locale }
           >
             <div className="relative h-80 overflow-hidden rounded-lg shadow-md">
               <Image
-                src="/silicone-hose-clear-loop.jpg"
+                src="/hose-clear-coil-a.png"
                 alt={dict.productionImage1Alt}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
+                className="object-contain bg-white p-4"
               />
             </div>
             <div className="absolute -bottom-6 left-6 flex items-center gap-3 rounded-lg bg-white px-5 py-3.5 shadow-md">
