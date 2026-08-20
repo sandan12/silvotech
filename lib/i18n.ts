@@ -119,7 +119,10 @@ const pl: Dictionary = {
   aboutApproachEyebrow: 'Podejście',
   aboutApproachTitle: 'Precyzyjnie i bez zbędnych słów',
   aboutApproachText: 'Każde zamówienie prowadzi opiekun, który kontroluje proces na każdym etapie — od przyjęcia zapytania po pakowanie i wysyłkę. Nie obiecujemy niemożliwego, ale zawsze dotrzymujemy terminów, szybko reagujemy i rozwiązujemy niestandardowe zadania. Produkcja jest zorganizowana tak, aby wykluczyć braki, opóźnienia i nieporozumienia.',
-
+  aboutTeamEyebrow: 'Zespół',
+  aboutTeamTitle: 'Zespół, który dowozi wynik',
+  aboutTeamText: 'Od przyjęcia zapytania po pakowanie i wysyłkę — każdy etap kontroluje dedykowany opiekun. Produkcja zorganizowana tak, by wykluczyć braki, opóźnienia i nieporozumienia.',
+  aboutTeamImageAlt: 'Zespół SilvoTech przy linii produkcyjnej — kontrola jakości na każdym etapie',
 
   // Offer (Oferta)
   offerEyebrow: 'Oferta',
@@ -392,6 +395,10 @@ const en: Dictionary = {
   aboutApproachEyebrow: 'Approach',
   aboutApproachTitle: 'Precise, without unnecessary words',
   aboutApproachText: 'Every order is managed by a dedicated coordinator who controls the process at every stage — from receiving the inquiry to packing and dispatch. We do not promise the impossible, but we always meet deadlines, respond quickly and solve non-standard tasks. Production is organized to eliminate defects, delays and misunderstandings.',
+  aboutTeamEyebrow: 'Team',
+  aboutTeamTitle: 'The team that delivers results',
+  aboutTeamText: 'From inquiry to packing and dispatch — every stage is overseen by a dedicated coordinator. Production is organized to eliminate defects, delays and misunderstandings.',
+  aboutTeamImageAlt: 'SilvoTech team at the production line — quality control at every stage',
 
   offerEyebrow: 'Offer',
   offerTitle: 'Silicone products for industry and the food sector',
@@ -648,6 +655,10 @@ const de: Dictionary = {
   aboutApproachEyebrow: 'Vorgehen',
   aboutApproachTitle: 'Präzise, ohne überflüssige Worte',
   aboutApproachText: 'Jede Bestellung wird von einem festen Ansprechpartner betreut, der den Prozess in jeder Phase kontrolliert — von der Anfrage bis zum Versand. Wir versprechen nichts Unmögliches, halten aber stets Termine ein, reagieren schnell und lösen ungewöhnliche Aufgaben. Die Produktion ist so organisiert, dass Ausschuss, Verzögerungen und Missverständnisse ausgeschlossen sind.',
+  aboutTeamEyebrow: 'Team',
+  aboutTeamTitle: 'Das Team, das Ergebnisse liefert',
+  aboutTeamText: 'Von der Anfrage bis zu Verpackung und Versand — jede Phase wird von einem festen Ansprechpartner begleitet. Die Produktion ist so organisiert, dass Ausschuss und Verzögerungen ausgeschlossen sind.',
+  aboutTeamImageAlt: 'SilvoTech-Team an der Produktionslinie — Qualitätskontrolle in jeder Phase',
 
   offerEyebrow: 'Angebot',
   offerTitle: 'Silikonprodukte für Industrie und Lebensmittelbranche',
@@ -904,6 +915,10 @@ const cz: Dictionary = {
   aboutApproachEyebrow: 'Přístup',
   aboutApproachTitle: 'Přesně, bez zbytečných slov',
   aboutApproachText: 'Každou zakázku vede pověřená osoba, která kontroluje proces v každé fázi — od přijetí poptávky po balení a expedici. Neslibujeme nemožné, ale vždy dodržujeme termíny, rychle reagujeme a řešíme nestandardní úkoly. Výroba je organizována tak, aby vyloučila zmetky, zpoždění a nedorozumění.',
+  aboutTeamEyebrow: 'Tým',
+  aboutTeamTitle: 'Tým, který přináší výsledky',
+  aboutTeamText: 'Od přijetí poptávky po balení a expedici — každou fázi řídí pověřený koordinátor. Výroba je organizována tak, aby vyloučila zmetky a zpoždění.',
+  aboutTeamImageAlt: 'Tým SilvoTech u výrobní linky — kontrola kvality v každé fázi',
 
   offerEyebrow: 'Nabídka',
   offerTitle: 'Silikonové výrobky pro průmysl a potravinářství',
@@ -1160,6 +1175,10 @@ const sk: Dictionary = {
   aboutApproachEyebrow: 'Prístup',
   aboutApproachTitle: 'Presne, bez zbytočných slov',
   aboutApproachText: 'Každú zákazku vedie poverená osoba, ktorá kontroluje proces v každej fáze — od prijatia dopytu po balenie a expedíciu. Nesľubujeme nemožné, ale vždy dodržiavame termíny, rýchlo reagujeme a riešime neštandardné úlohy. Výroba je organizovaná tak, aby vylúčila zmetky, oneskorenia a nedorozumenia.',
+  aboutTeamEyebrow: 'Tím',
+  aboutTeamTitle: 'Tím, ktorý prináša výsledky',
+  aboutTeamText: 'Od prijatia dopytu po balenie a expedíciu — každú fázu riadi poverený koordinátor. Výroba je organizovaná tak, aby vylúčila chyby a oneskorenia.',
+  aboutTeamImageAlt: 'Tím SilvoTech pri výrobnej linke — kontrola kvality v každej fáze',
 
   offerEyebrow: 'Ponuka',
   offerTitle: 'Silikónové výrobky pre priemysel a potravinárstvo',
