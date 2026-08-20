@@ -34,12 +34,12 @@ const pillarIcons = [ShieldCheck, Factory, Headphones];
 const appIcons = [Stethoscope, UtensilsCrossed, Cpu, Cog, Wind, Home];
 const docIcons = [FileCheck, FlaskConical, Ruler, PackageCheck];
 const appImages = [
-  '/silicone-detail.png',
-  '/clear-hose-coil-new.png',
-  '/silicone-coil.png',
-  '/black-hose-product.png',
-  '/hose-macro.png',
-  '/product-silicone.png',
+  '/hose-clear-coil-a.jpg',
+  '/hose-clear-coil-b.jpg',
+  '/extrusion-head.jpg',
+  '/hose-black-industrial.jpg',
+  '/hose-caliper.jpg',
+  '/winding-machine.jpg',
 ];
 
 function Reveal({ children, className }: { children: React.ReactNode; className?: string }) {
@@ -128,7 +128,7 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
               className="relative overflow-hidden rounded-2xl border border-line bg-band"
             >
               <Image
-                src="/silvotech-factory-line.jpg"
+                src="/extrusion-tweezers.jpg"
                 alt={dict.productionImage1Alt || 'SilvoTech production line'}
                 width={960}
                 height={640}
@@ -264,7 +264,7 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
             </div>
             <div className="order-1 overflow-hidden rounded-2xl border border-line bg-white shadow-sm lg:order-2">
               <Image
-                src="/production-line-new.png"
+                src="/winding-machine.jpg"
                 alt={dict.aboutTeamImageAlt}
                 width={960}
                 height={640}

@@ -13,14 +13,14 @@ export default function Featured({ dict, lang }: { dict: Dictionary; lang: Local
 
   const cards = [
     {
-      image: '/silvotech-product-1.webp',
+      image: '/hose-clear-coil-a.jpg',
       tag: dict.homeProd1Tag,
       title: dict.homeProd1Title,
       desc: dict.homeProd1Desc,
       specs: [dict.homeProd1Spec1, dict.homeProd1Spec2, dict.homeProd1Spec3],
     },
     {
-      image: '/silvotech-product-2.jpg',
+      image: '/hose-black-industrial.jpg',
       tag: dict.homeProd2Tag,
       title: dict.homeProd2Title,
       desc: dict.homeProd2Desc,
