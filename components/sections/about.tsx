@@ -35,11 +35,11 @@ const appIcons = [Stethoscope, UtensilsCrossed, Cpu, Cog, Wind, Home];
 const docIcons = [FileCheck, FlaskConical, Ruler, PackageCheck];
 const appImages = [
   '/hose-clear-coil-a.jpg',
-  '/hose-clear-coil-b.jpg',
-  '/extrusion-head.jpg',
+  '/clear-hose-coil-new.png',
+  '/silicone-coil.png',
   '/hose-black-industrial.jpg',
-  '/hose-caliper.jpg',
-  '/winding-machine.jpg',
+  '/silicone-detail.png',
+  '/product-silicone.png',
 ];
 
 function Reveal({ children, className }: { children: React.ReactNode; className?: string }) {
@@ -264,7 +264,7 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
             </div>
             <div className="order-1 overflow-hidden rounded-2xl border border-line bg-white shadow-sm lg:order-2">
               <Image
-                src="/winding-machine.jpg"
+                src="/production-line-new.png"
                 alt={dict.aboutTeamImageAlt}
                 width={960}
                 height={640}
