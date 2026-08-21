@@ -346,3 +346,197 @@ a {
   transform: none;
   transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
 }
+/* ---------- A4 print deck (/prezentacja) ---------- */
+.deck {
+  background: var(--band-deep);
+  padding: 2rem 1rem 4rem;
+}
+
+.deck-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  max-width: 210mm;
+  margin: 0 auto 1.5rem;
+  padding: 0.85rem 1.1rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.a4 {
+  position: relative;
+  width: 210mm;
+  min-height: 297mm;
+  max-height: 297mm;
+  overflow: hidden;
+  margin: 0 auto 1.5rem;
+  padding: 14mm 14mm 12mm;
+  background: #fff;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  font-size: 9.6pt;
+  line-height: 1.5;
+  color: var(--body);
+}
+
+.a4-cover {
+  padding: 0;
+}
+
+.a4 h1, .a4 h2, .a4 h3, .a4 h4 {
+  letter-spacing: -0.015em;
+}
+
+.deck-eyebrow {
+  font-size: 7.6pt;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.deck-h2 {
+  font-size: 19pt;
+  line-height: 1.12;
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.deck-h3 {
+  font-size: 10.5pt;
+  color: var(--ink);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.deck-rule {
+  height: 3px;
+  width: 46px;
+  background: var(--orange);
+  border-radius: 2px;
+}
+
+.deck-card {
+  border: 1px solid var(--line);
+  border-radius: 0.4rem;
+  padding: 5mm;
+  background: #fff;
+}
+
+.deck-card-band {
+  background: var(--band);
+}
+
+.deck-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  background: var(--navy);
+  color: #fff;
+  font-size: 8pt;
+  font-weight: 700;
+  flex: none;
+}
+
+.deck-size {
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 1.6mm 0;
+  text-align: center;
+  font-size: 8.2pt;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--band);
+}
+
+.deck-foot {
+  margin-top: auto;
+  padding-top: 4mm;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 7.6pt;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.deck-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 8.6pt;
+}
+
+.deck-table th {
+  text-align: left;
+  background: var(--navy);
+  color: #fff;
+  font-weight: 600;
+  padding: 2.6mm 3mm;
+  font-size: 8pt;
+  letter-spacing: 0.04em;
+}
+
+.deck-table td {
+  padding: 2.6mm 3mm;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+}
+
+@media screen and (max-width: 860px) {
+  .a4 {
+    transform-origin: top center;
+    transform: scale(0.46);
+    margin-bottom: -160mm;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  html, body {
+    background: #fff !important;
+  }
+
+  .deck {
+    background: #fff;
+    padding: 0;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .a4 {
+    box-shadow: none;
+    margin: 0;
+    transform: none;
+    break-after: page;
+    page-break-after: always;
+    break-inside: avoid;
+  }
+
+  .a4:last-child {
+    break-after: auto;
+    page-break-after: auto;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
