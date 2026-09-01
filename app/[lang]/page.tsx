@@ -1,20 +1,13 @@
-import { getDictionary, locales, type Locale } from '@/lib/i18n';
+import { getDictionary, type Locale } from '@/lib/i18n';
 import { getHeroVideoSources } from '@/lib/hero-video';
 import ClientPage from './client-page';
 
 /**
- * Cached for an hour, then regenerated. Keeps the page on the CDN instead of
- * running a function per visit, and refreshes the signed hero URLs long before
- * their six-day lifetime runs out.
- *
- * `revalidate` only takes effect on a dynamic segment once its params are
- * enumerated, hence generateStaticParams below.
+ * The only page here that is not fully static: it is regenerated hourly so the
+ * signed hero video URLs are refreshed long before their six-day lifetime ends.
+ * Locale params come from the layout's generateStaticParams.
  */
 export const revalidate = 3600;
-
-export function generateStaticParams() {
-  return locales.map((lang) => ({ lang }));
-}
 
 export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
