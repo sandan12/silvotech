@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { motion, useInView } from 'motion/react';
 import { useEffect, useRef } from 'react';
 import type { Dictionary, Locale } from '@/lib/i18n';
+import type { HeroVideoSources } from '@/lib/hero-video';
 
 export default function VideoHero({
   dict,
@@ -12,7 +13,7 @@ export default function VideoHero({
 }: {
   dict: Dictionary;
   lang: Locale;
-  videoSrc: { mp4: string; webm: string; poster: string };
+  videoSrc: HeroVideoSources | null;
 }) {
   const ref = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -22,26 +23,28 @@ export default function VideoHero({
     const video = videoRef.current;
     if (!video) return;
     video.playbackRate = 0.75;
-  }, []);
+  }, [videoSrc]);
 
   return (
     <section ref={ref} className="relative flex min-h-[94vh] items-center overflow-hidden bg-navy pt-[7.5rem]">
-      <video
-        ref={videoRef}
-        autoPlay
-        muted
-        loop
-        playsInline
-        poster={videoSrc.poster}
-        disablePictureInPicture
-        controlsList="nodownload noremoteplayback noplaybackrate"
-        draggable={false}
-        onContextMenu={(e) => e.preventDefault()}
-        className="absolute inset-0 h-full w-full object-cover"
-      >
-        <source src={videoSrc.webm} type="video/webm" />
-        <source src={videoSrc.mp4} type="video/mp4" />
-      </video>
+      {videoSrc && (
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={videoSrc.poster}
+          disablePictureInPicture
+          controlsList="nodownload noremoteplayback noplaybackrate"
+          draggable={false}
+          onContextMenu={(e) => e.preventDefault()}
+          className="absolute inset-0 h-full w-full object-cover"
+        >
+          <source src={videoSrc.webm} type="video/webm" />
+          <source src={videoSrc.mp4} type="video/mp4" />
+        </video>
+      )}
 
       <div className="hero-overlay absolute inset-0" aria-hidden />
 

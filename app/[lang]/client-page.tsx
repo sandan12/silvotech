@@ -1,6 +1,7 @@
 'use client';
 
 import type { Dictionary, Locale } from '@/lib/i18n';
+import type { HeroVideoSources } from '@/lib/hero-video';
 import Header from '@/components/sections/header';
 import VideoHero from '@/components/sections/video-hero';
 import Intro from '@/components/sections/intro';
@@ -18,7 +19,7 @@ export default function ClientPage({
 }: {
   dict: Dictionary;
   lang: Locale;
-  heroVideoSrc: { mp4: string; webm: string; poster: string };
+  heroVideoSrc: HeroVideoSources | null;
 }) {
   return (
     <>
