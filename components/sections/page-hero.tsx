@@ -1,8 +1,6 @@
 'use client';
 
-import { motion, useInView } from 'motion/react';
-import { useRef } from 'react';
-
+/** Compact page header for the inner pages — no giant empty navy block. */
 export default function PageHero({
   eyebrow,
   title,
@@ -12,37 +10,14 @@ export default function PageHero({
   title: string;
   lead?: string;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
-
   return (
-    <section ref={ref} className="band-navy pb-16 pt-44 text-center">
-      <div className="container-page relative">
-        <motion.span
-          initial={{ opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-          className="eyebrow eyebrow--light"
-        >
-          {eyebrow}
-        </motion.span>
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.08, ease: [0.4, 0, 0.2, 1] }}
-          className="mx-auto mt-5 max-w-[20ch] text-[clamp(1.9rem,4vw,3rem)] font-bold leading-[1.12] text-white"
-        >
-          {title}
-        </motion.h1>
+    <section className="bg-navy-deep pb-11 pt-[9.5rem]">
+      <div className="container-page">
+        <span className="eyebrow eyebrow--light">{eyebrow}</span>
+        <h1 className="mt-3 max-w-[30ch] text-white">{title}</h1>
+        <span className="mt-5 block h-[3px] w-14 bg-orange" aria-hidden />
         {lead && (
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.16, ease: [0.4, 0, 0.2, 1] }}
-            className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/75"
-          >
-            {lead}
-          </motion.p>
+          <p className="mt-5 max-w-[62ch] text-[0.97rem] leading-relaxed text-white/70">{lead}</p>
         )}
       </div>
     </section>

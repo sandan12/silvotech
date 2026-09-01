@@ -2,86 +2,101 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion, useInView } from 'motion/react';
-import { useRef } from 'react';
-import { Check } from 'lucide-react';
+import { Thermometer, Ruler, Package, Wrench } from 'lucide-react';
 import type { Dictionary, Locale } from '@/lib/i18n';
 
 export default function Featured({ dict, lang }: { dict: Dictionary; lang: Locale }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
-
-  const cards = [
+  const products = [
     {
       image: '/hose-clear-coil-a.png',
       tag: dict.homeProd1Tag,
       title: dict.homeProd1Title,
       desc: dict.homeProd1Desc,
-      specs: [dict.homeProd1Spec1, dict.homeProd1Spec2, dict.homeProd1Spec3],
+      rows: [
+        { icon: Ruler, label: dict.specsSizes, value: dict.homeProd1Spec1 },
+        { icon: Thermometer, label: dict.specsRange, value: dict.homeProd1Spec2 },
+        { icon: Package, label: dict.specsPackaging, value: dict.specsPackagingValue },
+        { icon: Wrench, label: dict.specsDocs, value: dict.specsDocsValue },
+      ],
     },
     {
       image: '/hose-black-industrial.png',
       tag: dict.homeProd2Tag,
       title: dict.homeProd2Title,
       desc: dict.homeProd2Desc,
-      specs: [dict.homeProd2Spec1, dict.homeProd2Spec2, dict.homeProd2Spec3],
+      rows: [
+        { icon: Ruler, label: dict.specsSizes, value: dict.homeProd2Spec1 },
+        { icon: Thermometer, label: dict.specsRange, value: dict.homeProd2Spec2 },
+        { icon: Package, label: dict.specsPackaging, value: dict.specsPackagingValue },
+        { icon: Wrench, label: dict.formProduct, value: dict.homeProd2Spec3 },
+      ],
     },
   ];
 
   return (
-    <section ref={ref} className="band section-padding">
+    <section className="band section-padding">
       <div className="container-page">
-        <div className="section-heading--center">
+        <div className="max-w-[46rem]">
           <span className="eyebrow">{dict.homeProdEyebrow}</span>
           <h2 className="section-title">{dict.homeProdTitle}</h2>
-          <p className="section-lead mx-auto">{dict.homeProdLead}</p>
+          <p className="section-lead">{dict.homeProdLead}</p>
         </div>
 
-        <div className="mt-12 grid gap-8 md:grid-cols-2">
-          {cards.map((card, i) => (
-            <motion.article
-              key={card.title}
-              initial={{ opacity: 0, y: 24 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.1 * i, ease: [0.4, 0, 0.2, 1] }}
-              className="card card-shadow hover-lift flex flex-col overflow-hidden"
+        <div className="mt-10 space-y-px">
+          {products.map((p, i) => (
+            <article
+              key={p.title}
+              className="grid items-stretch border border-line bg-white lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]"
             >
-              <div className="relative h-72 overflow-hidden bg-white p-6">
+              {/* Photo side alternates so the two rows do not read as copies. */}
+              <div
+                className={`relative min-h-[15rem] bg-white ${
+                  i % 2 === 1 ? 'lg:order-2' : ''
+                }`}
+              >
                 <Image
-                  src={card.image}
-                  alt={card.title}
+                  src={p.image}
+                  alt={p.title}
                   fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-contain"
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                  className="scale-[1.22] object-contain"
                 />
-                <span className="absolute left-8 top-8 rounded bg-white px-3 py-1 text-xs font-semibold uppercase tracking-wide text-navy shadow-sm">
-                  {card.tag}
+                <span className="absolute left-0 top-0 bg-navy px-3 py-1.5 font-mono text-[0.62rem] uppercase tracking-[0.14em] text-white">
+                  {p.tag}
                 </span>
               </div>
 
-              <div className="flex flex-1 flex-col p-8">
-                <h3 className="text-lg font-semibold text-ink">{card.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-body">{card.desc}</p>
-                <ul className="mt-5 space-y-2.5">
-                  {card.specs.map((s) => (
-                    <li key={s} className="flex items-start gap-2.5 text-sm font-medium text-ink">
-                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-band-deep text-navy">
-                        <Check size={12} strokeWidth={3} />
-                      </span>
-                      {s}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-7 flex flex-wrap items-center gap-3 border-t border-line pt-6">
-                  <Link href={`/${lang}/kontakt`} className="btn btn-cta !px-5 !py-2.5 text-sm">
+              <div className="flex flex-col justify-center p-6 md:p-10">
+                <h3 className="font-display text-[1.35rem] font-bold uppercase leading-tight text-ink md:text-[1.6rem]">
+                  {p.title}
+                </h3>
+                <p className="mt-3 max-w-[54ch] text-[0.92rem] leading-relaxed text-body">{p.desc}</p>
+
+                <dl className="mt-6 border-t border-line">
+                  {p.rows.map((r) => {
+                    const Icon = r.icon;
+                    return (
+                      <div
+                        key={r.label}
+                        className="flex items-baseline gap-3 border-b border-line py-2.5"
+                      >
+                        <Icon size={15} className="shrink-0 translate-y-[3px] text-blue" aria-hidden />
+                        <dt className="w-[9rem] shrink-0 font-mono text-[0.64rem] uppercase tracking-[0.1em] text-muted">
+                          {r.label}
+                        </dt>
+                        <dd className="text-[0.9rem] font-medium text-ink">{r.value}</dd>
+                      </div>
+                    );
+                  })}
+                </dl>
+
+                <div className="mt-7">
+                  <Link href={`/${lang}/kontakt`} className="btn btn-cta">
                     {dict.homeProdCta1}
-                  </Link>
-                  <Link href={`/${lang}/oferta`} className="btn btn-outline !px-5 !py-2.5 text-sm">
-                    {dict.homeProdCta2}
                   </Link>
                 </div>
               </div>
-            </motion.article>
+            </article>
           ))}
         </div>
       </div>
