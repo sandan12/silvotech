@@ -1,10 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import { motion, useInView } from 'motion/react';
+import { motion } from 'motion/react';
 import { useEffect, useRef } from 'react';
 import type { Dictionary, Locale } from '@/lib/i18n';
 import type { HeroVideoSources } from '@/lib/hero-video';
+
+const EASE = [0.4, 0, 0.2, 1] as const;
 
 export default function VideoHero({
   dict,
@@ -15,9 +17,7 @@ export default function VideoHero({
   lang: Locale;
   videoSrc: HeroVideoSources | null;
 }) {
-  const ref = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
 
   useEffect(() => {
     const video = videoRef.current;
@@ -25,71 +25,79 @@ export default function VideoHero({
     video.playbackRate = 0.75;
   }, [videoSrc]);
 
+  const facts = [1, 2, 3, 4].map((i) => ({
+    value: dict[`heroFact${i}Value`],
+    label: dict[`heroFact${i}Label`],
+  }));
+
   return (
-    <section ref={ref} className="relative flex min-h-[94vh] items-center overflow-hidden bg-navy pt-[7.5rem]">
-      {videoSrc && (
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster={videoSrc.poster}
-          disablePictureInPicture
-          controlsList="nodownload noremoteplayback noplaybackrate"
-          draggable={false}
-          onContextMenu={(e) => e.preventDefault()}
-          className="absolute inset-0 h-full w-full object-cover"
-        >
-          <source src={videoSrc.webm} type="video/webm" />
-          <source src={videoSrc.mp4} type="video/mp4" />
-        </video>
-      )}
+    <>
+      <section className="relative flex min-h-[38rem] items-end overflow-hidden bg-navy-deep pt-[7.5rem] lg:min-h-[78vh]">
+        {videoSrc && (
+          <video
+            ref={videoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={videoSrc.poster}
+            disablePictureInPicture
+            controlsList="nodownload noremoteplayback noplaybackrate"
+            draggable={false}
+            onContextMenu={(e) => e.preventDefault()}
+            className="absolute inset-0 h-full w-full object-cover"
+          >
+            <source src={videoSrc.webm} type="video/webm" />
+            <source src={videoSrc.mp4} type="video/mp4" />
+          </video>
+        )}
 
-      <div className="hero-overlay absolute inset-0" aria-hidden />
+        <div className="hero-overlay" aria-hidden />
 
-      <div className="container-page relative z-10 py-24 text-center md:py-28">
-        <motion.span
-          initial={{ opacity: 0, y: 18 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
-          className="eyebrow eyebrow--light"
-        >
-          {dict.heroEyebrow}
-        </motion.span>
+        <div className="container-page relative z-10 w-full pb-14 pt-10 md:pb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, ease: EASE }}
+            className="max-w-[46rem]"
+          >
+            <span className="eyebrow eyebrow--light">{dict.heroEyebrow}</span>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 22 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
-          className="mx-auto mt-5 max-w-[20ch] text-[clamp(2rem,4.8vw,3.4rem)] font-bold leading-[1.12] text-white"
-        >
-          {dict.heroTitle}
-        </motion.h1>
+            <h1 className="mt-4 text-white">{dict.heroTitle}</h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 22 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
-          className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/80 md:text-lg"
-        >
-          {dict.heroLead}
-        </motion.p>
+            <span className="mt-6 block h-[3px] w-14 bg-orange" aria-hidden />
 
-        <motion.div
-          initial={{ opacity: 0, y: 22 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.3, ease: [0.4, 0, 0.2, 1] }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-4"
-        >
-          <Link href={`/${lang}/kontakt`} className="btn btn-cta">
-            {dict.heroPrimaryCta}
-          </Link>
-          <Link href={`/${lang}/oferta`} className="btn btn-outline-light">
-            {dict.heroSecondaryCta}
-          </Link>
-        </motion.div>
-      </div>
-    </section>
+            <p className="mt-6 max-w-[52ch] text-[1.0625rem] leading-relaxed text-white/75">
+              {dict.heroLead}
+            </p>
+
+            <div className="mt-9 flex flex-wrap items-center gap-3">
+              <Link href={`/${lang}/kontakt`} className="btn btn-cta">
+                {dict.heroPrimaryCta}
+              </Link>
+              <Link href={`/${lang}/oferta`} className="btn btn-outline-light">
+                {dict.heroSecondaryCta}
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Key numbers, pulled out of the hero so the video keeps its full frame. */}
+      <section className="border-b border-white/10 bg-navy-deep">
+        <div className="container-page grid grid-cols-2 divide-x divide-white/10 md:grid-cols-4">
+          {facts.map((f, i) => (
+            <div key={f.label} className={`px-4 py-6 md:px-6 ${i > 1 ? 'border-t border-white/10 md:border-t-0' : ''}`}>
+              <p className="font-display text-[1.6rem] font-bold leading-none text-white md:text-[1.9rem]">
+                {f.value}
+              </p>
+              <p className="mt-2 font-mono text-[0.64rem] uppercase leading-tight tracking-[0.12em] text-white/45">
+                {f.label}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }

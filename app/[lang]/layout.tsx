@@ -1,12 +1,30 @@
 import type { Metadata } from 'next';
-import { Poppins } from 'next/font/google';
+import { Barlow, Barlow_Condensed, IBM_Plex_Mono } from 'next/font/google';
 import { locales } from '@/lib/i18n';
 import '../globals.css';
 
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
-  variable: '--font-poppins',
+/** Body and UI. DIN-adjacent grotesque — reads technical, not startup-friendly. */
+const barlow = Barlow({
+  subsets: ['latin', 'latin-ext'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-barlow',
+  display: 'swap',
+});
+
+/** Headings, set uppercase. Narrow enough to carry long Polish/German compounds. */
+const barlowCondensed = Barlow_Condensed({
+  subsets: ['latin', 'latin-ext'],
+  weight: ['600', '700'],
+  variable: '--font-barlow-condensed',
+  display: 'swap',
+});
+
+/** Eyebrows, measurements, part codes. */
+const plexMono = IBM_Plex_Mono({
+  subsets: ['latin', 'latin-ext'],
+  weight: ['500'],
+  variable: '--font-plex-mono',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -37,7 +55,10 @@ export default async function RootLayout({
 }) {
   const { lang } = await params;
   return (
-    <html lang={lang} className={poppins.variable}>
+    <html
+      lang={lang}
+      className={`${barlow.variable} ${barlowCondensed.variable} ${plexMono.variable}`}
+    >
       <body>{children}</body>
     </html>
   );

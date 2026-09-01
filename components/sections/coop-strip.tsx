@@ -1,61 +1,69 @@
 'use client';
 
 import Link from 'next/link';
-import { motion, useInView } from 'motion/react';
-import { useRef } from 'react';
-import { UtensilsCrossed, Factory, Truck } from 'lucide-react';
+import Image from 'next/image';
 import type { Dictionary, Locale } from '@/lib/i18n';
 
-const icons = [UtensilsCrossed, Factory, Truck];
+/** Their own six application photos, matched to the six application texts. */
+const PHOTOS = [
+  '/apps/app-medical.jpg',
+  '/apps/app-food.jpg',
+  '/apps/app-hightech.jpg',
+  '/apps/app-transport.jpg',
+  '/apps/app-hvac.jpg',
+  '/apps/app-consumer.jpg',
+];
 
 export default function CoopStrip({ dict, lang }: { dict: Dictionary; lang: Locale }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
-
-  const items = [
-    { title: dict.industry1Title, text: dict.industry1Text, points: [dict.industry1P1, dict.industry1P2, dict.industry1P3] },
-    { title: dict.industry2Title, text: dict.industry2Text, points: [dict.industry2P1, dict.industry2P2, dict.industry2P3] },
-    { title: dict.industry3Title, text: dict.industry3Text, points: [dict.industry3P1, dict.industry3P2, dict.industry3P3] },
-  ];
+  const apps = PHOTOS.map((img, i) => ({
+    img,
+    title: dict[`aboutApp${i + 1}Title`],
+    text: dict[`aboutApp${i + 1}Text`],
+  }));
 
   return (
-    <section ref={ref} className="band section-padding">
+    <section className="section-padding">
       <div className="container-page">
-        <div className="section-heading--center">
-          <span className="eyebrow">{dict.industriesEyebrow}</span>
-          <h2 className="section-title">{dict.industriesTitle}</h2>
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <div className="max-w-[46rem]">
+            <span className="eyebrow">{dict.aboutAppsEyebrow}</span>
+            <h2 className="section-title">{dict.aboutAppsTitle}</h2>
+          </div>
+          <Link
+            href={`/${lang}/wspolpraca`}
+            className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-navy underline decoration-line underline-offset-4 transition-colors hover:text-orange"
+          >
+            {dict.navCoop} →
+          </Link>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {items.map((item, i) => {
-            const Icon = icons[i];
-            return (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 22 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.08 * i, ease: [0.4, 0, 0.2, 1] }}
-                className="card hover-lift p-8"
-              >
-                <span className="flex h-13 w-13 items-center justify-center rounded-lg bg-navy text-white">
-                  <Icon size={22} />
-                </span>
-                <h3 className="mt-6 text-base font-semibold text-ink">{item.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-body">{item.text}</p>
-                <ul className="mt-5 space-y-2 border-t border-line pt-5">
-                  {item.points.map((p) => (
-                    <li key={p} className="flex items-center gap-2.5 text-sm font-medium text-ink">
-                      <span className="h-1.5 w-1.5 rounded-full bg-blue" />
-                      {p}
-                    </li>
-                  ))}
-                </ul>
-                <Link href={`/${lang}/wspolpraca`} className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-navy transition hover:gap-3">
-                  {dict.navCoop} <span aria-hidden>→</span>
-                </Link>
-              </motion.div>
-            );
-          })}
+        <div className="mt-9 grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-3">
+          {apps.map((a) => (
+            <article key={a.title} className="group relative overflow-hidden bg-ink">
+              <div className="relative aspect-[3/2]">
+                <Image
+                  src={a.img}
+                  alt={a.title}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover opacity-70 transition-all duration-500 group-hover:scale-[1.04] group-hover:opacity-45"
+                />
+                <div
+                  className="absolute inset-0 bg-gradient-to-t from-ink via-ink/45 to-transparent"
+                  aria-hidden
+                />
+              </div>
+
+              <div className="absolute inset-x-0 bottom-0 p-5">
+                <h3 className="font-display text-[1.05rem] font-bold uppercase leading-tight tracking-[0.01em] text-white">
+                  {a.title}
+                </h3>
+                <p className="mt-2 max-h-0 overflow-hidden text-[0.83rem] leading-relaxed text-white/0 transition-all duration-500 group-hover:max-h-32 group-hover:text-white/75">
+                  {a.text}
+                </p>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
