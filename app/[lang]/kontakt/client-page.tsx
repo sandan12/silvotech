@@ -12,7 +12,7 @@ export default function ContactPage({ dict, lang }: { dict: Dictionary; lang: Lo
       <Header dict={dict} lang={lang} />
       <main>
         <PageHero eyebrow={dict.contactEyebrow} title={dict.contactTitle} lead={dict.contactLead} />
-        <Contact dict={dict} />
+        <Contact dict={dict} lang={lang} />
       </main>
       <Footer dict={dict} lang={lang} />
     </>

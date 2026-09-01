@@ -107,8 +107,7 @@ a {
   line-height: 1;
   text-decoration: none;
   cursor: pointer;
-  transition: all 0.25s var(--ease);
-}
+  transition: all 0.25s var(--ease);}
 
 .btn-cta {
   background: var(--orange);
@@ -315,6 +314,18 @@ a {
 .field textarea {
   min-height: 8rem;
   resize: vertical;
+}
+
+.field input[aria-invalid='true'],
+.field select[aria-invalid='true'],
+.field textarea[aria-invalid='true'] {
+  border-color: var(--orange);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
 }
 
 /* ---------- Video hero ---------- */
