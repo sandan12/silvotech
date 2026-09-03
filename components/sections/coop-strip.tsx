@@ -55,7 +55,7 @@ export default function CoopStrip({ dict, lang }: { dict: Dictionary; lang: Loca
               </div>
 
               <div className="absolute inset-x-0 bottom-0 p-5">
-                <h3 className="font-display text-[1.05rem] font-bold uppercase leading-tight tracking-[0.01em] text-white">
+                <h3 className="font-display text-[1.05rem] font-semibold leading-snug text-white">
                   {a.title}
                 </h3>
                 <p className="mt-2 max-h-0 overflow-hidden text-[0.83rem] leading-relaxed text-white/0 transition-all duration-500 group-hover:max-h-32 group-hover:text-white/75">

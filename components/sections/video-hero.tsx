@@ -65,7 +65,7 @@ export default function VideoHero({
 
             <h1 className="mt-4 text-white">{dict.heroTitle}</h1>
 
-            <span className="mt-6 block h-[3px] w-14 bg-orange" aria-hidden />
+            <span className="mt-6 block h-[3px] w-14 rounded-full bg-orange" aria-hidden />
 
             <p className="mt-6 max-w-[52ch] text-[1.0625rem] leading-relaxed text-white/75">
               {dict.heroLead}

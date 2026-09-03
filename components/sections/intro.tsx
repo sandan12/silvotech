@@ -31,7 +31,7 @@ export default function Intro({ dict, lang }: { dict: Dictionary; lang: Locale }
                   <span className="font-mono text-[0.64rem] tracking-[0.14em] text-orange">
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <dt className="mt-1.5 font-display text-[1rem] font-bold uppercase tracking-[0.01em] text-white">
+                  <dt className="mt-1.5 font-display text-[1rem] font-semibold leading-snug text-white">
                     {b.title}
                   </dt>
                   <dd className="mt-1.5 text-[0.85rem] leading-relaxed text-white/60">{b.text}</dd>

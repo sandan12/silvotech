@@ -4,11 +4,17 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion, useInView } from 'motion/react';
 import { useRef } from 'react';
-import { Package, Layers, CircleDot, Puzzle, Check } from 'lucide-react';
+import { Check } from 'lucide-react';
 import type { Dictionary, Locale } from '@/lib/i18n';
 import { standardSizes, products } from '@/lib/products';
 
-const catIcons = [Package, Layers, CircleDot, Puzzle];
+/** Real product photography per category, so the offer shows the full range. */
+const catImages = [
+  '/hose-clear-coil-a.png',
+  '/product-plates.webp',
+  '/product-gaskets.webp',
+  '/product-custom.webp',
+];
 
 export default function Offer({ dict, lang }: { dict: Dictionary; lang: Locale }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -87,33 +93,40 @@ export default function Offer({ dict, lang }: { dict: Dictionary; lang: Locale }
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {cats.map((cat, i) => {
-              const Icon = catIcons[i];
               return (
                 <motion.div
                   key={cat.title}
                   initial={{ opacity: 0, y: 22 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: 0.06 * i, ease: [0.4, 0, 0.2, 1] }}
-                  className="card hover-lift flex flex-col p-7"
+                  className="card hover-lift flex flex-col overflow-hidden"
                 >
-                  <span className="flex h-13 w-13 items-center justify-center rounded-lg bg-navy text-white">
-                    <Icon size={22} />
-                  </span>
-                  <h3 className="mt-6 text-base font-semibold text-ink">{cat.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-body">{cat.desc}</p>
-                  <ul className="mt-5 space-y-2.5 border-t border-line pt-5">
-                    {cat.points.map((p) => (
-                      <li key={p} className="flex items-start gap-2.5 text-sm font-medium text-ink">
-                        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-band-deep text-navy">
-                          <Check size={12} strokeWidth={3} />
-                        </span>
-                        {p}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link href={`/${lang}/kontakt`} className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-navy transition hover:gap-3">
-                    {dict.cta} <span aria-hidden>→</span>
-                  </Link>
+                  <div className="relative aspect-[4/3] overflow-hidden bg-band">
+                    <Image
+                      src={catImages[i]}
+                      alt={cat.title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      className="object-cover transition-transform duration-500 hover:scale-[1.04]"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col p-6">
+                    <h3 className="text-base font-semibold text-ink">{cat.title}</h3>
+                    <p className="mt-2.5 text-sm leading-relaxed text-body">{cat.desc}</p>
+                    <ul className="mt-5 space-y-2.5 border-t border-line pt-5">
+                      {cat.points.map((p) => (
+                        <li key={p} className="flex items-start gap-2.5 text-sm font-medium text-ink">
+                          <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-band-deep text-navy">
+                            <Check size={12} strokeWidth={3} />
+                          </span>
+                          {p}
+                        </li>
+                      ))}
+                    </ul>
+                    <Link href={`/${lang}/kontakt`} className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-navy transition hover:gap-3">
+                      {dict.cta} <span aria-hidden>→</span>
+                    </Link>
+                  </div>
                 </motion.div>
               );
             })}

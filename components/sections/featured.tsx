@@ -42,11 +42,11 @@ export default function Featured({ dict, lang }: { dict: Dictionary; lang: Local
           <p className="section-lead">{dict.homeProdLead}</p>
         </div>
 
-        <div className="mt-10 space-y-px">
+        <div className="mt-10 space-y-5">
           {products.map((p, i) => (
             <article
               key={p.title}
-              className="grid items-stretch border border-line bg-white lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]"
+              className="card grid items-stretch overflow-hidden lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]"
             >
               {/* Photo side alternates so the two rows do not read as copies. */}
               <div
@@ -61,13 +61,13 @@ export default function Featured({ dict, lang }: { dict: Dictionary; lang: Local
                   sizes="(max-width: 1024px) 100vw, 45vw"
                   className="scale-[1.22] object-contain"
                 />
-                <span className="absolute left-0 top-0 bg-navy px-3 py-1.5 font-mono text-[0.62rem] uppercase tracking-[0.14em] text-white">
+                <span className="absolute left-4 top-4 rounded-md bg-navy px-3 py-1.5 font-mono text-[0.62rem] uppercase tracking-[0.12em] text-white">
                   {p.tag}
                 </span>
               </div>
 
               <div className="flex flex-col justify-center p-6 md:p-10">
-                <h3 className="font-display text-[1.35rem] font-bold uppercase leading-tight text-ink md:text-[1.6rem]">
+                <h3 className="font-display text-[1.35rem] font-semibold leading-snug text-ink md:text-[1.55rem]">
                   {p.title}
                 </h3>
                 <p className="mt-3 max-w-[54ch] text-[0.92rem] leading-relaxed text-body">{p.desc}</p>
