@@ -23,7 +23,6 @@ export default function OfferTiles({ dict, lang }: { dict: Dictionary; lang: Loc
     <section className="section-padding">
       <div className="container-page">
         <div className="max-w-[46rem]">
-          <span className="eyebrow">{dict.offerEyebrow}</span>
           <h2 className="section-title">{dict.offerCatsTitle}</h2>
         </div>
 

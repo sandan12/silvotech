@@ -79,7 +79,6 @@ export default function Offer({ dict, lang }: { dict: Dictionary; lang: Locale }
             transition={{ duration: 0.7, delay: 0.08, ease: [0.4, 0, 0.2, 1] }}
             className="order-1 lg:order-2"
           >
-            <span className="eyebrow">{dict.offerTechEyebrow}</span>
             <h2 className="mt-4 max-w-[22ch] text-[clamp(1.6rem,3vw,2.4rem)] font-bold text-ink">{dict.offerTechTitle}</h2>
             <p className="mt-5 leading-relaxed text-body">{dict.offerTechText1}</p>
             <p className="mt-4 leading-relaxed text-body">{dict.offerTechText2}</p>
@@ -135,7 +134,6 @@ export default function Offer({ dict, lang }: { dict: Dictionary; lang: Locale }
 
         <div className="mt-24">
           <div className="max-w-[46rem]">
-            <span className="eyebrow">{dict.specsEyebrow}</span>
             <h2 className="section-title">{dict.specsTitle}</h2>
             <p className="section-lead">{dict.specsLead}</p>
           </div>

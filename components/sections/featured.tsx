@@ -37,7 +37,6 @@ export default function Featured({ dict, lang }: { dict: Dictionary; lang: Local
     <section className="band section-padding">
       <div className="container-page">
         <div className="max-w-[46rem]">
-          <span className="eyebrow">{dict.homeProdEyebrow}</span>
           <h2 className="section-title">{dict.homeProdTitle}</h2>
           <p className="section-lead">{dict.homeProdLead}</p>
         </div>

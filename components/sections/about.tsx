@@ -147,7 +147,6 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
 
           <div className="mt-16">
             <div className="max-w-[46rem]">
-              <span className="eyebrow">{dict.aboutPillarsEyebrow}</span>
               <h2 className="section-title">{dict.aboutPillarsTitle}</h2>
             </div>
 
@@ -258,7 +257,6 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
         <div className="container-page">
           <Reveal className="grid gap-10 lg:grid-cols-2 lg:items-center">
             <div className="order-2 lg:order-1">
-              <span className="eyebrow">{dict.aboutTeamEyebrow}</span>
               <h2 className="section-title">{dict.aboutTeamTitle}</h2>
               <p className="section-lead">{dict.aboutTeamText}</p>
               <p className="section-lead mt-4">{dict.aboutApproachText}</p>
@@ -280,7 +278,6 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
       <section className="band band-navy section-padding">
         <div className="container-page">
           <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="eyebrow eyebrow--light">{dict.aboutGuaranteeEyebrow}</span>
             <h2 className="section-title text-white">{dict.aboutGuaranteeTitle}</h2>
             <p className="section-lead mx-auto text-white/70">{dict.aboutGuaranteeText}</p>
           </Reveal>
@@ -312,7 +309,6 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
         <div className="container-page">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <Reveal>
-              <span className="eyebrow">{dict.aboutGeoEyebrow}</span>
               <h2 className="section-title">{dict.aboutGeoTitle}</h2>
               <p className="section-lead">{dict.aboutGeoText}</p>
 
@@ -343,7 +339,6 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
       <section className="band section-padding">
         <div className="container-page">
           <Reveal className="max-w-[46rem]">
-            <span className="eyebrow">{dict.aboutAppsEyebrow}</span>
             <h2 className="section-title">{dict.aboutAppsTitle}</h2>
           </Reveal>
 
@@ -379,7 +374,6 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
       <section className="section-padding">
         <div className="container-page">
           <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="eyebrow">{dict.aboutApproachEyebrow}</span>
             <h2 className="section-title">{dict.aboutApproachTitle}</h2>
             <p className="section-lead">{dict.aboutApproachText}</p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
