@@ -13,17 +13,35 @@ export default function Intro({ dict, lang }: { dict: Dictionary; lang: Locale }
     text: dict[`productionBlock${i}Text`],
   }));
 
+  // The four key numbers used to sit in a strip under the hero. They belong to
+  // the production story, so they live here now as a quiet row of figures.
+  const facts = [1, 2, 3, 4].map((i) => ({
+    value: dict[`heroFact${i}Value`],
+    label: dict[`heroFact${i}Label`],
+  }));
+
   return (
     <section className="band-navy section-padding">
       <div className="container-page">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
           <div>
-            <span className="eyebrow eyebrow--light">{dict.productionEyebrow}</span>
             <h2 className="section-title text-white">{dict.productionTitle}</h2>
             <span className="mt-5 block h-[3px] w-14 bg-orange" aria-hidden />
             <p className="mt-6 max-w-[56ch] text-[0.97rem] leading-relaxed text-white/70">
               {dict.productionLead}
             </p>
+
+            <dl className="mt-8 grid grid-cols-2 gap-x-8 gap-y-5 border-t border-white/15 pt-6 sm:grid-cols-4">
+              {facts.map((f) => (
+                <div key={f.label}>
+                  <dt className="sr-only">{f.label}</dt>
+                  <dd className="font-display text-[1.4rem] font-semibold leading-none text-white">
+                    {f.value}
+                  </dd>
+                  <dd className="mt-1.5 text-[0.72rem] leading-tight text-white/50">{f.label}</dd>
+                </div>
+              ))}
+            </dl>
 
             <dl className="mt-9 grid gap-x-8 gap-y-6 sm:grid-cols-2">
               {blocks.map((b, i) => (

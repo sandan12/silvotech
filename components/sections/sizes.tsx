@@ -15,7 +15,6 @@ export default function Sizes({ dict, lang }: { dict: Dictionary; lang: Locale }
       <div className="container-page">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-14">
           <div>
-            <span className="eyebrow">{dict.specsEyebrow}</span>
             <h2 className="section-title">{dict.specsTitle}</h2>
             <p className="section-lead">{dict.specsLead}</p>
 

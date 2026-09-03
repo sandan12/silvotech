@@ -13,7 +13,6 @@ export default function PageHero({
   return (
     <section className="bg-navy-deep pb-11 pt-[9.5rem]">
       <div className="container-page">
-        <span className="eyebrow eyebrow--light">{eyebrow}</span>
         <h1 className="mt-3 max-w-[30ch] text-white">{title}</h1>
         <span className="mt-5 block h-[3px] w-14 bg-orange" aria-hidden />
         {lead && (

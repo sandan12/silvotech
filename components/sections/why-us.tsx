@@ -23,7 +23,6 @@ export default function WhyUs({ dict, lang }: { dict: Dictionary; lang: Locale }
       <div className="container-page">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-16">
           <div>
-            <span className="eyebrow">{dict.qualityEyebrow}</span>
             <h2 className="section-title">{dict.qualityTitle}</h2>
             <p className="section-lead">{dict.qualityLead}</p>
 
