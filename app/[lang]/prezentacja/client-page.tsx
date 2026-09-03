@@ -6,12 +6,12 @@ import { COMPANY } from '@/lib/company';
 import { standardSizes } from '@/lib/products';
 
 const IMG = {
-  production: '/extrusion-head.webp',
+  production: '/photo-plates-wide.webp',
   caliper: '/hose-caliper.webp',
   coil: '/hose-clear-coil-a.png',
-  winding: '/winding-machine.webp',
+  winding: '/photo-gaskets-wide.webp',
   black: '/hose-black-industrial.png',
-  drum: '/production-drum.jpg',
+  drum: '/photo-sheet-roll.webp',
 };
 
 const UI = {
