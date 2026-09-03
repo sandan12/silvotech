@@ -97,8 +97,8 @@ h1 {
 }
 
 .hero-centred h1 {
-  font-size: clamp(2.4rem, 5.6vw, 4.25rem);
-  letter-spacing: -0.025em;
+  font-size: clamp(2.9rem, 7vw, 5.75rem);
+  letter-spacing: -0.03em;
 }
 
 .hero-centred p {

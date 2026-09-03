@@ -60,7 +60,7 @@ export default function Intro({ dict, lang }: { dict: Dictionary; lang: Locale }
           <div className="grid grid-cols-2 gap-3">
             <div className="relative col-span-2 aspect-[16/9] overflow-hidden">
               <Image
-                src="/photo-plates-wide.webp"
+                src="/extrusion-head.webp"
                 alt={dict.productionImage1Alt}
                 fill
                 sizes="(max-width: 1024px) 100vw, 45vw"
@@ -69,7 +69,7 @@ export default function Intro({ dict, lang }: { dict: Dictionary; lang: Locale }
             </div>
             <div className="relative aspect-[4/3] overflow-hidden">
               <Image
-                src="/photo-gaskets-wide.webp"
+                src="/winding-machine.webp"
                 alt={dict.productionImage2Alt}
                 fill
                 sizes="(max-width: 1024px) 50vw, 22vw"
@@ -78,7 +78,7 @@ export default function Intro({ dict, lang }: { dict: Dictionary; lang: Locale }
             </div>
             <div className="relative aspect-[4/3] overflow-hidden">
               <Image
-                src="/photo-sheet-roll.webp"
+                src="/production-drum.jpg"
                 alt={dict.productionImage2Alt}
                 fill
                 sizes="(max-width: 1024px) 50vw, 22vw"

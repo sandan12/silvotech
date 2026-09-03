@@ -24,7 +24,6 @@ import {
   FlaskConical,
   Ruler,
   PackageCheck,
-  Play,
 } from 'lucide-react';
 import type { Dictionary, Locale } from '@/lib/i18n';
 
@@ -135,13 +134,6 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
                 className="h-[320px] w-full object-cover lg:h-[420px]"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/40 via-transparent to-transparent" aria-hidden />
-              <div className="absolute bottom-4 left-4 flex items-center gap-3 rounded-full bg-white/95 px-4 py-2.5 shadow-sm backdrop-blur">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-navy text-white">
-                  <Play size={16} className="ml-0.5" />
-                </span>
-                <span className="text-sm font-semibold text-ink">SilvoTech — EU production</span>
-              </div>
             </motion.div>
           </div>
 
@@ -208,14 +200,21 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
               >
                 <Link
                   href={`/${lang}/kontakt`}
-                  className="group flex h-full flex-col justify-between rounded-xl bg-orange p-8 text-navy transition-all duration-300 hover:-translate-y-1 hover:bg-orange-dark hover:shadow-lg"
+                  className="group relative flex h-full flex-col justify-between overflow-hidden rounded-xl bg-navy p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
                 >
+                  <span className="absolute inset-x-0 top-0 h-1 bg-orange" aria-hidden />
                   <div>
-                    <h3 className="text-lg font-semibold text-navy">{dict.aboutCtaQuote}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-navy/85">{dict.contactLead}</p>
+                    <span className="icon-tile icon-tile--on-dark">
+                      <FileCheck size={20} />
+                    </span>
+                    <h3 className="mt-5 text-lg font-semibold text-white">{dict.aboutCtaQuote}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-white/70">{dict.contactLead}</p>
                   </div>
-                  <span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-navy transition group-hover:gap-3">
-                    {dict.cta} <span aria-hidden>→</span>
+                  <span className="btn btn-cta mt-8 self-start">
+                    {dict.cta}
+                    <span className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden>
+                      →
+                    </span>
                   </span>
                 </Link>
               </motion.div>
@@ -255,20 +254,14 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
       {/* Team — adapted from itekcorp "Команда, которая делает результат" */}
       <section className="section-padding bg-band">
         <div className="container-page">
-          <Reveal className="grid gap-10 lg:grid-cols-2 lg:items-center">
-            <div className="order-2 lg:order-1">
-              <h2 className="section-title">{dict.aboutTeamTitle}</h2>
-              <p className="section-lead">{dict.aboutTeamText}</p>
-              <p className="section-lead mt-4">{dict.aboutApproachText}</p>
-            </div>
-            <div className="order-1 overflow-hidden rounded-2xl border border-line bg-white shadow-sm lg:order-2">
-              <Image
-                src="/photo-gaskets-wide.webp"
-                alt={dict.aboutTeamImageAlt}
-                width={960}
-                height={640}
-                className="h-[340px] w-full object-cover lg:h-[440px]"
-              />
+          {/* No photograph here. This section is about people, and a product
+              macro standing in for a team read as filler. Two text columns
+              instead, so the block still has structure. */}
+          <Reveal>
+            <h2 className="section-title max-w-[34ch]">{dict.aboutTeamTitle}</h2>
+            <div className="mt-8 grid gap-x-16 gap-y-5 border-t border-line pt-8 md:grid-cols-2">
+              <p className="text-[0.97rem] leading-relaxed text-body">{dict.aboutTeamText}</p>
+              <p className="text-[0.97rem] leading-relaxed text-body">{dict.aboutApproachText}</p>
             </div>
           </Reveal>
         </div>
@@ -322,12 +315,15 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
               </div>
             </Reveal>
 
-            <Reveal className="overflow-hidden rounded-2xl border border-line bg-band">
+            {/* A real map of the served markets, generated from Natural Earth
+                geometry. Poland, Germany, Czechia and Slovakia are picked out
+                in brand orange, with Warsaw marked as the distribution point. */}
+            <Reveal className="overflow-hidden rounded-xl border border-line bg-band">
               <Image
-                src="/photo-plates-wide.webp"
-                alt={dict.aboutGeoTitle}
-                width={960}
-                height={720}
+                src="/map-europe.webp"
+                alt={dict.aboutGeoMapAlt}
+                width={1500}
+                height={1137}
                 className="h-[360px] w-full object-cover lg:h-[460px]"
               />
             </Reveal>
