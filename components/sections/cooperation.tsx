@@ -39,8 +39,8 @@ export default function Cooperation({ dict }: { dict: Dictionary }) {
                 transition={{ duration: 0.6, delay: 0.06 * i, ease: [0.4, 0, 0.2, 1] }}
                 className="card hover-lift p-8"
               >
-                <span className="flex h-13 w-13 items-center justify-center rounded-lg bg-navy text-white">
-                  <Icon size={22} />
+                <span className="icon-tile icon-tile--solid">
+                  <Icon size={20} />
                 </span>
                 <h3 className="mt-6 text-base font-semibold text-ink">{item.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-body">{item.text}</p>
@@ -73,7 +73,7 @@ export default function Cooperation({ dict }: { dict: Dictionary }) {
                   transition={{ duration: 0.6, delay: 0.06 * i, ease: [0.4, 0, 0.2, 1] }}
                   className="card hover-lift p-7"
                 >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-band-deep text-navy">
+                  <span className="icon-tile">
                     <Icon size={20} />
                   </span>
                   <h3 className="mt-5 text-base font-semibold text-ink">{block.title}</h3>
