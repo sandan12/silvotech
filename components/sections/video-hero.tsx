@@ -61,9 +61,7 @@ export default function VideoHero({
             transition={{ duration: 0.55, ease: EASE }}
             className="max-w-[46rem]"
           >
-            <span className="eyebrow eyebrow--light">{dict.heroEyebrow}</span>
-
-            <h1 className="mt-4 text-white">{dict.heroTitle}</h1>
+            <h1 className="text-white">{dict.heroTitle}</h1>
 
             <span className="mt-6 block h-[3px] w-14 rounded-full bg-orange" aria-hidden />
 

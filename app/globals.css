@@ -9,27 +9,30 @@
    borders and glow. Reads calm and approachable, not corporate.
    ============================================================ */
 :root {
-  /* brand - softened */
-  --navy: #2f4a6b;
-  --navy-deep: #243a56;
-  --blue: #4a7ba6;
-  --orange: #d2691e;
-  --orange-dark: #b8581a;
+  /* Brand, sampled straight from silvotech-logo.png:
+     deep blue #003261, orange #fe7612. */
+  --navy: #003261;
+  --navy-deep: #00223f;
+  --blue: #0d6ba8;
+  --orange: #fe7612;
+  --orange-dark: #e2650a;
+  /* Orange dark enough to carry small text on white: 4.8:1. */
+  --orange-ink: #b85508;
 
   /* neutrals - warmer, softer */
-  --ink: #1e2732;
-  --body: #4d5a66;
-  --muted: #85929c;
-  --band: #f6f7f9;
-  --band-deep: #eceff2;
-  --line: #dde3e8;
-  --line-strong: #c2ccd4;
+  --ink: #12202e;
+  --body: #46586a;
+  --muted: #7d8ea0;
+  --band: #f5f7f9;
+  --band-deep: #e7edf3;
+  --line: #d8e2ea;
+  --line-strong: #b6c5d3;
   --white: #ffffff;
 
   /* elevation - soft and diffuse */
-  --shadow-sm: 0 1px 3px rgba(30, 39, 50, 0.07);
-  --shadow-md: 0 6px 20px rgba(30, 39, 50, 0.09);
-  --shadow-lg: 0 18px 48px rgba(30, 39, 50, 0.12);
+  --shadow-sm: 0 1px 3px rgba(0, 34, 63, 0.07);
+  --shadow-md: 0 6px 20px rgba(0, 34, 63, 0.1);
+  --shadow-lg: 0 18px 48px rgba(0, 34, 63, 0.14);
 
   /* shape - one soft radius scale used everywhere */
   --radius: 12px;
@@ -106,21 +109,23 @@ a {
   outline-offset: 2px;
 }
 
-/* Screen-reader-only, becomes visible on keyboard focus. */
+/* Screen-reader-only, becomes visible for keyboard users only.
+   Bound to :focus-visible so a mouse click never flashes it on screen. */
 .skip-link {
   position: absolute;
   left: 1rem;
-  top: -3rem;
+  top: -4rem;
   z-index: 100;
   background: var(--navy);
   color: #fff;
   padding: 0.6rem 1rem;
+  border-radius: var(--radius-sm);
   font-size: 0.85rem;
   font-weight: 600;
   transition: top 0.15s var(--ease);
 }
 
-.skip-link:focus {
+.skip-link:focus-visible {
   top: 1rem;
 }
 
@@ -174,7 +179,41 @@ a {
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--orange-ink);
+}
+
+/* ---------- Icon tiles: ONE size and shape for the whole site ----------
+   Section and card icons all use this. Sizes previously ranged from h-9 to
+   h-16 with four different radii, and cooperation.tsx used a non-existent
+   h-13 w-13 that collapsed into a full-width bar. */
+.icon-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius);
+  background: var(--band-deep);
+  color: var(--navy);
+}
+
+.icon-tile--solid {
+  background: var(--navy);
+  color: #fff;
+}
+
+.icon-tile--on-dark {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+/* Same tile, sitting on top of photography. */
+.icon-tile--overlay {
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--navy);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(6px);
 }
 
 .eyebrow--light {
@@ -242,14 +281,14 @@ a {
 .btn-cta {
   background: var(--orange);
   border-color: var(--orange);
-  color: #fff;
-  box-shadow: 0 4px 14px rgba(210, 105, 30, 0.28);
+  color: var(--navy);
+  box-shadow: 0 4px 14px rgba(254, 118, 18, 0.28);
 }
 
 .btn-cta:hover {
   background: var(--orange-dark);
   border-color: var(--orange-dark);
-  box-shadow: 0 6px 20px rgba(210, 105, 30, 0.34);
+  box-shadow: 0 6px 20px rgba(254, 118, 18, 0.34);
 }
 
 .btn-navy {

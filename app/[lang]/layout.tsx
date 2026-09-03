@@ -30,6 +30,16 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: 'SilvoTech — Producent wyrobów silikonowych w Europie',
   description: 'Producent wyrobów silikonowych: węże, arkusze, uszczelki i produkty na zamówienie. Produkcja i dystrybucja w Europie. Oferty B2B.',
+  // Next does not link anything from /public automatically, so the favicon has
+  // to be declared here or the browser tab falls back to a blank globe.
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/icon-light-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
+    shortcut: ['/icon-light-32x32.png'],
+  },
 };
 
 /**

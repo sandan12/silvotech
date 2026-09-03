@@ -40,8 +40,8 @@ export default function Contact({ dict, lang }: { dict: Dictionary; lang: Locale
           >
             {sent ? (
               <div className="flex min-h-[24rem] flex-col items-center justify-center gap-4 text-center">
-                <span className="flex h-16 w-16 items-center justify-center rounded-full bg-band-deep text-navy">
-                  <CheckCircle2 size={30} />
+                <span className="icon-tile">
+                  <CheckCircle2 size={20} />
                 </span>
                 <h3 className="text-xl font-semibold text-ink">{dict.formSuccessTitle}</h3>
                 <p className="max-w-md text-sm leading-relaxed text-body">{dict.formSuccessText}</p>
@@ -184,7 +184,7 @@ export default function Contact({ dict, lang }: { dict: Dictionary; lang: Locale
             className="flex flex-col gap-5"
           >
             <div className="card card-shadow p-8">
-              <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-navy text-white">
+              <span className="icon-tile icon-tile--solid">
                 <MapPin size={20} />
               </span>
               <h3 className="mt-5 text-base font-semibold text-ink">{dict.contactAsideTitle}</h3>

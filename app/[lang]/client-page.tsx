@@ -30,7 +30,7 @@ export default function ClientPage({
   return (
     <>
       <a href="#main" className="skip-link">
-        {dict.breadcrumbHome}
+        {dict.skipToContent}
       </a>
       <Header dict={dict} lang={lang} />
       <main id="main">

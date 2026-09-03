@@ -162,7 +162,7 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
                     transition={{ duration: 0.6, delay: 0.06 * i, ease: [0.4, 0, 0.2, 1] }}
                     className="card hover-lift p-8"
                   >
-                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-navy text-white">
+                    <span className="icon-tile icon-tile--solid">
                       <Icon size={20} />
                     </span>
                     <h3 className="mt-5 text-lg font-semibold text-ink">{pillar.title}</h3>
@@ -190,7 +190,7 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
                     className="card hover-lift p-7"
                   >
                     <div className="flex items-center justify-between">
-                      <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-navy text-white">
+                      <span className="icon-tile icon-tile--solid">
                         <Icon size={20} />
                       </span>
                       <span className="text-3xl font-bold text-line">0{i + 1}</span>
@@ -239,7 +239,7 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
                     transition={{ duration: 0.6, delay: 0.06 * i, ease: [0.4, 0, 0.2, 1] }}
                     className="card hover-lift p-7"
                   >
-                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-band-deep text-navy">
+                    <span className="icon-tile">
                       <Icon size={20} />
                     </span>
                     <h3 className="mt-5 text-base font-semibold text-ink">{value.title}</h3>
@@ -289,8 +289,8 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
               const Icon = doc.icon;
               return (
                 <Reveal key={doc.title} className="rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-navy">
-                    <Icon size={18} />
+                  <span className="icon-tile">
+                    <Icon size={20} />
                   </span>
                   <p className="mt-4 text-sm font-semibold leading-relaxed text-white">{doc.title}</p>
                 </Reveal>
@@ -359,8 +359,8 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
                       height={400}
                       className="h-full w-full object-cover"
                     />
-                    <span className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-xl bg-white/95 text-navy shadow-sm backdrop-blur">
-                      <Icon size={18} />
+                    <span className="icon-tile icon-tile--overlay absolute left-4 top-4">
+                      <Icon size={20} />
                     </span>
                   </div>
                   <div className="p-7">

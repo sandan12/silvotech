@@ -15,7 +15,7 @@ export type Dictionary = Record<string, string>;
 
 const pl: Dictionary = {
   // Top bar
-  topbarTagline: 'Producent wyrobów silikonowych w Europie',
+  topbarTagline: 'Odpowiedź na zapytanie w 24 h',
   topbarLang: 'Język',
   topbarExpert: 'Zapytaj eksperta',
   euBadge: 'UE',
@@ -31,10 +31,10 @@ const pl: Dictionary = {
 
   // Hero
   heroEyebrow: 'Produkcja wyrobów silikonowych w Europie',
-  heroTitle: 'Jesteśmy europejskim producentem wyrobów silikonowych',
-  heroLead: 'Produkujemy węże silikonowe, płyty i uszczelki oraz wyroby wykonywane na zamówienie. Oferujemy najniższe ceny w Europie, przy zachowaniu wysokiej jakości produktu.',
-  heroPrimaryCta: 'Poproś o ofertę',
-  heroSecondaryCta: 'Zobacz ofertę',
+  heroTitle: 'Węże, płyty i uszczelki silikonowe na wymiar',
+  heroLead: '28 rozmiarów standardowych dostępnych od ręki, wymiary specjalne na rysunek. Zakres pracy -50…+230 °C, dokumentacja do kontaktu z żywnością.',
+  heroPrimaryCta: 'Zapytaj o wycenę',
+  heroSecondaryCta: 'Rozmiary i specyfikacja',
   heroBadge: 'Food grade silicone',
   heroFact1Value: '-50 do +230 °C',
   heroFact1Label: 'Zakres operacyjny',
@@ -51,7 +51,7 @@ const pl: Dictionary = {
   aboutP1: 'Dostarczamy naszym klientom spokój, zapewniając wyroby silikonowe najwyższej jakości, które realnie wpływają na podniesienie jakości procesów produkcyjnych w przedsiębiorstwach.',
   aboutP2: 'Zapewniamy kompleksowe wsparcie na każdym etapie realizacji zamówienia – od analizy potrzeb klienta, przez dobór odpowiedniego materiału i wymiarów, po produkcję, dostawę i wdrożenie produktu u klienta.',
   aboutP3: 'Stawiamy na prostotę, intuicyjność i niezawodność. Jako producent i dystrybutor wyrobów silikonowych zdobyliśmy zaufanie klientów z całej Europy – dużych i małych przedsiębiorstw.',
-  aboutCtaQuote: 'Poproś o wycenę',
+  aboutCtaQuote: 'Zapytaj o wycenę',
   aboutCtaOffer: 'Zobacz ofertę',
   aboutHowTitle: 'Jak działamy',
   aboutStep1Title: 'Doradzamy',
@@ -128,7 +128,7 @@ const pl: Dictionary = {
   offerEyebrow: 'Oferta',
   offerTitle: 'Wyroby silikonowe dla przemysłu i branży spożywczej',
   offerLead: 'Jesteśmy producentem wyrobów silikonowych: węży, płyt i uszczelek. Produkujemy je w standardowych wymiarach oraz na indywidualne zamówienie – niezależnie od tego, czy potrzebujesz pojedynczego wyrobu, czy regularnych dostaw hurtowych. Dzięki doświadczeniu producenta i dystrybutora wiemy, jakie rozwiązania dobrać do parametrów aplikacji: temperatury, medium i warunków pracy.',
-  offerCta: 'Poproś o wycenę',
+  offerCta: 'Zapytaj o wycenę',
   offerTechEyebrow: 'Dlaczego silikon?',
   offerTechTitle: 'Materiał, który pracuje w ekstremalnych warunkach',
   offerTechText1: 'Silikon to materiał łączący elastyczność gumy z odpornością i trwałością. Pracuje w zakresie temperatur od -50 °C do +230 °C, zachowując właściwości w kontakcie z żywnością i wieloma mediami przemysłowymi.',
@@ -185,6 +185,7 @@ const pl: Dictionary = {
   homeProdCta1: 'Zapytaj o wycenę',
   homeProdCta2: 'Zobacz ofertę',
   breadcrumbHome: 'Strona główna',
+  skipToContent: 'Przejdź do treści',
 
   // Spec table
   specsEyebrow: 'Rozmiary i dostępność',
@@ -301,7 +302,7 @@ const pl: Dictionary = {
 };
 
 const en: Dictionary = {
-  topbarTagline: 'Manufacturer of silicone products in Europe',
+  topbarTagline: 'Quote response within 24 h',
   topbarLang: 'Language',
   topbarExpert: 'Ask an expert',
   euBadge: 'EU',
@@ -313,10 +314,10 @@ const en: Dictionary = {
   navContact: 'Contact',
   cta: 'Request a quote',
   heroEyebrow: 'Silicone products manufactured in Europe',
-  heroTitle: 'We are a European manufacturer of silicone products',
-  heroLead: 'We manufacture silicone hoses, plates and gaskets, as well as custom-made products. We offer the lowest prices in Europe while maintaining high product quality.',
+  heroTitle: 'Silicone hoses, plates and gaskets, cut to size',
+  heroLead: '28 standard sizes available off the shelf, special dimensions to your drawing. Working range -50…+230 °C, food-contact documentation on request.',
   heroPrimaryCta: 'Request a quote',
-  heroSecondaryCta: 'View offer',
+  heroSecondaryCta: 'Sizes and specification',
   heroBadge: 'Food grade silicone',
   heroFact1Value: '-50 to +230 °C',
   heroFact1Label: 'Operating range',
@@ -462,6 +463,7 @@ const en: Dictionary = {
   homeProdCta1: 'Request a quote',
   homeProdCta2: 'View offer',
   breadcrumbHome: 'Home',
+  skipToContent: 'Skip to content',
   specsEyebrow: 'Sizes and availability',
   specsTitle: '28 standard hose sizes',
   specsLead: 'Dimensions are inner / outer diameter. Other sizes can also be manufactured on request.',
@@ -565,7 +567,7 @@ const en: Dictionary = {
 };
 
 const de: Dictionary = {
-  topbarTagline: 'Hersteller von Silikonprodukten in Europa',
+  topbarTagline: 'Angebot innerhalb von 24 h',
   topbarLang: 'Sprache',
   topbarExpert: 'Experten fragen',
   euBadge: 'EU',
@@ -577,10 +579,10 @@ const de: Dictionary = {
   navContact: 'Kontakt',
   cta: 'Angebot anfordern',
   heroEyebrow: 'Silikonprodukte hergestellt in Europa',
-  heroTitle: 'Wir sind ein europäischer Hersteller von Silikonprodukten',
-  heroLead: 'Wir fertigen Silikonschläuche, -platten und -dichtungen sowie Sonderanfertigungen. Wir bieten die niedrigsten Preise in Europa bei hoher Produktqualität.',
+  heroTitle: 'Silikonschläuche, -platten und -dichtungen nach Maß',
+  heroLead: '28 Standardgrößen ab Lager, Sondermaße nach Zeichnung. Einsatzbereich -50…+230 °C, Dokumente für Lebensmittelkontakt auf Anfrage.',
   heroPrimaryCta: 'Angebot anfordern',
-  heroSecondaryCta: 'Angebot ansehen',
+  heroSecondaryCta: 'Maße und Spezifikation',
   heroBadge: 'Lebensmittelechtes Silikon',
   heroFact1Value: '-50 bis +230 °C',
   heroFact1Label: 'Betriebsbereich',
@@ -726,6 +728,7 @@ const de: Dictionary = {
   homeProdCta1: 'Angebot anfordern',
   homeProdCta2: 'Angebot ansehen',
   breadcrumbHome: 'Startseite',
+  skipToContent: 'Zum Inhalt springen',
   specsEyebrow: 'Größen und Verfügbarkeit',
   specsTitle: '28 Standardschlauchgrößen',
   specsLead: 'Abmessungen als Innen-/Außendurchmesser. Weitere Größen auf Anfrage.',
@@ -829,7 +832,7 @@ const de: Dictionary = {
 };
 
 const cz: Dictionary = {
-  topbarTagline: 'Výrobce silikonových výrobků v Evropě',
+  topbarTagline: 'Odpověď na dotaz do 24 h',
   topbarLang: 'Jazyk',
   topbarExpert: 'Zeptejte se experta',
   euBadge: 'EU',
@@ -841,10 +844,10 @@ const cz: Dictionary = {
   navContact: 'Kontakt',
   cta: 'Požádat o nabídku',
   heroEyebrow: 'Silikonové výrobky vyrobené v Evropě',
-  heroTitle: 'Jsme evropský výrobce silikonových výrobků',
-  heroLead: 'Vyrábíme silikonové hadice, desky a těsnění i výrobky na zakázku. Nabízíme nejnižší ceny v Evropě při zachování vysoké kvality produktu.',
+  heroTitle: 'Silikonové hadice, desky a těsnění na míru',
+  heroLead: '28 standardních rozměrů ze skladu, speciální rozměry podle výkresu. Rozsah -50…+230 °C, dokumenty pro styk s potravinami na vyžádání.',
   heroPrimaryCta: 'Požádat o nabídku',
-  heroSecondaryCta: 'Zobrazit nabídku',
+  heroSecondaryCta: 'Rozměry a specifikace',
   heroBadge: 'Silikon pro styk s potravinami',
   heroFact1Value: '-50 až +230 °C',
   heroFact1Label: 'Pracovní rozsah',
@@ -990,6 +993,7 @@ const cz: Dictionary = {
   homeProdCta1: 'Požádat o nabídku',
   homeProdCta2: 'Zobrazit nabídku',
   breadcrumbHome: 'Úvodní stránka',
+  skipToContent: 'Přejít na obsah',
   specsEyebrow: 'Velikosti a dostupnost',
   specsTitle: '28 standardních velikostí hadic',
   specsLead: 'Rozměry jako vnitřní / vnější průměr. Další velikosti na vyžádání.',
@@ -1093,7 +1097,7 @@ const cz: Dictionary = {
 };
 
 const sk: Dictionary = {
-  topbarTagline: 'Výrobca silikónových výrobkov v Európe',
+  topbarTagline: 'Odpoveď na dopyt do 24 h',
   topbarLang: 'Jazyk',
   topbarExpert: 'Opýtajte sa experta',
   euBadge: 'EU',
@@ -1105,10 +1109,10 @@ const sk: Dictionary = {
   navContact: 'Kontakt',
   cta: 'Požiadať o ponuku',
   heroEyebrow: 'Silikónové výrobky vyrobené v Európe',
-  heroTitle: 'Sme európsky výrobca silikónových výrobkov',
-  heroLead: 'Vyrábame silikónové hadice, dosky a tesnenia aj výrobky na zákazku. Ponúkame najnižšie ceny v Európe pri zachovaní vysokej kvality produktu.',
+  heroTitle: 'Silikónové hadice, dosky a tesnenia na mieru',
+  heroLead: '28 štandardných rozmerov zo skladu, špeciálne rozmery podľa výkresu. Rozsah -50…+230 °C, dokumenty pre styk s potravinami na požiadanie.',
   heroPrimaryCta: 'Požiadať o ponuku',
-  heroSecondaryCta: 'Zobraziť ponuku',
+  heroSecondaryCta: 'Rozmery a špecifikácia',
   heroBadge: 'Silikón pre styk s potravinami',
   heroFact1Value: '-50 až +230 °C',
   heroFact1Label: 'Pracovný rozsah',
@@ -1254,6 +1258,7 @@ const sk: Dictionary = {
   homeProdCta1: 'Požiadať o ponuku',
   homeProdCta2: 'Zobraziť ponuku',
   breadcrumbHome: 'Úvodná stránka',
+  skipToContent: 'Prejsť na obsah',
   specsEyebrow: 'Veľkosti a dostupnosť',
   specsTitle: '28 štandardných veľkostí hadíc',
   specsLead: 'Rozmery ako vnútorný / vonkajší priemer. Ďalšie veľkosti na vyžiadanie.',

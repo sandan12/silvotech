@@ -34,7 +34,7 @@ export default function Quality({ dict }: { dict: Dictionary }) {
                 transition={{ duration: 0.6, delay: 0.06 * i, ease: [0.4, 0, 0.2, 1] }}
                 className="card hover-lift p-7"
               >
-                <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-navy text-white">
+                <span className="icon-tile icon-tile--solid">
                   <Icon size={20} />
                 </span>
                 <h3 className="mt-5 text-base font-semibold text-ink">{item.title}</h3>
@@ -52,8 +52,8 @@ export default function Quality({ dict }: { dict: Dictionary }) {
         >
           <div className="shrink-0 text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-navy">{dict.qualityDocsTitle}</p>
-            <div className="mx-auto mt-3 flex h-16 w-16 items-center justify-center rounded-lg bg-navy text-white">
-              <Files size={26} />
+            <div className="icon-tile icon-tile--solid mx-auto mt-3">
+              <Files size={20} />
             </div>
           </div>
           <ul className="grid w-full gap-2.5 sm:grid-cols-2">
