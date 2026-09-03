@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Manrope, Sora, IBM_Plex_Mono } from 'next/font/google';
+import { Manrope, Nunito, IBM_Plex_Mono } from 'next/font/google';
 import { locales } from '@/lib/i18n';
 import '../globals.css';
 
@@ -11,10 +11,11 @@ const manrope = Manrope({
   display: 'swap',
 });
 
-/** Headings. Geometric but soft, sentence case, no uppercase shouting. */
-const sora = Sora({
+/** Headings. Rounded terminals and soft, full counters: the letterforms read
+    like the material the company makes. Latin-ext covers PL, CZ, SK and DE. */
+const nunito = Nunito({
   subsets: ['latin', 'latin-ext'],
-  weight: ['500', '600', '700'],
+  weight: ['600', '700', '800'],
   variable: '--font-barlow-condensed',
   display: 'swap',
 });
@@ -67,7 +68,7 @@ export default async function RootLayout({
   return (
     <html
       lang={lang}
-      className={`${manrope.variable} ${sora.variable} ${plexMono.variable}`}
+      className={`${manrope.variable} ${nunito.variable} ${plexMono.variable}`}
     >
       <body>{children}</body>
     </html>

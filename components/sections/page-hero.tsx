@@ -1,20 +1,21 @@
 'use client';
 
-/** Compact page header for the inner pages — no giant empty navy block. */
+/**
+ * Compact page header for the inner pages. No eyebrow: it only restated the
+ * page title. No rule under the heading either, the type carries itself.
+ */
 export default function PageHero({
-  eyebrow,
   title,
   lead,
 }: {
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   lead?: string;
 }) {
   return (
-    <section className="bg-navy-deep pb-11 pt-[9.5rem]">
+    <section className="bg-navy-deep pb-12 pt-[9.5rem]">
       <div className="container-page">
-        <h1 className="mt-3 max-w-[30ch] text-white">{title}</h1>
-        <span className="mt-5 block h-[3px] w-14 bg-orange" aria-hidden />
+        <h1 className="max-w-[30ch] text-white">{title}</h1>
         {lead && (
           <p className="mt-5 max-w-[62ch] text-[0.97rem] leading-relaxed text-white/70">{lead}</p>
         )}

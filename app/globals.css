@@ -69,10 +69,10 @@ h1,
 h2 {
   font-family: var(--font-barlow-condensed), var(--font-barlow), sans-serif;
   color: var(--ink);
-  font-weight: 600;
+  font-weight: 800;
   text-transform: none;
-  letter-spacing: -0.01em;
-  line-height: 1.12;
+  letter-spacing: -0.018em;
+  line-height: 1.1;
 }
 
 h3,
@@ -88,6 +88,21 @@ h6 {
 
 h1 {
   font-size: clamp(2rem, 4.2vw, 3rem);
+}
+
+/* Home hero only: larger and centred, symmetrical on the viewport. */
+.hero-centred {
+  text-align: center;
+  margin-inline: auto;
+}
+
+.hero-centred h1 {
+  font-size: clamp(2.4rem, 5.6vw, 4.25rem);
+  letter-spacing: -0.025em;
+}
+
+.hero-centred p {
+  margin-inline: auto;
 }
 
 strong {
@@ -238,19 +253,6 @@ a {
 }
 
 .section-heading--center .section-lead {
-  margin-inline: auto;
-}
-
-/* A short soft rule used to anchor headings. */
-.rule {
-  display: block;
-  width: 2.5rem;
-  height: 3px;
-  border-radius: 2px;
-  background: var(--orange);
-}
-
-.section-heading--center .rule {
   margin-inline: auto;
 }
 

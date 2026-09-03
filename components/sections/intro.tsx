@@ -26,7 +26,6 @@ export default function Intro({ dict, lang }: { dict: Dictionary; lang: Locale }
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
           <div>
             <h2 className="section-title text-white">{dict.productionTitle}</h2>
-            <span className="mt-5 block h-[3px] w-14 bg-orange" aria-hidden />
             <p className="mt-6 max-w-[56ch] text-[0.97rem] leading-relaxed text-white/70">
               {dict.productionLead}
             </p>
