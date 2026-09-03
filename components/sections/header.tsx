@@ -138,7 +138,7 @@ export default function Header({ dict, lang }: { dict: Dictionary; lang: Locale 
                   key={item.key}
                   href={item.href}
                   aria-current={active ? 'page' : undefined}
-                  className={`border-b-2 py-1.5 text-[0.78rem] font-semibold uppercase tracking-[0.07em] transition-colors ${
+                  className={`border-b-2 py-1.5 text-[0.9rem] font-medium tracking-[0.01em] transition-colors ${
                     active
                       ? 'border-orange text-navy'
                       : 'border-transparent text-body hover:border-line-strong hover:text-navy'
@@ -155,7 +155,7 @@ export default function Header({ dict, lang }: { dict: Dictionary; lang: Locale 
               {dict.cta}
             </Link>
             <button
-              className="flex h-10 w-10 items-center justify-center border border-line text-ink lg:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-lg border border-line text-ink lg:hidden"
               onClick={() => setMobileOpen((v) => !v)}
               aria-label={dict.navContact}
               aria-expanded={mobileOpen}
@@ -173,7 +173,7 @@ export default function Header({ dict, lang }: { dict: Dictionary; lang: Locale 
                   key={item.key}
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
-                  className="border-b border-line py-3 text-[0.82rem] font-semibold uppercase tracking-[0.06em] text-ink"
+                  className="border-b border-line py-3 text-[0.95rem] font-medium text-ink"
                 >
                   {dict[item.key]}
                 </Link>

@@ -1,20 +1,20 @@
 import type { Metadata } from 'next';
-import { Barlow, Barlow_Condensed, IBM_Plex_Mono } from 'next/font/google';
+import { Manrope, Sora, IBM_Plex_Mono } from 'next/font/google';
 import { locales } from '@/lib/i18n';
 import '../globals.css';
 
-/** Body and UI. DIN-adjacent grotesque — reads technical, not startup-friendly. */
-const barlow = Barlow({
+/** Body and UI. Soft humanist sans, rounded and approachable, not technical-grotesque. */
+const manrope = Manrope({
   subsets: ['latin', 'latin-ext'],
   weight: ['400', '500', '600', '700'],
   variable: '--font-barlow',
   display: 'swap',
 });
 
-/** Headings, set uppercase. Narrow enough to carry long Polish/German compounds. */
-const barlowCondensed = Barlow_Condensed({
+/** Headings. Geometric but soft, sentence case, no uppercase shouting. */
+const sora = Sora({
   subsets: ['latin', 'latin-ext'],
-  weight: ['600', '700'],
+  weight: ['500', '600', '700'],
   variable: '--font-barlow-condensed',
   display: 'swap',
 });
@@ -57,7 +57,7 @@ export default async function RootLayout({
   return (
     <html
       lang={lang}
-      className={`${barlow.variable} ${barlowCondensed.variable} ${plexMono.variable}`}
+      className={`${manrope.variable} ${sora.variable} ${plexMono.variable}`}
     >
       <body>{children}</body>
     </html>

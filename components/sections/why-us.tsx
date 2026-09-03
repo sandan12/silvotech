@@ -43,8 +43,8 @@ export default function WhyUs({ dict, lang }: { dict: Dictionary; lang: Locale }
             </dl>
           </div>
 
-          <div className="self-start border-t-2 border-navy bg-white p-7">
-            <h3 className="font-display text-[1.1rem] font-bold uppercase tracking-[0.01em] text-ink">
+          <div className="card self-start p-7">
+            <h3 className="font-display text-[1.1rem] font-semibold leading-snug text-ink">
               {dict.qualityDocsTitle}
             </h3>
             <ul className="mt-5 space-y-3">
