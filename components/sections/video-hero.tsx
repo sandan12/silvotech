@@ -42,19 +42,20 @@ export default function VideoHero({
 
       <div className="hero-overlay" aria-hidden />
 
-      {/* The headline and lead sit on the vertical centre of the viewport. The
-          orange rule, the eyebrow and the two CTAs are gone: the header already
-          carries the quote button, and the eyebrow repeated the headline. */}
+      {/* Copy sits on the vertical centre of the viewport and is centred
+          horizontally too, so the hero reads symmetrical on the screen. The
+          orange rule and both CTAs are gone: the header already carries the
+          quote button. */}
       <div className="container-page relative z-10 w-full">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, ease: EASE }}
-          className="max-w-[46rem]"
+          className="hero-centred max-w-[54rem]"
         >
           <h1 className="text-white">{dict.heroTitle}</h1>
 
-          <p className="mt-6 max-w-[52ch] text-[1.0625rem] leading-relaxed text-white/75">
+          <p className="mt-7 max-w-[56ch] text-[1.125rem] leading-relaxed text-white/75">
             {dict.heroLead}
           </p>
         </motion.div>
