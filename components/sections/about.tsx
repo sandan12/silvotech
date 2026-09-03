@@ -128,7 +128,7 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
               className="relative overflow-hidden rounded-2xl border border-line bg-band"
             >
               <Image
-                src="/production-drum.jpg"
+                src="/photo-range.webp"
                 alt={dict.productionImage1Alt || 'SilvoTech production line'}
                 width={960}
                 height={640}
@@ -146,7 +146,7 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
           </div>
 
           <div className="mt-16">
-            <div className="section-heading--center">
+            <div className="max-w-[46rem]">
               <span className="eyebrow">{dict.aboutPillarsEyebrow}</span>
               <h2 className="section-title">{dict.aboutPillarsTitle}</h2>
             </div>
@@ -174,7 +174,7 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
           </div>
 
           <div className="mt-24">
-            <div className="section-heading--center">
+            <div className="max-w-[46rem]">
               <h2 className="section-title">{dict.aboutHowTitle}</h2>
             </div>
 
@@ -209,13 +209,13 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
               >
                 <Link
                   href={`/${lang}/kontakt`}
-                  className="group flex h-full flex-col justify-between rounded-2xl bg-orange p-8 text-white transition-all duration-300 hover:-translate-y-1 hover:bg-orange-dark hover:shadow-lg"
+                  className="group flex h-full flex-col justify-between rounded-xl bg-orange p-8 text-navy transition-all duration-300 hover:-translate-y-1 hover:bg-orange-dark hover:shadow-lg"
                 >
                   <div>
-                    <h3 className="text-lg font-semibold text-white">{dict.aboutCtaQuote}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-white/80">{dict.contactLead}</p>
+                    <h3 className="text-lg font-semibold text-navy">{dict.aboutCtaQuote}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-navy/85">{dict.contactLead}</p>
                   </div>
-                  <span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-white transition group-hover:gap-3">
+                  <span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-navy transition group-hover:gap-3">
                     {dict.cta} <span aria-hidden>→</span>
                   </span>
                 </Link>
@@ -224,29 +224,30 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
           </div>
 
           <div className="mt-24">
-            <div className="section-heading--center">
+            <div className="max-w-[46rem]">
               <h2 className="section-title">{dict.aboutValuesTitle}</h2>
             </div>
 
-            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {values.map((value, i) => {
-                const Icon = valueIcons[i];
-                return (
-                  <motion.div
-                    key={value.title}
-                    initial={{ opacity: 0, y: 22 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6, delay: 0.06 * i, ease: [0.4, 0, 0.2, 1] }}
-                    className="card hover-lift p-7"
-                  >
-                    <span className="icon-tile">
-                      <Icon size={20} />
-                    </span>
-                    <h3 className="mt-5 text-base font-semibold text-ink">{value.title}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-body">{value.text}</p>
-                  </motion.div>
-                );
-              })}
+            {/* Numbered rows rather than a fourth identical card grid on this
+                page. The ordinal carries the rhythm, so no box is needed. */}
+            <div className="mt-10 divide-y divide-line border-t border-line">
+              {values.map((value, i) => (
+                <motion.div
+                  key={value.title}
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.55, delay: 0.05 * i, ease: [0.4, 0, 0.2, 1] }}
+                  className="grid gap-2 py-7 md:grid-cols-[4rem_minmax(0,16rem)_minmax(0,1fr)] md:gap-8"
+                >
+                  <span className="font-mono text-[0.8rem] text-orange-ink">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <h3 className="text-[1.15rem] font-semibold leading-snug text-ink">
+                    {value.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-body">{value.text}</p>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>
@@ -264,7 +265,7 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
             </div>
             <div className="order-1 overflow-hidden rounded-2xl border border-line bg-white shadow-sm lg:order-2">
               <Image
-                src="/winding-machine.webp"
+                src="/photo-gaskets-wide.webp"
                 alt={dict.aboutTeamImageAlt}
                 width={960}
                 height={640}
@@ -284,7 +285,7 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
             <p className="section-lead mx-auto text-white/70">{dict.aboutGuaranteeText}</p>
           </Reveal>
 
-          <div className="mx-auto mt-10 grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {docs.map((doc, i) => {
               const Icon = doc.icon;
               return (
@@ -327,7 +328,7 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
 
             <Reveal className="overflow-hidden rounded-2xl border border-line bg-band">
               <Image
-                src="/extrusion-head.webp"
+                src="/photo-plates-wide.webp"
                 alt={dict.aboutGeoTitle}
                 width={960}
                 height={720}
@@ -341,7 +342,7 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
       {/* Applications — adapted from itekcorp "Где применяются" with real product images */}
       <section className="band section-padding">
         <div className="container-page">
-          <Reveal className="section-heading--center">
+          <Reveal className="max-w-[46rem]">
             <span className="eyebrow">{dict.aboutAppsEyebrow}</span>
             <h2 className="section-title">{dict.aboutAppsTitle}</h2>
           </Reveal>
@@ -380,7 +381,7 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="eyebrow">{dict.aboutApproachEyebrow}</span>
             <h2 className="section-title">{dict.aboutApproachTitle}</h2>
-            <p className="section-lead mx-auto">{dict.aboutApproachText}</p>
+            <p className="section-lead">{dict.aboutApproachText}</p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Link href={`/${lang}/kontakt`} className="btn btn-cta">
                 {dict.aboutCtaQuote}

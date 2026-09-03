@@ -87,7 +87,7 @@ export default function Offer({ dict, lang }: { dict: Dictionary; lang: Locale }
         </div>
 
         <div className="mt-24">
-          <div className="section-heading--center">
+          <div className="max-w-[46rem]">
             <h2 className="section-title">{dict.offerCatsTitle}</h2>
           </div>
 
@@ -134,10 +134,10 @@ export default function Offer({ dict, lang }: { dict: Dictionary; lang: Locale }
         </div>
 
         <div className="mt-24">
-          <div className="section-heading--center">
+          <div className="max-w-[46rem]">
             <span className="eyebrow">{dict.specsEyebrow}</span>
             <h2 className="section-title">{dict.specsTitle}</h2>
-            <p className="section-lead mx-auto">{dict.specsLead}</p>
+            <p className="section-lead">{dict.specsLead}</p>
           </div>
 
           <div className="mt-10 overflow-x-auto">
@@ -176,27 +176,34 @@ export default function Offer({ dict, lang }: { dict: Dictionary; lang: Locale }
               </tbody>
             </table>
           </div>
-          <p className="mx-auto mt-5 max-w-3xl text-center text-sm text-muted">{dict.specsNote}</p>
+          <p className="mt-5 max-w-3xl text-sm text-muted">{dict.specsNote}</p>
         </div>
 
         <div className="mt-24">
-          <div className="section-heading--center">
+          <div className="max-w-[46rem]">
             <h2 className="section-title">{dict.offerWhyTitle}</h2>
           </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Deliberately not another card grid. The four category cards above
+              already use that layout, so this section reads as two columns of
+              plain rows on hairlines instead. */}
+          <dl className="mt-10 grid gap-x-16 gap-y-9 md:grid-cols-2">
             {Array.from({ length: 4 }, (_, i) => (
               <motion.div
                 key={dict[`offerWhy${i + 1}Title`]}
-                initial={{ opacity: 0, y: 22 }}
+                initial={{ opacity: 0, y: 18 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.06 * i, ease: [0.4, 0, 0.2, 1] }}
-                className="card hover-lift p-7"
+                transition={{ duration: 0.55, delay: 0.05 * i, ease: [0.4, 0, 0.2, 1] }}
+                className="border-t border-line pt-5"
               >
-                <h3 className="text-base font-semibold text-ink">{dict[`offerWhy${i + 1}Title`]}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-body">{dict[`offerWhy${i + 1}Text`]}</p>
+                <dt className="text-[1.05rem] font-semibold leading-snug text-ink">
+                  {dict[`offerWhy${i + 1}Title`]}
+                </dt>
+                <dd className="mt-2.5 text-sm leading-relaxed text-body">
+                  {dict[`offerWhy${i + 1}Text`]}
+                </dd>
               </motion.div>
             ))}
-          </div>
+          </dl>
         </div>
       </div>
     </section>

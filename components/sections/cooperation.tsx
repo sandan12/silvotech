@@ -58,7 +58,7 @@ export default function Cooperation({ dict }: { dict: Dictionary }) {
         </div>
 
         <div className="mt-24">
-          <div className="section-heading--center">
+          <div className="max-w-[46rem]">
             <h2 className="section-title">{dict.productionEyebrow}</h2>
           </div>
 
