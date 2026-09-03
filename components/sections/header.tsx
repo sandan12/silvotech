@@ -59,7 +59,7 @@ export default function Header({ dict, lang }: { dict: Dictionary; lang: Locale 
               height={39}
               className="hidden h-5 w-auto sm:block"
             />
-            <p className="hidden font-mono text-[0.63rem] uppercase tracking-[0.13em] text-white/50 md:block">
+            <p className="hidden text-[0.8rem] font-medium text-white/65 md:block">
               {dict.topbarTagline}
             </p>
           </div>
