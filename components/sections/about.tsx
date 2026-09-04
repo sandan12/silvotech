@@ -320,7 +320,7 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
                 in brand orange, with Warsaw marked as the distribution point. */}
             <Reveal className="overflow-hidden rounded-xl border border-line bg-band">
               <Image
-                src="/map-europe.webp"
+                src="/map-europe-eu27.webp"
                 alt={dict.aboutGeoMapAlt}
                 width={1500}
                 height={1137}
