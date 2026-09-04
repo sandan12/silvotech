@@ -94,6 +94,10 @@ h1 {
 .hero-centred {
   text-align: center;
   margin-inline: auto;
+  /* The fixed header occupies the top of the viewport, so centring against
+     the full height puts the copy optically high. Offsetting by the header
+     height drops it to the true middle of the visible area. */
+  padding-top: var(--header-h);
 }
 
 .hero-centred h1 {
@@ -236,8 +240,21 @@ a {
 }
 
 .section-title {
-  margin-top: 0.65rem;
+  margin-top: 0;
   font-size: clamp(1.55rem, 2.7vw, 2.3rem);
+}
+
+/* Section header: centred on the page and wide enough that a headline of
+   normal length stays on one line instead of breaking a word onto its own
+   row. 46rem was too narrow for the longer Polish and German titles. */
+.section-heading {
+  max-width: 62rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section-heading .section-lead {
+  margin-inline: auto;
 }
 
 .section-lead {

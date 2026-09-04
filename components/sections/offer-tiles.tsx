@@ -22,7 +22,7 @@ export default function OfferTiles({ dict, lang }: { dict: Dictionary; lang: Loc
   return (
     <section className="section-padding">
       <div className="container-page">
-        <div className="max-w-[46rem]">
+        <div className="section-heading">
           <h2 className="section-title">{dict.offerCatsTitle}</h2>
         </div>
 

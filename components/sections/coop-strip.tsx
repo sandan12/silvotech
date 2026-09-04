@@ -25,7 +25,7 @@ export default function CoopStrip({ dict, lang }: { dict: Dictionary; lang: Loca
     <section className="section-padding">
       <div className="container-page">
         <div className="flex flex-wrap items-end justify-between gap-6">
-          <div className="max-w-[46rem]">
+          <div className="section-heading">
             <h2 className="section-title">{dict.aboutAppsTitle}</h2>
           </div>
           <Link
