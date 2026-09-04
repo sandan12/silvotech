@@ -86,7 +86,7 @@ export default function Offer({ dict, lang }: { dict: Dictionary; lang: Locale }
         </div>
 
         <div className="mt-24">
-          <div className="max-w-[46rem]">
+          <div className="section-heading">
             <h2 className="section-title">{dict.offerCatsTitle}</h2>
           </div>
 
@@ -133,7 +133,7 @@ export default function Offer({ dict, lang }: { dict: Dictionary; lang: Locale }
         </div>
 
         <div className="mt-24">
-          <div className="max-w-[46rem]">
+          <div className="section-heading">
             <h2 className="section-title">{dict.specsTitle}</h2>
             <p className="section-lead">{dict.specsLead}</p>
           </div>
@@ -178,7 +178,7 @@ export default function Offer({ dict, lang }: { dict: Dictionary; lang: Locale }
         </div>
 
         <div className="mt-24">
-          <div className="max-w-[46rem]">
+          <div className="section-heading">
             <h2 className="section-title">{dict.offerWhyTitle}</h2>
           </div>
           {/* Deliberately not another card grid. The four category cards above

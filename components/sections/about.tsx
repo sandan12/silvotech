@@ -138,7 +138,7 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
           </div>
 
           <div className="mt-16">
-            <div className="max-w-[46rem]">
+            <div className="section-heading">
               <h2 className="section-title">{dict.aboutPillarsTitle}</h2>
             </div>
 
@@ -165,7 +165,7 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
           </div>
 
           <div className="mt-24">
-            <div className="max-w-[46rem]">
+            <div className="section-heading">
               <h2 className="section-title">{dict.aboutHowTitle}</h2>
             </div>
 
@@ -222,7 +222,7 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
           </div>
 
           <div className="mt-24">
-            <div className="max-w-[46rem]">
+            <div className="section-heading">
               <h2 className="section-title">{dict.aboutValuesTitle}</h2>
             </div>
 
@@ -334,7 +334,7 @@ export default function About({ dict, lang }: { dict: Dictionary; lang: Locale }
       {/* Applications — adapted from itekcorp "Где применяются" with real product images */}
       <section className="band section-padding">
         <div className="container-page">
-          <Reveal className="max-w-[46rem]">
+          <Reveal className="section-heading">
             <h2 className="section-title">{dict.aboutAppsTitle}</h2>
           </Reveal>
 
