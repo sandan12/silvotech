@@ -1,22 +1,6 @@
-'use client';
-
 import type { Dictionary, Locale } from '@/lib/i18n';
-import Header from '@/components/sections/header';
-import PageHero from '@/components/sections/page-hero';
-import Quality from '@/components/sections/quality';
-import CTABand from '@/components/sections/cta-band';
-import Footer from '@/components/sections/footer';
-
-export default function DocsPage({ dict, lang }: { dict: Dictionary; lang: Locale }) {
-  return (
-    <>
-      <Header dict={dict} lang={lang} />
-      <main>
-        <PageHero eyebrow={dict.qualityEyebrow} title={dict.qualityTitle} />
-        <Quality dict={dict} />
-        <CTABand dict={dict} lang={lang} />
-      </main>
-      <Footer dict={dict} lang={lang} />
-    </>
-  );
+import InnerPage from '@/components/sections/inner-page';
+import { DocumentsContent } from '@/components/sections/site-sections';
+export default function Page({ dict, lang }: { dict: Dictionary; lang: Locale }) {
+  return <InnerPage dict={dict} lang={lang} title={dict.qualityTitle} eyebrow={dict.navDocs}><DocumentsContent dict={dict} lang={lang} /></InnerPage>;
 }
