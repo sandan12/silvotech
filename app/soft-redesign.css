@@ -359,3 +359,21 @@ h1, h2, h3, .large-copy, .section-heading > p, .page-hero-lead { text-wrap: bala
 }
 @media (max-width:800px) { .europe-section .europe-map { min-height: 430px; } }
 @media (max-width:540px) { .europe-section .europe-map { min-height: 310px; } }
+
+
+/* v6.2 — precise, accessible inquiry-form validation */
+.field-invalid input,
+.field-invalid select,
+.field-invalid textarea {
+  border-color: #c94f3d !important;
+  box-shadow: 0 0 0 3px rgba(201,79,61,.12) !important;
+}
+.consent-field.field-invalid {
+  padding: 10px 12px;
+  border: 1px solid #c94f3d;
+  border-radius: 12px;
+  background: #fff5f2;
+}
+.form-error > div { flex: 1; }
+.form-error strong { display: block; color: #7f3025; }
+.form-error p { margin-top: 4px; color: #7f3025; font-size: .78rem; }
