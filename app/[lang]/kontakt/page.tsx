@@ -1,17 +1,8 @@
 import type { Metadata } from 'next';
-import { getDictionary, type Locale } from '@/lib/i18n';
-import ClientPage from './client-page';
-
-export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
-  const { lang } = await params;
-  const dict = getDictionary(lang as Locale);
-  return { title: `${dict.navContact} — SilvoTech` };
-}
-
-export default async function ContactPage({ params }: { params: Promise<{ lang: string }> }) {
-  const { lang } = await params;
-  const locale = lang as Locale;
-  const dict = getDictionary(locale);
-
-  return <ClientPage dict={dict} lang={locale} />;
-}
+import { isLocale, type Locale } from '@/lib/i18n';
+import { getSiteCopy } from '@/lib/site-content';
+import { pageMetadata } from '@/lib/metadata';
+import PageFrame from '@/components/sections/page-frame';
+import { ContactPage } from '@/components/sections/content-pages';
+export async function generateMetadata({params}:{params:Promise<{lang:string}>}):Promise<Metadata>{const {lang:raw}=await params;const lang=(isLocale(raw)?raw:'pl') as Locale;const copy=getSiteCopy(lang);return pageMetadata(lang,'kontakt',copy.nav.contact);}
+export default async function Page({params}:{params:Promise<{lang:string}>}){const {lang:raw}=await params;const lang=(isLocale(raw)?raw:'pl') as Locale;const copy=getSiteCopy(lang);return <PageFrame copy={copy} lang={lang} path="/kontakt"><ContactPage copy={copy} lang={lang}/></PageFrame>;}

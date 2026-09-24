@@ -1,76 +1,17 @@
-import type { Metadata } from 'next';
-import { Manrope, Nunito, IBM_Plex_Mono } from 'next/font/google';
-import { locales } from '@/lib/i18n';
+import type { ReactNode } from 'react';
+import { Manrope, IBM_Plex_Mono } from 'next/font/google';
+import { notFound } from 'next/navigation';
+import { isLocale, localeNames, locales } from '@/lib/i18n';
+import MediaProtection from '@/components/media-protection';
 import '../globals.css';
 
-/** Body and UI. Soft humanist sans, rounded and approachable, not technical-grotesque. */
-const manrope = Manrope({
-  subsets: ['latin', 'latin-ext'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-barlow',
-  display: 'swap',
-});
-
-/** Headings. Rounded terminals and soft, full counters: the letterforms read
-    like the material the company makes. Latin-ext covers PL, CZ, SK and DE. */
-const nunito = Nunito({
-  subsets: ['latin', 'latin-ext'],
-  weight: ['600', '700', '800'],
-  variable: '--font-barlow-condensed',
-  display: 'swap',
-});
-
-/** Eyebrows, measurements, part codes. */
-const plexMono = IBM_Plex_Mono({
-  subsets: ['latin', 'latin-ext'],
-  weight: ['500'],
-  variable: '--font-plex-mono',
-  display: 'swap',
-});
-
-export const metadata: Metadata = {
-  title: 'SilvoTech — Producent wyrobów silikonowych w Europie',
-  description: 'Producent wyrobów silikonowych: węże, arkusze, uszczelki i produkty na zamówienie. Produkcja i dystrybucja w Europie. Oferty B2B.',
-  // Next does not link anything from /public automatically, so the favicon has
-  // to be declared here or the browser tab falls back to a blank globe.
-  icons: {
-    icon: [
-      { url: '/icon.svg', type: 'image/svg+xml' },
-      { url: '/icon-light-32x32.png', sizes: '32x32', type: 'image/png' },
-    ],
-    apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
-    shortcut: ['/icon-light-32x32.png'],
-  },
-};
-
-/**
- * Declared once here so every page under /[lang] is prerendered for all five
- * locales instead of being rendered by a function on each request.
- */
-export function generateStaticParams() {
-  return locales.map((lang) => ({ lang }));
-}
-
-/**
- * Anything outside the five locales is a 404 rather than a page silently
- * served with the Polish dictionary under a wrong URL.
- */
+const manrope = Manrope({ subsets: ['latin','latin-ext'], variable: '--font-sans', display: 'swap' });
+const mono = IBM_Plex_Mono({ subsets: ['latin','latin-ext'], weight: ['500','600'], variable: '--font-mono', display: 'swap' });
+export function generateStaticParams() { return locales.map((lang) => ({ lang })); }
 export const dynamicParams = false;
 
-export default async function RootLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: Promise<{ lang: string }>;
-}) {
+export default async function LocaleLayout({ children, params }: { children: ReactNode; params: Promise<{lang:string}> }) {
   const { lang } = await params;
-  return (
-    <html
-      lang={lang}
-      className={`${manrope.variable} ${nunito.variable} ${plexMono.variable}`}
-    >
-      <body>{children}</body>
-    </html>
-  );
+  if (!isLocale(lang)) notFound();
+  return <html lang={localeNames[lang].htmlLang} className={`${manrope.variable} ${mono.variable}`}><body><MediaProtection/>{children}</body></html>;
 }

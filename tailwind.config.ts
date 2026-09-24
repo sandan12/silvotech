@@ -24,9 +24,9 @@ const config: Config = {
         'line-strong': '#b6c5d3',
       },
       fontFamily: {
-        sans: ['var(--font-barlow)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        display: ['var(--font-barlow-condensed)', 'var(--font-barlow)', 'sans-serif'],
-        mono: ['var(--font-plex-mono)', 'ui-monospace', 'monospace'],
+        sans: ['var(--font-sans)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['var(--font-sans)', 'ui-sans-serif', 'sans-serif'],
+        mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
       },
       // Soft radius scale used consistently across the whole site.
       borderRadius: {
