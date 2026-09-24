@@ -1,5 +1,7 @@
 export const locales = ['pl', 'en', 'de', 'cz', 'sk'] as const;
 export type Locale = (typeof locales)[number];
+/** Compatibility type for obsolete files that may remain after a GitHub web upload. */
+export type Dictionary = Record<string, string>;
 export const defaultLocale: Locale = 'pl';
 
 export const localeNames: Record<Locale, { label: string; htmlLang: string; name: string }> = {

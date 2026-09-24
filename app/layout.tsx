@@ -1,10 +1,9 @@
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'SilvoTech — Silicone Hoses for Industry',
-  description: 'Premium silicone hoses manufactured in Slovakia, distributed from Warsaw. Food-grade transparent and technical black silicone hoses.',
-};
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return children;
+import type { ReactNode } from 'react';
+import { Manrope, IBM_Plex_Mono } from 'next/font/google';
+import MediaProtection from '@/components/media-protection';
+import './globals.css';
+const manrope = Manrope({ subsets: ['latin','latin-ext'], variable: '--font-sans', display: 'swap' });
+const mono = IBM_Plex_Mono({ subsets: ['latin','latin-ext'], weight: ['500','600'], variable: '--font-mono', display: 'swap' });
+export default function RootLayout({ children }: { children: ReactNode }) {
+  return <html lang="pl" className={`${manrope.variable} ${mono.variable}`}><body><MediaProtection/>{children}</body></html>;
 }
