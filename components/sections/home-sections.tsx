@@ -16,9 +16,7 @@ export default function HomeSections({ copy, lang }: { copy: SiteCopy; lang: Loc
       <div className="media-shield hero-media-shield" aria-hidden="true" />
       <div className="hero-scrim" aria-hidden="true" />
       <div className="shell hero-content hero-content-centred"><div className="hero-message">
-        <p className="hero-eyebrow">{copy.hero.eyebrow}</p><h1>{copy.hero.title}</h1>
-        <p className="hero-lead">{copy.hero.lead}</p>
-        <div className="hero-actions"><Link href={`/${lang}/kontakt`} className="button button-primary">{copy.hero.primary}<ArrowRight size={17} aria-hidden/></Link><Link href={`/${lang}/oferta`} className="button button-ghost">{copy.hero.secondary}</Link></div>
+        <h1>{copy.hero.title}</h1>
       </div></div>
     </section>
 
@@ -27,7 +25,7 @@ export default function HomeSections({ copy, lang }: { copy: SiteCopy; lang: Loc
         <SectionHeading label={copy.products.label} title={copy.products.title} lead={copy.products.lead}/>
         <div className="product-grid">
           {copy.products.items.map((item,i)=><article className={`product-card ${i===6?'product-card-featured':''}`} key={item.title}>
-            <div className="product-media"><ProtectedImage src={capabilityPhotos[i]} alt={item.title} fill sizes="(max-width: 760px) 100vw, 40vw" className="cover-image"/></div>
+            <div className="product-media"><ProtectedImage src={capabilityPhotos[i]} alt={item.title} fill sizes="(max-width: 760px) 100vw, 40vw" className={i===6?'contain-image':'cover-image'}/></div>
             <div className="product-copy"><span>{String(i+1).padStart(2,'0')}</span><h3>{item.title}</h3><p>{item.text}</p><Link className="product-detail-link" href={`/${lang}/oferta#${capabilityIds[i]}`}>{getCapabilityCopy(lang).overviewLink}<ArrowRight size={16} aria-hidden/></Link></div>
           </article>)}
         </div>
@@ -66,7 +64,7 @@ export default function HomeSections({ copy, lang }: { copy: SiteCopy; lang: Loc
     <section className="section">
       <div className="shell warehouse-grid">
         <div className="warehouse-photo"><ProtectedImage src="/media-new/warehouse-current.webp" alt="SilvoTech warehouse in Warsaw" fill sizes="(max-width: 800px) 100vw, 55vw" className="cover-image"/></div>
-        <div><p className="kicker">{copy.warehouse.label}</p><h2>{copy.warehouse.title}</h2><p className="large-copy">{copy.warehouse.text1}</p><p>{copy.warehouse.text2}</p><p className="fine-note">{copy.warehouse.note}</p><Link href={`/${lang}/kontakt`} className="button button-dark"><Warehouse size={17}/>{copy.warehouse.cta}</Link></div>
+        <div><p className="kicker">{copy.warehouse.label}</p><h2>{copy.warehouse.title}</h2><p className="large-copy">{copy.warehouse.text1}</p><p>{copy.warehouse.text2}</p><Link href={`/${lang}/kontakt`} className="button button-dark"><Warehouse size={17}/>{copy.warehouse.cta}</Link></div>
       </div>
     </section>
 

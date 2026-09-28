@@ -21,11 +21,11 @@ export function AboutPage({copy}:{copy:SiteCopy;lang:Locale}) {
 }
 
 export function CooperationPage({copy,lang}:{copy:SiteCopy;lang:Locale}) {
-  return <><PageHero label={copy.process.label} title={copy.cooperationPage.title} lead={copy.cooperationPage.lead}/><section className="section section-soft"><div className="shell"><ol className="process-grid">{copy.process.steps.map((x,i)=><li key={x.title}><span>{String(i+1).padStart(2,'0')}</span><SoftGlyph kind={i<2?'custom':i<4?'factory':'logistics'}/><h2>{x.title}</h2><p>{x.text}</p></li>)}</ol></div></section><section className="section"><div className="shell warehouse-text-panel"><SoftGlyph kind="logistics" size={58}/><div><h2>{copy.warehouse.title}</h2><p className="large-copy">{copy.warehouse.text1}</p><p>{copy.warehouse.text2}</p><p className="fine-note">{copy.warehouse.note}</p><Link className="button button-dark" href={`/${lang}/kontakt`}>{copy.warehouse.cta}</Link></div></div></section></>;
+  return <><PageHero label={copy.process.label} title={copy.cooperationPage.title} lead={copy.cooperationPage.lead}/><section className="section section-soft"><div className="shell"><ol className="process-grid">{copy.process.steps.map((x,i)=><li key={x.title}><span>{String(i+1).padStart(2,'0')}</span><SoftGlyph kind={i<2?'custom':i<4?'factory':'logistics'}/><h2>{x.title}</h2><p>{x.text}</p></li>)}</ol></div></section><section className="section"><div className="shell warehouse-text-panel"><SoftGlyph kind="logistics" size={58}/><div><h2>{copy.warehouse.title}</h2><p className="large-copy">{copy.warehouse.text1}</p><p>{copy.warehouse.text2}</p><Link className="button button-dark" href={`/${lang}/kontakt`}>{copy.warehouse.cta}</Link></div></div></section></>;
 }
 
 export function DocumentsPage({copy}:{copy:SiteCopy;lang:Locale}) {
-  return <><PageHero label={copy.nav.documents} title={copy.docs.title} lead={copy.docs.lead}/><section className="section"><div className="shell"><div className="docs-grid">{copy.docs.items.map(x=><article key={x.title}><SoftGlyph kind="quality"/><h2>{x.title}</h2><p>{x.text}</p></article>)}</div><p className="docs-note">{copy.docs.note}</p></div></section></>;
+  return <><PageHero label={copy.nav.documents} title={copy.docs.title} lead={copy.docs.lead}/><section className="section"><div className="shell"><div className="docs-grid">{copy.docs.items.map(x=><article key={x.title}><SoftGlyph kind="quality"/><h2>{x.title}</h2><p>{x.text}</p></article>)}</div></div></section></>;
 }
 
 export function ContactPage({copy,lang}:{copy:SiteCopy;lang:Locale}) {

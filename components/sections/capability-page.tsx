@@ -20,7 +20,7 @@ export default function CapabilityPage({ lang }: { lang: Locale }) {
         </nav>
         <div className="capability-list">
           {categories.map((item, index) => <article className="capability-detail" id={item.id} key={item.id}>
-            <div className="capability-photo"><ProtectedImage src={item.photo} alt={item.title} fill sizes="(max-width: 800px) 100vw, 42vw" className="cover-image"/></div>
+            <div className="capability-photo"><ProtectedImage src={item.photo} alt={item.title} fill sizes="(max-width: 800px) 100vw, 42vw" className={index===6?'contain-image':'cover-image'}/></div>
             <div className="capability-body">
               <div className="capability-counter"><ClipboardList size={18} aria-hidden/>{String(index + 1).padStart(2, '0')}</div>
               <h2>{item.title}</h2><p>{item.description}</p>

@@ -3,7 +3,7 @@
 import { useActionState } from 'react';
 import { useRef } from 'react';
 import { motion, useInView } from 'motion/react';
-import { MapPin, Mail, Phone, Building2, CheckCircle2, AlertCircle } from 'lucide-react';
+import { MapPin, Mail, Phone, CheckCircle2, AlertCircle } from 'lucide-react';
 import type { Dictionary, Locale } from '@/lib/i18n';
 import { COMPANY } from '@/lib/company';
 import { standardSizes } from '@/lib/products';
@@ -206,10 +206,6 @@ export default function Contact({ dict, lang }: { dict: Dictionary; lang: Locale
                   <Phone size={16} className="text-blue" />
                   {COMPANY.phone}
                 </a>
-                <span className="flex items-center gap-3 text-sm font-medium text-ink">
-                  <Building2 size={16} className="text-blue" />
-                  {dict.footerNip}: {COMPANY.nip}
-                </span>
               </div>
             </div>
           </motion.aside>
