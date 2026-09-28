@@ -377,3 +377,31 @@ h1, h2, h3, .large-copy, .section-heading > p, .page-hero-lead { text-wrap: bala
 .form-error > div { flex: 1; }
 .form-error strong { display: block; color: #7f3025; }
 .form-error p { margin-top: 4px; color: #7f3025; font-size: .78rem; }
+
+
+/* v7 — condensed homepage without repeated material and benefit cards */
+.material-principle {
+  padding-block: 72px;
+  background: #fff;
+}
+.material-principle .section-heading {
+  max-width: 920px;
+  margin-bottom: 0;
+}
+.material-principle .section-heading h2 {
+  font-size: clamp(2rem, 3.1vw, 3rem);
+}
+.material-principle .section-heading > p:last-child {
+  max-width: 760px;
+}
+.inquiry-intro {
+  align-self: center;
+  text-align: center;
+}
+.inquiry-intro > p {
+  max-width: 58ch;
+  margin: 20px auto 0;
+}
+@media (max-width:800px) {
+  .material-principle { padding-block: 56px; }
+}
