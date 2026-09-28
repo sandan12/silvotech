@@ -31,7 +31,7 @@ npm run dev
 
 ## Content checks before publication
 
-- Verify the business identity and NIP, warehouse and 24-hour dispatch conditions against your current operations.
+- Verify the business identity, warehouse and 24-hour dispatch conditions against your current operations.
 - Check translations with native speakers and have the privacy text reviewed for your legal entity and data handling.
 - Only publish numerical specifications, food-contact claims and certifications when they are supported for the specific product.
 
