@@ -9,6 +9,7 @@ import { capabilityIds, capabilityPhotos, getCapabilityCopy } from '@/lib/capabi
 import HeroVideoMedia from './hero-video-media';
 
 const capabilityKinds: GlyphKind[] = ['factory', 'custom', 'product', 'quality', 'layers', 'logistics'];
+const homepageCapabilityOrder = [0, 1, 2, 3, 4, 6, 5] as const;
 export default function HomeSections({ copy, lang }: { copy: SiteCopy; lang: Locale }) {
   return <>
     <section className="hero hero-video">
@@ -24,10 +25,13 @@ export default function HomeSections({ copy, lang }: { copy: SiteCopy; lang: Loc
       <div className="shell">
         <SectionHeading label={copy.products.label} title={copy.products.title} lead={copy.products.lead}/>
         <div className="product-grid">
-          {copy.products.items.map((item,i)=><article className={`product-card ${i===6?'product-card-featured':''}`} key={item.title}>
-            <div className="product-media"><ProtectedImage src={capabilityPhotos[i]} alt={item.title} fill sizes="(max-width: 760px) 100vw, 40vw" className={i===6?'contain-image':'cover-image'}/></div>
-            <div className="product-copy"><span>{String(i+1).padStart(2,'0')}</span><h3>{item.title}</h3><p>{item.text}</p><Link className="product-detail-link" href={`/${lang}/oferta#${capabilityIds[i]}`}>{getCapabilityCopy(lang).overviewLink}<ArrowRight size={16} aria-hidden/></Link></div>
-          </article>)}
+          {homepageCapabilityOrder.map((itemIndex, position) => {
+            const item = copy.products.items[itemIndex];
+            return <article className={`product-card ${position===6?'product-card-featured':''}`} key={item.title}>
+              <div className="product-media"><ProtectedImage src={capabilityPhotos[itemIndex]} alt={item.title} fill sizes="(max-width: 760px) 100vw, 40vw" className={itemIndex===6?'contain-image':'cover-image'}/></div>
+              <div className="product-copy"><span>{String(position+1).padStart(2,'0')}</span><h3>{item.title}</h3><p>{item.text}</p><Link className="product-detail-link" href={`/${lang}/oferta#${capabilityIds[itemIndex]}`}>{getCapabilityCopy(lang).overviewLink}<ArrowRight size={16} aria-hidden/></Link></div>
+            </article>;
+          })}
         </div>
       </div>
     </section>
