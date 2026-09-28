@@ -25,7 +25,7 @@ const overrides: Record<Locale, Partial<SiteCopy>> = {
       { title: 'Material identification', text: 'Selecting and confirming the material for the application.' },
       { title: 'Documentation', text: 'Declarations, test results or specifications are supplied as agreed.' },
       { title: 'Test sample', text: 'Where needed, we prepare a sample before series production.' },
-    ], note: 'We confirm specific standards and documents before an order. Certification scope varies by material and product.' },
+    ] },
   },
   de: {
     nav: { home: 'Startseite', products: 'Möglichkeiten', production: 'Produktion', about: 'Über uns', cooperation: 'Zusammenarbeit', documents: 'Qualität', contact: 'Kontakt', cta: 'Produktion anfragen', menu: 'Menü öffnen', language: 'Sprache wählen' },
@@ -76,7 +76,7 @@ const overrides: Record<Locale, Partial<SiteCopy>> = {
       { title: 'Materialzuordnung', text: 'Auswahl und Bestätigung des Materials für die Anwendung.' },
       { title: 'Dokumentation', text: 'Erklärungen, Prüfergebnisse oder Spezifikationen nach Vereinbarung.' },
       { title: 'Prüfmuster', text: 'Bei Bedarf fertigen wir vor der Serie ein Muster.' },
-    ], note: 'Konkrete Normen und Unterlagen bestätigen wir vor der Bestellung. Nicht jedes Produkt hat denselben Zertifizierungsumfang.' },
+    ] },
     footer: { summary: 'Fertigung und regelmäßige Lieferungen für B2B-Kunden in Polen und Europa.', company: 'Unternehmen', offer: 'Möglichkeiten', contact: 'Kontakt', rights: 'Alle Rechte vorbehalten.', privacy: 'Datenschutzerklärung' },
   },
   cz: {
@@ -128,7 +128,7 @@ const overrides: Record<Locale, Partial<SiteCopy>> = {
       { title: 'Identifikace materiálu', text: 'Výběr a potvrzení materiálu pro konkrétní použití.' },
       { title: 'Dokumentace', text: 'Prohlášení, výsledky zkoušek nebo specifikace podle dohody.' },
       { title: 'Zkušební vzorek', text: 'V případě potřeby připravíme vzorek před sériovou výrobou.' },
-    ], note: 'Konkrétní normy a dokumenty potvrzujeme před objednávkou. Rozsah certifikace se liší podle materiálu a výrobku.' },
+    ] },
     footer: { summary: 'Výroba a pravidelné dodávky pro B2B zákazníky v Polsku a Evropě.', company: 'Společnost', offer: 'Možnosti', contact: 'Kontakt', rights: 'Všechna práva vyhrazena.', privacy: 'Ochrana osobních údajů' },
   },
   sk: {
@@ -180,7 +180,7 @@ const overrides: Record<Locale, Partial<SiteCopy>> = {
       { title: 'Identifikácia materiálu', text: 'Výber a potvrdenie materiálu na konkrétne použitie.' },
       { title: 'Dokumentácia', text: 'Vyhlásenia, výsledky skúšok alebo špecifikácie podľa dohody.' },
       { title: 'Skúšobná vzorka', text: 'V prípade potreby pripravíme vzorku pred sériovou výrobou.' },
-    ], note: 'Konkrétne normy a dokumenty potvrdzujeme pred objednávkou. Rozsah certifikácie sa líši podľa materiálu a výrobku.' },
+    ] },
     footer: { summary: 'Výroba a pravidelné dodávky pre B2B zákazníkov v Poľsku a Európe.', company: 'Spoločnosť', offer: 'Možnosti', contact: 'Kontakt', rights: 'Všetky práva vyhradené.', privacy: 'Ochrana osobných údajov' },
   },
 };
