@@ -1,5 +1,27 @@
+import type { Metadata } from 'next';
 import PageFrame from '@/components/sections/page-frame';
 import PageHero from '@/components/sections/page-hero';
 import { isLocale, type Locale } from '@/lib/i18n';
 import { getSiteCopy } from '@/lib/site-content';
-export default async function Privacy({params}:{params:Promise<{lang:string}>}){const {lang:raw}=await params;const lang=(isLocale(raw)?raw:'pl') as Locale;const copy=getSiteCopy(lang);return <PageFrame copy={copy} lang={lang} path="/polityka-prywatnosci"><PageHero label="RODO" title={copy.footer.privacy} lead="Informacje o przetwarzaniu danych przesyłanych w zapytaniach B2B."/><section className="section"><div className="shell legal-copy"><h2>Administrator danych</h2><p>Administratorem danych jest SilvoTech. Dane przesłane przez formularz są wykorzystywane wyłącznie do analizy zapytania, przygotowania odpowiedzi i dalszej komunikacji handlowej.</p><h2>Zakres i okres przetwarzania</h2><p>Przetwarzamy dane kontaktowe, treść zapytania oraz dobrowolnie przesłane załączniki. Dane przechowujemy przez okres niezbędny do obsługi zapytania i wymagany przepisami prawa.</p><h2>Załączniki</h2><p>Nie przesyłaj dokumentów zawierających dane osobowe, tajemnice lub informacje, których nie wolno udostępniać. Załączniki służą wyłącznie do technicznej oceny możliwości realizacji.</p><h2>Kontakt</h2><p>W sprawach dotyczących danych skontaktuj się przez adres e-mail podany na stronie.</p></div></section></PageFrame>;}
+import { getPrivacyCopy } from '@/lib/privacy-copy';
+import { pageMetadata } from '@/lib/metadata';
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang: raw } = await params;
+  const lang = (isLocale(raw) ? raw : 'pl') as Locale;
+  const copy = getSiteCopy(lang);
+  return pageMetadata(lang, 'polityka-prywatnosci', copy.footer.privacy, getPrivacyCopy(lang).lead);
+}
+
+export default async function Privacy({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang: raw } = await params;
+  const lang = (isLocale(raw) ? raw : 'pl') as Locale;
+  const copy = getSiteCopy(lang);
+  const privacy = getPrivacyCopy(lang);
+  return <PageFrame copy={copy} lang={lang} path="/polityka-prywatnosci">
+    <PageHero label="" title={copy.footer.privacy} lead={privacy.lead}/>
+    <section className="section"><div className="shell legal-copy">
+      {privacy.sections.map((section) => <section key={section.title}><h2>{section.title}</h2><p>{section.text}</p></section>)}
+    </div></section>
+  </PageFrame>;
+}

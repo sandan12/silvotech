@@ -10,6 +10,7 @@ function LanguageMark() {
 
 export default function Header({ copy, lang, path = '' }: { copy: SiteCopy; lang: Locale; path?: string }) {
   const nav = [
+    [copy.nav.products, `/${lang}/oferta`],
     [copy.nav.production, `/${lang}/produkcja`],
     [copy.nav.about, `/${lang}/o-nas`],
     [copy.nav.cooperation, `/${lang}/wspolpraca`],

@@ -12,7 +12,7 @@ export function pageMetadata(lang: Locale, path = '', title?: string, descriptio
     description: description ?? copy.meta.description,
     alternates: {
       canonical: `/${lang}${suffix}`,
-      languages: Object.fromEntries(locales.map((l) => [l === 'cz' ? 'cs-CZ' : l, `/${l}${suffix}`])),
+      languages: { ...Object.fromEntries(locales.map((l) => [({pl:'pl-PL',en:'en',de:'de-DE',cz:'cs-CZ',sk:'sk-SK'} as const)[l], `/${l}${suffix}`])), 'x-default': `/pl${suffix}` },
     },
     openGraph: { type: 'website', locale: lang === 'cz' ? 'cs_CZ' : lang, siteName: 'SilvoTech', title: title ?? copy.meta.title, description: description ?? copy.meta.description, images: [{ url: '/media/hero-production-line.webp', width: 1672, height: 941, alt: 'SilvoTech production line' }] },
     twitter: { card: 'summary_large_image', title: title ?? copy.meta.title, description: description ?? copy.meta.description, images: ['/media/hero-production-line.webp'] },
